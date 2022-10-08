@@ -13,4 +13,4 @@ Xuân Lam:
     + Viết thêm hàm đọc/ghi thông tin danh sách các máy từ file
     + In ra màn hình thông tin danh sách các máy (cả trống và đã được sử dụng)
     + Xuất danh sách các máy trống/đã được sử dụng
-
+    + Viết hàm kiểm tra máy còn hay hết [cập nhật thêm hàm]
