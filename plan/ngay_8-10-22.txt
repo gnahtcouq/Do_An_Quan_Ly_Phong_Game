@@ -1,0 +1,16 @@
+KẾ HOẠCH NGÀY 8-10-2022
+
+Quốc Thắng:
+- Viết code khai báo biến MayTinh với struct, thông tin mỗi máy tính như sau:
+    + Số máy (int)
+    + Kiểu máy (char[10])
+    + Tình trạng (bool) // tình trạng máy - 0:trống   1:đã được sử dụng
+- In ra màn hình thông tin một máy tính theo chiều ngang
+- Đọc/ghi thông tin một máy từ file
+
+Xuân Lam:
+- Từ code của Quốc Thắng
+    + Viết thêm hàm đọc/ghi thông tin danh sách các máy từ file
+    + In ra màn hình thông tin danh sách các máy (cả trống và đã được sử dụng)
+    + Xuất danh sách các máy trống/đã được sử dụng
+
