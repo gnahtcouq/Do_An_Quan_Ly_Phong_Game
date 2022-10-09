@@ -6,6 +6,7 @@ void xuatDanhSachCacMay(MayTinh nhieuMay[], int n);
 void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n);
 void xuatDanhSachCacMayTrong(MayTinh nhieuMay[], int n);
 bool hetMay(MayTinh nhieuMay[], int n);
+MayTinh *layViTriCuaMay(MayTinh nhieuMay[], int n, int soMay);
 
 void docDanhSachCacMay(MayTinh nhieuMay[], int &n) {
     FILE *fileIn = fopen("../File/maytinh/maytinh.in", "r");
@@ -41,10 +42,14 @@ void ghiDanhSachCacMay(MayTinh nhieuMay[], int &n) {
 void xuatDanhSachCacMay(MayTinh nhieuMay[], int n) {
     int count = 1;
     cout << "\n";
-    cout << setw(10) << left << "STT" << "\t";
-    cout << setw(10) << left << "So may" << "\t";
-    cout << setw(20) << left << "Kieu may" << "\t";
-    cout << setw(20) << left << "Tinh trang" << "\t" << endl;
+    cout << setw(10) << left << "STT"
+         << "\t";
+    cout << setw(10) << left << "So may"
+         << "\t";
+    cout << setw(20) << left << "Kieu may"
+         << "\t";
+    cout << setw(20) << left << "Tinh trang"
+         << "\t" << endl;
     for (int i = 0; i < n; i++) {
         cout << setw(10) << count++ << "\t";
         inMotMayTheoChieuNgang(nhieuMay[i]);
@@ -54,10 +59,14 @@ void xuatDanhSachCacMay(MayTinh nhieuMay[], int n) {
 void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n) {
     int count = 1;
     cout << "\n";
-    cout << setw(10) << left << "STT" << "\t";
-    cout << setw(10) << left << "So may" << "\t";
-    cout << setw(20) << left << "Kieu may" << "\t";
-    cout << setw(20) << left << "Tinh trang" << "\t" << endl;
+    cout << setw(10) << left << "STT"
+         << "\t";
+    cout << setw(10) << left << "So may"
+         << "\t";
+    cout << setw(20) << left << "Kieu may"
+         << "\t";
+    cout << setw(20) << left << "Tinh trang"
+         << "\t" << endl;
     for (int i = 0; i < n; i++) {
         if (nhieuMay[i].tinhTrang) {
             cout << setw(10) << count++ << "\t";
@@ -72,10 +81,14 @@ void xuatDanhSachCacMayTrong(MayTinh nhieuMay[], int n) {
     else {
         int count = 1;
         cout << "\n";
-        cout << setw(10) << left << "STT" << "\t";
-        cout << setw(10) << left << "So may" << "\t";
-        cout << setw(20) << left << "Kieu may" << "\t";
-        cout << setw(20) << left << "Tinh trang" << "\t" << endl;
+        cout << setw(10) << left << "STT"
+             << "\t";
+        cout << setw(10) << left << "So may"
+             << "\t";
+        cout << setw(20) << left << "Kieu may"
+             << "\t";
+        cout << setw(20) << left << "Tinh trang"
+             << "\t" << endl;
         for (int i = 0; i < n; i++) {
             if (nhieuMay[i].tinhTrang == 0) {
                 cout << setw(10) << count++ << "\t";
@@ -91,4 +104,12 @@ bool hetMay(MayTinh nhieuMay[], int n) {
             return false;
     }
     return true;
+}
+
+MayTinh *layViTriCuaMay(MayTinh nhieuMay[], int n, int soMay) {
+    for (int i = 0; i < n; i++) {
+        if (nhieuMay[i].soMay == soMay)
+            return &nhieuMay[i];
+    }
+    return NULL;
 }
