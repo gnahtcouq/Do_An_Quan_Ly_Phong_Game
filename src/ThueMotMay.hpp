@@ -20,6 +20,7 @@ void xuatMotNguoiThueTheoChieuNgang(ThueMotMay thueMotMay);
 
 void docMotNguoiThue(FILE *fileIn, ThueMotMay &thueMotMay, MayTinh nhieuMay[], int n);
 void ghiMotNguoiThue(FILE *fileOut, ThueMotMay thueMotMay);
+void thayDoiThongTinTaiKhoanMatKhau(ThueMotMay &thueMotMay, MayTinh nhieuMay[], int n);
 
 bool kiemTraSoMay(MayTinh nhieuMay[], int n, int soMay) {
     for (int i = 0; i < n; i++)
@@ -88,4 +89,12 @@ void ghiMotNguoiThue(FILE *fileOut, ThueMotMay thueMotMay) {
     fprintf(fileOut, "\n%s", thueMotMay.matKhau);
     fprintf(fileOut, "\n%s", thueMotMay.soDienThoai);
     fprintf(fileOut, "\n%d", thueMotMay.maytinh->soMay);
+}
+
+void thayDoiThongTinTaiKhoanMatKhau(ThueMotMay &thueMotMay, MayTinh nhieuMay[], int n) {
+    cout << "\n(?) Nhap tai khoan moi: ";
+    cin.getline(thueMotMay.taiKhoan, 30);
+    cout << "\n(?) Nhap mat khau moi: ";
+    cin.getline(thueMotMay.matKhau, 30);
+    cout << "\n(*) Thay doi thong tin thanh cong (*)";
 }
