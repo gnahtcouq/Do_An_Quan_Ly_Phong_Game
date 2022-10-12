@@ -33,6 +33,8 @@ bool kiemTraSoDienThoaiDaTonTai(ThueNhieuMay thueNhieuMay, char *soDienThoai);
 void ghiDanhSachNguoiThue(ThueNhieuMay thueNhieuMay);
 void xuatFileDanhSachNguoiThue(ThueNhieuMay thueNhieuMay);
 
+void chonChucNangCanChinhSua(ThueMotMay &thueMotMay, MayTinh nhieuMay[], int n);
+
 void createList(ThueNhieuMay &thueNhieuMay) {
     thueNhieuMay.pHead = NULL;
     thueNhieuMay.pTail = NULL;
@@ -256,4 +258,53 @@ void xuatFileDanhSachNguoiThue(ThueNhieuMay thueNhieuMay) {
         cout << "\n\t(*) In file thanh cong (*)\n";
     }
     fclose(fileOut);
+}
+
+void chonChucNangCanChinhSua(ThueMotMay &thueMotMay, MayTinh nhieuMay[], int n) {
+    int choose;
+    bool exit = false;
+    fflush(stdin);
+    do {
+        cout << "\n1. Tai khoan";
+        cout << "\n2. Mat khau";
+        cout << "\n3. So dien thoai";
+        cout << "\n0. Ok";
+        cout << "\nNhap lua chon can chinh sua: ";
+        cin >> choose;
+        cin.ignore();
+        switch (choose) {
+            case 1: {
+                cout << "\nNhap tai khoan: ";
+                cin.getline(thueMotMay.taiKhoan, 50);
+                xuatMotNguoiThueTheoChieuDoc(thueMotMay);
+                system("pause");
+                break;
+            }
+            case 2: {
+                cout << "\nNhap mat khau: ";
+                cin.getline(thueMotMay.matKhau, 50);
+                xuatMotNguoiThueTheoChieuDoc(thueMotMay);
+                system("pause");
+                break;
+            }
+            case 3: {
+                do {
+                    cout << "\n(?) Nhap so dien thoai (10 so): ";
+                    cin.getline(thueMotMay.soDienThoai, 15);
+                    if (strlen(thueMotMay.soDienThoai) <= 0 || strlen(thueMotMay.soDienThoai) > 10 || strlen(thueMotMay.soDienThoai) != 10)
+                        cout << "\n\t(!) So dien thoai khong hop le - Nhap lai (!)\n";
+                } while (strlen(thueMotMay.soDienThoai) <= 0 || strlen(thueMotMay.soDienThoai) > 10 || strlen(thueMotMay.soDienThoai) != 10);
+                xuatMotNguoiThueTheoChieuDoc(thueMotMay);
+                system("pause");
+                break;
+            }
+            case 0: {
+                exit = true;
+                break;
+            }
+            default:
+                cout << "\n\tLua chon khong hop le - Nhap lai";
+                break;
+        }
+    } while (!exit);
 }
