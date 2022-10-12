@@ -30,6 +30,9 @@ void ghiDanhSachNguoiThue(ThueNhieuMay thueNhieuMay);
 bool kiemTraTaiKhoanDaTonTai(ThueNhieuMay thueNhieuMay, char *taiKhoan);
 bool kiemTraSoDienThoaiDaTonTai(ThueNhieuMay thueNhieuMay, char *soDienThoai);
 
+void ghiDanhSachNguoiThue(ThueNhieuMay thueNhieuMay);
+void xuatFileDanhSachNguoiThue(ThueNhieuMay thueNhieuMay);
+
 void createList(ThueNhieuMay &thueNhieuMay) {
     thueNhieuMay.pHead = NULL;
     thueNhieuMay.pTail = NULL;
@@ -222,4 +225,35 @@ bool kiemTraSoDienThoaiDaTonTai(ThueNhieuMay thueNhieuMay, char *soDienThoai) {
         if (strcmp(t->data.soDienThoai, soDienThoai) == 0)
             return 1;
     return 0;
+}
+
+void ghiDanhSachNguoiThue(ThueNhieuMay thueNhieuMay) {
+    int count = 1;
+    FILE *fileOut = fopen("../File/thueMotMay/thueMotMay.in", "w");
+    if (fileOut == NULL)
+        cout << "\n(!) Loi khi mo file (!)\n\a";
+    else {
+        for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext) {
+            ghiMotNguoiThue(fileOut, t->data);
+            cout << "\n(*) Ban ghi thu " << count++ << "(*)\n";
+        }
+    }
+    fclose(fileOut);
+}
+
+void xuatFileDanhSachNguoiThue(ThueNhieuMay thueNhieuMay) {
+    FILE *fileOut = fopen("../File/thueMotMay/thueNhieuMay.txt", "w");
+    if (fileOut == NULL) {
+        cout << "\n\t(*) In file khong thanh cong (*)\n";
+    } else {
+        int count = 1;
+        for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext) {
+            fprintf(fileOut, "%s\n", t->data.taiKhoan);
+            fprintf(fileOut, "%s\n", t->data.matKhau);
+            fprintf(fileOut, "%s\n", t->data.soDienThoai);
+            fprintf(fileOut, "%d\n", t->data.maytinh->soMay);
+        }
+        cout << "\n\t(*) In file thanh cong (*)\n";
+    }
+    fclose(fileOut);
 }
