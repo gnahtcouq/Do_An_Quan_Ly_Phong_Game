@@ -23,6 +23,13 @@ bool kiemTraTaiKhoanDaTonTai(ThueNhieuMay thueNhieuMay, char *taiKhoan);
 void themMotNguoiThueVaoDanhSach(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n);
 void xuatDanhSachNguoiThue(ThueNhieuMay thueNhieuMay);
 
+void chinhSuaDanhSachNguoiThue(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n, char *taiKhoan);
+void xoaMotNguoiThue(ThueNhieuMay &thueNhieuMay, char *taiKhoan);
+void docDanhSachNguoiThue(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n);
+void ghiDanhSachNguoiThue(ThueNhieuMay thueNhieuMay);
+bool kiemTraTaiKhoanDaTonTai(ThueNhieuMay thueNhieuMay, char *taiKhoan);
+bool kiemTraSoDienThoaiDaTonTai(ThueNhieuMay thueNhieuMay, char *soDienThoai);
+
 void createList(ThueNhieuMay &thueNhieuMay) {
     thueNhieuMay.pHead = NULL;
     thueNhieuMay.pTail = NULL;
@@ -127,4 +134,92 @@ void xuatDanhSachNguoiThue(ThueNhieuMay thueNhieuMay) {
         cout << setw(10) << count++ << "\t";
         xuatMotNguoiThueTheoChieuNgang(t->data);
     }
+}
+
+void chinhSuaDanhSachNguoiThue(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n, char *soDienThoai) {
+    if (!kiemTraSoDienThoaiDaTonTai(thueNhieuMay, soDienThoai))
+        cout << "\n\t(!) Khong ton tai nguoi thue nay (!)\n\a";
+    else {
+        for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext) {
+            if (strcmp(t->data.soDienThoai, soDienThoai) == 0) {
+                thayDoiThongTinTaiKhoanMatKhau(t->data, nhieuMay, n);
+                cout << "\n\t(*) Chinh sua thanh cong (*)\n";
+                xuatMotNguoiThueTheoChieuDoc(t->data);
+                break;
+            }
+        }
+    }
+}
+
+void xoaMotNguoiThue(ThueNhieuMay &thueNhieuMay, char *taiKhoan) {
+    if (strcmp(thueNhieuMay.pHead->data.taiKhoan, taiKhoan) == 0) {
+        thueNhieuMay.pHead->data.maytinh->tinhTrang = 0;
+        removeNodeInHead(thueNhieuMay);
+        cout << "\n\t(*) Thanh toan thanh cong (*)\n";
+    } else if (strcmp(thueNhieuMay.pTail->data.taiKhoan, taiKhoan) == 0) {
+        thueNhieuMay.pTail->data.maytinh->tinhTrang = 0;
+        removeNodeInTail(thueNhieuMay);
+        cout << "\n\t(*) Thanh toan thanh cong (*)\n";
+    } else {
+        if (!kiemTraTaiKhoanDaTonTai(thueNhieuMay, taiKhoan))
+            cout << "\n\t(!) Khong ton tai nguoi thue nay (!)\n";
+        else {
+            Node *g = NULL;
+            for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext) {
+                if (strcmp(t->data.taiKhoan, taiKhoan) == 0) {
+                    t->data.maytinh->tinhTrang = 0;
+                    g->pNext = t->pNext;
+                    free(t);
+                    cout << "\n\t(*) Thanh toan thanh cong (*)\n";
+                    return;
+                }
+                g = t;
+            }
+        }
+    }
+}
+
+void docDanhSachNguoiThue(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n) {
+    int count = 1;
+    FILE *fileIn = fopen("../File/thueMotMay/thueMotMay.in", "r");
+    if (fileIn == NULL)
+        cout << "\n(!) Loi khi mo file (!)\n";
+    else {
+        fgetc(fileIn);
+        while (!feof(fileIn)) {
+            ThueMotMay r;
+            docMotNguoiThue(fileIn, r, nhieuMay, n);
+            addNodeInTail(thueNhieuMay, r);
+            cout << "\n(*) Doc ban ghi thu " << count++ << "(*)\n";
+        }
+    }
+    fclose(fileIn);
+}
+
+void ghiDanhSachNguoiThue(ThueNhieuMay thueNhieuMay) {
+    int count = 1;
+    FILE *fileOut = fopen("../File/thueMotMay/thueMotMay.in", "w");
+    if (fileOut == NULL)
+        cout << "\n(!) Loi khi mo file (!)\n";
+    else {
+        for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext) {
+            ghiMotNguoiThue(fileOut, t->data);
+            cout << "\n(*) Ban ghi thu " << count++ << "(*)\n";
+        }
+    }
+    fclose(fileOut);
+}
+
+bool kiemTraTaiKhoanDaTonTai(ThueNhieuMay thueNhieuMay, char *taiKhoan) {
+    for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext)
+        if (strcmp(t->data.taiKhoan, taiKhoan) == 0)
+            return 1;
+    return 0;
+}
+
+bool kiemTraSoDienThoaiDaTonTai(ThueNhieuMay thueNhieuMay, char *soDienThoai) {
+    for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext)
+        if (strcmp(t->data.soDienThoai, soDienThoai) == 0)
+            return 1;
+    return 0;
 }
