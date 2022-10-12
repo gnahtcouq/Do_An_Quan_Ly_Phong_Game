@@ -32,6 +32,7 @@ bool kiemTraSoDienThoaiDaTonTai(ThueNhieuMay thueNhieuMay, char *soDienThoai);
 
 void ghiDanhSachNguoiThue(ThueNhieuMay thueNhieuMay);
 void xuatFileDanhSachNguoiThue(ThueNhieuMay thueNhieuMay);
+void timNguoiThueTheoTaiKhoan(ThueNhieuMay thueNhieuMay, char *taiKhoan);
 
 void chonChucNangCanChinhSua(ThueMotMay &thueMotMay, MayTinh nhieuMay[], int n);
 
@@ -258,6 +259,26 @@ void xuatFileDanhSachNguoiThue(ThueNhieuMay thueNhieuMay) {
         cout << "\n\t(*) In file thanh cong (*)\n";
     }
     fclose(fileOut);
+}
+
+void timNguoiThueTheoTaiKhoan(ThueNhieuMay thueNhieuMay, char *taiKhoan) {
+    int count = 1;
+    cout << setw(10) << left << "STT"
+         << "\t";
+    cout << setw(30) << left << "Tai khoan"
+         << "\t";
+    cout << setw(30) << left << "Mat khau"
+         << "\t";
+    cout << setw(20) << left << "So dien thoai"
+         << "\t";
+    cout << setw(10) << left << "So may"
+         << "\t" << endl;
+    for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext) {
+        if (strstr(strlwr(t->data.taiKhoan), strlwr(taiKhoan)) != NULL) {
+            cout << setw(10) << count++ << "\t";
+            xuatMotNguoiThueTheoChieuNgang(t->data);
+        }
+    }
 }
 
 void chonChucNangCanChinhSua(ThueMotMay &thueMotMay, MayTinh nhieuMay[], int n) {
