@@ -7,6 +7,7 @@ int kiemTraTrungMaMayTinh(DanhSachMayTinh dsmt, string str);
 void inMotMayTheoChieuNgang(DanhSachMayTinh dsmt);
 void docDanhSachMayTinh(DanhSachMayTinh &dsmt);
 void xoaMayTinh(DanhSachMayTinh &dsmt);
+void chinhSuaMayTinh(DanhSachMayTinh &dsmt);
 
 void themMayTinh(DanhSachMayTinh &dsmt) {
     MayTinh *p = new MayTinh;
@@ -92,6 +93,24 @@ void xoaMayTinh(DanhSachMayTinh &dsmt) {
         MayTinh *tam = dsmt.ds[dsmt.soLuong - 1];
         dsmt.soLuong--;
         cout << "\nDa xoa thanh cong\n";
+        system("pause");
+    }
+}
+
+void chinhSuaMayTinh(DanhSachMayTinh &dsmt) {
+    string str;
+    cout << "\n(?) Nhap ma may tinh can chinh sua: ";
+    cin >> str;
+    int vitri = kiemTraTrungMaMayTinh(dsmt, str);
+    if (vitri < 0) {
+        cout << "\n(!) Ma khong ton tai\n";
+        system("pause");
+    } else {
+        cout << "\n(?) Nhap so may moi: ";
+        cin >> dsmt.ds[vitri]->soMay;
+        cout << "\n(?) Nhap kieu may moi (0: thuong - 1: cao cap): ";
+        cin >> dsmt.ds[vitri]->kieuMay;
+        cout << "\n(!) Da thay doi thong tin may tinh thanh cong\n";
         system("pause");
     }
 }
