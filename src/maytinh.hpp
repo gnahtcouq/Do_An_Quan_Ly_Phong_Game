@@ -4,6 +4,7 @@
 void themMayTinh(DanhSachMayTinh &dsmt);
 string taoMaMayTinh(DanhSachMayTinh dsmt);
 int kiemTraTrungMaMayTinh(DanhSachMayTinh dsmt, string str);
+void inMotMayTheoChieuNgang(DanhSachMayTinh dsmt);
 
 void themMayTinh(DanhSachMayTinh &dsmt) {
     MayTinh *p = new MayTinh;
@@ -31,4 +32,22 @@ int kiemTraTrungMaMayTinh(DanhSachMayTinh dsmt, string str) {
         if (dsmt.ds[i]->maMay == str)
             return i;
     return -1;
+}
+
+void inMotMayTheoChieuNgang(DanhSachMayTinh dsmt) {
+    for (int i = 0; i < dsmt.soLuong; i++) {
+        char tinhTrangMay[20], kieuMay[20];
+        if (dsmt.ds[i]->tinhTrang == 1)  // tinhTrang == 1 -> Máy đã có người sử dụng
+            strcpy(tinhTrangMay, "Day");
+        else  // tinhTrang == 0 -> Máy trống
+            strcpy(tinhTrangMay, "Trong");
+        if (dsmt.ds[i]->kieuMay == 1)  // kieuMay == 1 -> Máy cao cấp
+            strcpy(kieuMay, "Cao cap");
+        else  // kieuMay == 0 -> Máy thường
+            strcpy(kieuMay, "Thuong");
+        cout << setw(10) << left << dsmt.ds[i]->maMay << "\t";
+        cout << setw(10) << left << dsmt.ds[i]->soMay << "\t";
+        cout << setw(20) << left << kieuMay << "\t";
+        cout << setw(20) << left << tinhTrangMay << "\t" << endl;
+    }
 }
