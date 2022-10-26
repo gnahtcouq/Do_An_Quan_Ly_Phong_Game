@@ -23,6 +23,7 @@ void menu() {
         cout << "\n|  5. Nhap khach hang                              |";
         cout << "\n|  6. In danh sach khach hang tang dan theo ma so  |";
         cout << "\n|  7. Xoa khach hang                               |";
+        cout << "\n|  8. Chinh sua thong tin khach hang               |";
         cout << "\n*--------------------------------------------------*";
         cout << "\n|             0. Thoat chuong trinh                |";
         cout << "\n*--------------------------------------------------*";
@@ -86,6 +87,11 @@ void menu() {
                 inDanhSachKhachHangTheoChieuNgang(ds, nds);
                 xoaKhachHang(dskh);
                 giaiPhongDanhSachKhachHang(ds, nds);
+                break;
+            case 8:
+                system("cls");
+                cout << "\n\t8. CHINH SUA THONG TIN KHACH HANG\n";
+                chinhSuaThongTinKhachHang(dskh);
                 break;
             case 0:
                 break;

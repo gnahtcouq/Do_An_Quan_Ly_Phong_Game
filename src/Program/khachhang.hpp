@@ -5,6 +5,7 @@ void nhapMotKhachHang(DanhSachKhachHang& dskh);
 void themMotKhachHang(tree& t, KhachHang* p);
 int taoMaKhachHang(tree t);
 bool kiemTraMaKhachHangTrung(tree t, int ma);
+bool kiemTraSoDienThoaiKhachHangTrung(tree t, string sdt);
 void chuyenCaySangMang(tree t, KhachHang* ds[], int& nds);
 void inDanhSachKhachHangTheoChieuDoc(KhachHang* ds[], int& nds);
 void inDanhSachKhachHangTheoChieuNgang(KhachHang* ds[], int& nds);
@@ -14,6 +15,8 @@ void giaiPhongDanhSachKhachHang(KhachHang* ds[], int& nds);
 void xoaKhachHang(DanhSachKhachHang& dskh);
 void xoaMotKhachHang(tree& t, int ma);
 void timNodeTheMang(tree& t, KhachHang*& x);
+void chinhSuaThongTinKhachHang(DanhSachKhachHang& dskh);
+void chinhSuaThongTinMotKhachHang(tree t, string sdt);
 
 KhachHang* khoiTaoNodeKhachHang() {
     KhachHang* p = new KhachHang;
@@ -70,6 +73,19 @@ bool kiemTraMaKhachHangTrung(tree t, int ma) {
             kiemTraMaKhachHangTrung(t->pright, ma);
         else
             kiemTraMaKhachHangTrung(t->pleft, ma);
+    }
+}
+
+bool kiemTraSoDienThoaiKhachHangTrung(tree t, string sdt) {
+    if (t == NULL)
+        return 0;
+    else {
+        if (t->soDienThoai == sdt)
+            return 1;
+        else if (t->soDienThoai < sdt)
+            kiemTraSoDienThoaiKhachHangTrung(t->pright, sdt);
+        else
+            kiemTraSoDienThoaiKhachHangTrung(t->pleft, sdt);
     }
 }
 
@@ -181,5 +197,35 @@ void timNodeTheMang(tree& t, KhachHang*& x) {
         hoanViHaiKhachHang(t, x);
         x = t;  // x sẽ lưu vị trí node này để tí nữa giải phóng
         t = t->pright;
+    }
+}
+
+void chinhSuaThongTinKhachHang(DanhSachKhachHang& dskh) {
+    string sdt;
+    cout << "\n(?) Nhap so dien thoai khach hang can chinh sua: ";
+    cin >> sdt;
+    bool check = kiemTraSoDienThoaiKhachHangTrung(dskh.TREE, sdt);
+    if (check == true) {
+        chinhSuaThongTinMotKhachHang(dskh.TREE, sdt);
+        cout << "\n(!) Chinh sua thong tin khach hang thanh cong\n";
+
+    } else
+        cout << "\n(!) So dien thoai khong ton tai\n";
+    system("pause");
+}
+
+void chinhSuaThongTinMotKhachHang(tree t, string sdt) {
+    if (t != NULL) {
+        if (t->soDienThoai == sdt) {
+            cin.ignore();
+            cout << "\n(?) Nhap tai khoan moi: ";
+            getline(cin, t->taiKhoan);
+            cout << "\n(?) Nhap mat khau moi: ";
+            getline(cin, t->matKhau);
+            chuanHoaTenTaiKhoan(t->taiKhoan);
+        } else if (t->soDienThoai > sdt)
+            chinhSuaThongTinMotKhachHang(t->pleft, sdt);
+        else if (t->soDienThoai < sdt)
+            chinhSuaThongTinMotKhachHang(t->pright, sdt);
     }
 }
