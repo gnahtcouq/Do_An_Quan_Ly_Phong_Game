@@ -11,6 +11,9 @@ void inDanhSachKhachHangTheoChieuNgang(KhachHang* ds[], int& nds);
 void hoanViHaiKhachHang(KhachHang* a, KhachHang* b);
 void sapXepDanhSachKhachHang(KhachHang* ds[], int& nds);
 void giaiPhongDanhSachKhachHang(KhachHang* ds[], int& nds);
+void xoaKhachHang(DanhSachKhachHang& dskh);
+void xoaMotKhachHang(tree& t, int ma);
+void timNodeTheMang(tree& t, KhachHang*& x);
 
 KhachHang* khoiTaoNodeKhachHang() {
     KhachHang* p = new KhachHang;
@@ -134,4 +137,49 @@ void inDanhSachKhachHangTheoChieuNgang(KhachHang* ds[], int& nds) {
 void giaiPhongDanhSachKhachHang(KhachHang* ds[], int& nds) {
     for (int i = 0; i < nds; i++)
         delete ds[i];
+}
+
+// Xóa khách hàng
+void xoaKhachHang(DanhSachKhachHang& dskh) {
+    int ma;
+    cout << "\n(?) Nhap ma khach hang can xoa: ";
+    cin >> ma;
+    bool check = kiemTraMaKhachHangTrung(dskh.TREE, ma);
+    if (check == true) {
+        // Xóa
+        xoaMotKhachHang(dskh.TREE, ma);
+        dskh.soLuong--;
+        cout << "\n(!) Xoa thanh cong\n";
+    } else
+        cout << "\n(!) Ma khach hang khong ton tai\n";
+    system("pause");
+}
+
+void xoaMotKhachHang(tree& t, int ma) {
+    if (t != NULL) {
+        if (t->maKH == ma) {
+            KhachHang* x = t;  // x sẽ lưu node cần giải phóng
+            if (t->pleft == NULL)
+                t = t->pright;
+            else if (t->pright == NULL)
+                t = t->pleft;
+            else if (t->pleft != NULL && t->pright != NULL)
+                // trái cùng cây con phải
+                timNodeTheMang(t->pright, x);
+            delete x;
+        } else if (t->maKH < ma)
+            xoaMotKhachHang(t->pright, ma);
+        else if (t->maKH > ma)
+            xoaMotKhachHang(t->pleft, ma);
+    }
+}
+
+void timNodeTheMang(tree& t, KhachHang*& x) {
+    if (t->pleft != NULL)
+        timNodeTheMang(t->pleft, x);
+    else {  // trái cùng
+        hoanViHaiKhachHang(t, x);
+        x = t;  // x sẽ lưu vị trí node này để tí nữa giải phóng
+        t = t->pright;
+    }
 }
