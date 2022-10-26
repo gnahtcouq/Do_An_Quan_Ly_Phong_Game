@@ -5,6 +5,8 @@ void themMayTinh(DanhSachMayTinh &dsmt);
 string taoMaMayTinh(DanhSachMayTinh dsmt);
 int kiemTraTrungMaMayTinh(DanhSachMayTinh dsmt, string str);
 void inMotMayTheoChieuNgang(DanhSachMayTinh dsmt);
+void docDanhSachMayTinh(DanhSachMayTinh &dsmt);
+void xoaMayTinh(DanhSachMayTinh &dsmt);
 
 void themMayTinh(DanhSachMayTinh &dsmt) {
     MayTinh *p = new MayTinh;
@@ -49,5 +51,47 @@ void inMotMayTheoChieuNgang(DanhSachMayTinh dsmt) {
         cout << setw(10) << left << dsmt.ds[i]->soMay << "\t";
         cout << setw(20) << left << kieuMay << "\t";
         cout << setw(20) << left << tinhTrangMay << "\t" << endl;
+    }
+}
+
+void docDanhSachMayTinh(DanhSachMayTinh &dsmt) {
+    ifstream fileIn;
+    fileIn.open("../File/danhsachmaytinh.txt", ios_base::in);
+    while (fileIn.eof() != true) {  // đọc đến cuối file thì dừng
+        dsmt.ds[dsmt.soLuong] = new MayTinh;
+        getline(fileIn, dsmt.ds[dsmt.soLuong]->maMay, ' ');
+        fileIn >> dsmt.ds[dsmt.soLuong]->soMay;
+        fileIn >> dsmt.ds[dsmt.soLuong]->kieuMay;
+        fileIn >> dsmt.ds[dsmt.soLuong]->tinhTrang;
+        fileIn.ignore();
+        dsmt.soLuong++;
+        Sleep(50);  // delay 0.05s
+        cout << "\n(*) Doc ban ghi thu " << dsmt.soLuong << " (*)";
+    }
+    fileIn.close();
+}
+
+void xoaMayTinh(DanhSachMayTinh &dsmt) {
+    string str;
+    cout << "\n(?) Nhap ma may tinh can xoa: ";
+    cin >> str;
+    int vitri = kiemTraTrungMaMayTinh(dsmt, str);
+
+    // Dời
+    if (vitri < 0) {
+        cout << "\nMay tinh khong ton tai\n";
+        system("pause");
+    } else {
+        for (int i = vitri; i < dsmt.soLuong - 1; i++) {
+            dsmt.ds[i]->maMay = dsmt.ds[i + 1]->maMay;
+            dsmt.ds[i]->soMay = dsmt.ds[i + 1]->soMay;
+            dsmt.ds[i]->kieuMay = dsmt.ds[i + 1]->kieuMay;
+            dsmt.ds[i]->tinhTrang = dsmt.ds[i + 1]->tinhTrang;
+        }
+        // Giảm số lượng
+        MayTinh *tam = dsmt.ds[dsmt.soLuong - 1];
+        dsmt.soLuong--;
+        cout << "\nDa xoa thanh cong\n";
+        system("pause");
     }
 }
