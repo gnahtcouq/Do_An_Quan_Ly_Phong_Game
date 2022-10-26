@@ -1,3 +1,4 @@
+#include "khachhang.hpp"
 #include "maytinh.hpp"
 
 void menu();
@@ -7,6 +8,7 @@ void menu() {
     int choose;
     bool exit = false;
     DanhSachMayTinh dsmt;
+    DanhSachKhachHang dskh;
     nhapDuLieuDanhSachMayTinh(dsmt);
     do {
         system("cls");
@@ -16,6 +18,8 @@ void menu() {
         cout << "\n|  1. Them may tinh                                |";
         cout << "\n|  2. In danh sach may tinh                        |";
         cout << "\n|  3. Xoa may tinh                                 |";
+        cout << "\n|  4. Chinh sua thong tin may tinh                 |";
+        cout << "\n|  5. Nhap khach hang                              |";
         cout << "\n|  4. Chinh sua thong tin may tinh                 |";
         cout << "\n*--------------------------------------------------*";
         cout << "\n|             0. Thoat chuong trinh                |";
@@ -55,6 +59,11 @@ void menu() {
                     system("pause");
                 } else
                     chinhSuaMayTinh(dsmt);
+                break;
+            case 5:
+                system("cls");
+                cout << "\n\t5. NHAP KHACH HANG\n";
+                nhapMotKhachHang(dskh);
                 break;
             case 0:
                 break;
