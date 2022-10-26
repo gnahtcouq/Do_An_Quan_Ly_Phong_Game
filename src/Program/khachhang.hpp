@@ -6,8 +6,11 @@ void themMotKhachHang(tree& t, KhachHang* p);
 int taoMaKhachHang(tree t);
 bool kiemTraMaKhachHangTrung(tree t, int ma);
 void chuyenCaySangMang(tree t, KhachHang* ds[], int& nds);
+void inDanhSachKhachHangTheoChieuDoc(KhachHang* ds[], int& nds);
+void inDanhSachKhachHangTheoChieuNgang(KhachHang* ds[], int& nds);
 void hoanViHaiKhachHang(KhachHang* a, KhachHang* b);
 void sapXepDanhSachKhachHang(KhachHang* ds[], int& nds);
+void giaiPhongDanhSachKhachHang(KhachHang* ds[], int& nds);
 
 KhachHang* khoiTaoNodeKhachHang() {
     KhachHang* p = new KhachHang;
@@ -106,4 +109,29 @@ void sapXepDanhSachKhachHang(KhachHang* ds[], int& nds) {
         for (int j = i + 1; j < nds; j++)
             if (ds[i]->maKH > ds[j]->maKH)
                 hoanViHaiKhachHang(ds[i], ds[j]);
+}
+
+// In danh sách khách hàng
+void inDanhSachKhachHangTheoChieuDoc(KhachHang* ds[], int& nds) {
+    for (int i = 0; i < nds; i++) {
+        cout << "\nMa khach hang: " << ds[i]->maKH;
+        cout << "\nTai khoan: " << ds[i]->taiKhoan;
+        cout << "\nMat khau: " << ds[i]->matKhau;
+        cout << "\nSo dien thoai: " << ds[i]->soDienThoai;
+    }
+}
+
+void inDanhSachKhachHangTheoChieuNgang(KhachHang* ds[], int& nds) {
+    for (int i = 0; i < nds; i++) {
+        cout << setw(5) << left << ds[i]->maKH << "\t";
+        cout << setw(30) << left << ds[i]->taiKhoan << "\t";
+        cout << setw(30) << left << ds[i]->matKhau << "\t";
+        cout << setw(20) << left << ds[i]->soDienThoai << "\t" << endl;
+    }
+}
+
+// Giải phóng
+void giaiPhongDanhSachKhachHang(KhachHang* ds[], int& nds) {
+    for (int i = 0; i < nds; i++)
+        delete ds[i];
 }

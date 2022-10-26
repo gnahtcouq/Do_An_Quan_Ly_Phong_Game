@@ -5,8 +5,9 @@ void menu();
 void nhapDuLieuDanhSachMayTinh(DanhSachMayTinh &dsmt);
 
 void menu() {
-    int choose;
+    int choose, nds;
     bool exit = false;
+    KhachHang *ds[100];
     DanhSachMayTinh dsmt;
     DanhSachKhachHang dskh;
     nhapDuLieuDanhSachMayTinh(dsmt);
@@ -20,6 +21,7 @@ void menu() {
         cout << "\n|  3. Xoa may tinh                                 |";
         cout << "\n|  4. Chinh sua thong tin may tinh                 |";
         cout << "\n|  5. Nhap khach hang                              |";
+        cout << "\n|  6. In danh sach khach hang tang dan theo ma so  |";
         cout << "\n|  4. Chinh sua thong tin may tinh                 |";
         cout << "\n*--------------------------------------------------*";
         cout << "\n|             0. Thoat chuong trinh                |";
@@ -64,6 +66,16 @@ void menu() {
                 system("cls");
                 cout << "\n\t5. NHAP KHACH HANG\n";
                 nhapMotKhachHang(dskh);
+                break;
+            case 6:
+                system("cls");
+                nds = 0;
+                cout << "\n\t6. DANH SACH KHACH HANG\n";
+                chuyenCaySangMang(dskh.TREE, ds, nds);
+                sapXepDanhSachKhachHang(ds, nds);
+                inDanhSachKhachHangTheoChieuNgang(ds, nds);
+                giaiPhongDanhSachKhachHang(ds, nds);
+                system("pause");
                 break;
             case 0:
                 break;
