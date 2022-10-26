@@ -5,6 +5,9 @@ void nhapMotKhachHang(DanhSachKhachHang& dskh);
 void themMotKhachHang(tree& t, KhachHang* p);
 int taoMaKhachHang(tree t);
 bool kiemTraMaKhachHangTrung(tree t, int ma);
+void chuyenCaySangMang(tree t, KhachHang* ds[], int& nds);
+void hoanViHaiKhachHang(KhachHang* a, KhachHang* b);
+void sapXepDanhSachKhachHang(KhachHang* ds[], int& nds);
 
 KhachHang* khoiTaoNodeKhachHang() {
     KhachHang* p = new KhachHang;
@@ -62,4 +65,45 @@ bool kiemTraMaKhachHangTrung(tree t, int ma) {
         else
             kiemTraMaKhachHangTrung(t->pleft, ma);
     }
+}
+
+// Chuyển cây sang mảng
+void chuyenCaySangMang(tree t, KhachHang* ds[], int& nds) {
+    if (t != NULL) {
+        // data
+        ds[nds] = new KhachHang;
+        ds[nds]->maKH = t->maKH;
+        ds[nds]->taiKhoan = t->taiKhoan;
+        ds[nds]->matKhau = t->matKhau;
+        ds[nds]->soDienThoai = t->soDienThoai;
+        nds++;
+        chuyenCaySangMang(t->pleft, ds, nds);
+        chuyenCaySangMang(t->pright, ds, nds);
+    }
+}
+// Sắp xếp danh sách khách hàng
+void hoanViHaiKhachHang(KhachHang* a, KhachHang* b) {
+    KhachHang* tam = new KhachHang;
+    tam->maKH = a->maKH;
+    tam->taiKhoan = a->taiKhoan;
+    tam->matKhau = a->matKhau;
+    tam->soDienThoai = a->soDienThoai;
+    //
+    a->maKH = b->maKH;
+    a->taiKhoan = b->taiKhoan;
+    a->matKhau = b->matKhau;
+    a->soDienThoai = b->soDienThoai;
+    //
+    b->maKH = tam->maKH;
+    b->taiKhoan = tam->taiKhoan;
+    b->matKhau = tam->matKhau;
+    b->soDienThoai = tam->soDienThoai;
+    delete tam;
+}
+
+void sapXepDanhSachKhachHang(KhachHang* ds[], int& nds) {
+    for (int i = 0; i < nds - 1; i++)
+        for (int j = i + 1; j < nds; j++)
+            if (ds[i]->maKH > ds[j]->maKH)
+                hoanViHaiKhachHang(ds[i], ds[j]);
 }
