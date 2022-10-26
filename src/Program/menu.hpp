@@ -3,6 +3,7 @@
 
 void menu();
 void nhapDuLieuDanhSachMayTinh(DanhSachMayTinh &dsmt);
+void nhapDuLieuDanhSachKhachHang(DanhSachKhachHang &dskh);
 
 void menu() {
     int choose, nds;
@@ -11,6 +12,7 @@ void menu() {
     DanhSachMayTinh dsmt;
     DanhSachKhachHang dskh;
     nhapDuLieuDanhSachMayTinh(dsmt);
+    nhapDuLieuDanhSachKhachHang(dskh);
     do {
         system("cls");
         cout << "\n*--------------------------------------------------*";
@@ -108,4 +110,11 @@ void nhapDuLieuDanhSachMayTinh(DanhSachMayTinh &dsmt) {
     cout << "\n\t(*) Dang nhap du lieu danh sach may tinh (*)\n";
     Sleep(1000);  // delay 2s
     docDanhSachMayTinh(dsmt);
+}
+
+void nhapDuLieuDanhSachKhachHang(DanhSachKhachHang &dskh) {
+    system("cls");
+    cout << "\n\t(*) Dang nhap du lieu danh sach khach hang (*)\n";
+    Sleep(1000);  // delay 2s
+    docDanhSachKhachHang(dskh);
 }

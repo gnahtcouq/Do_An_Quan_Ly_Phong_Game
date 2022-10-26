@@ -17,6 +17,7 @@ void xoaMotKhachHang(tree& t, int ma);
 void timNodeTheMang(tree& t, KhachHang*& x);
 void chinhSuaThongTinKhachHang(DanhSachKhachHang& dskh);
 void chinhSuaThongTinMotKhachHang(tree t, string sdt);
+void docDanhSachKhachHang(DanhSachKhachHang& dskh);
 
 KhachHang* khoiTaoNodeKhachHang() {
     KhachHang* p = new KhachHang;
@@ -228,4 +229,22 @@ void chinhSuaThongTinMotKhachHang(tree t, string sdt) {
         else if (t->soDienThoai < sdt)
             chinhSuaThongTinMotKhachHang(t->pright, sdt);
     }
+}
+
+void docDanhSachKhachHang(DanhSachKhachHang& dskh) {
+    ifstream fileIn;
+    fileIn.open("../File/danhsachkhachhang.txt", ios_base::in);
+    while (fileIn.eof() != true) {  // đọc đến cuối file thì dừng
+        KhachHang* x = khoiTaoNodeKhachHang();
+        fileIn >> x->maKH;
+        fileIn.ignore();
+        getline(fileIn, x->taiKhoan, ' ');
+        getline(fileIn, x->matKhau, ' ');
+        getline(fileIn, x->soDienThoai, '\n');
+        themMotKhachHang(dskh.TREE, x);
+        dskh.soLuong++;
+        Sleep(50);  // delay 0.05s
+        cout << "\n(*) Ban ghi thu " << dskh.soLuong << " (*)";
+    }
+    fileIn.close();
 }
