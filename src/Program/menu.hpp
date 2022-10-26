@@ -1,0 +1,74 @@
+#include "maytinh.hpp"
+
+void menu();
+void nhapDuLieuDanhSachMayTinh(DanhSachMayTinh &dsmt);
+
+void menu() {
+    int choose;
+    bool exit = false;
+    DanhSachMayTinh dsmt;
+    nhapDuLieuDanhSachMayTinh(dsmt);
+    do {
+        system("cls");
+        cout << "\n*--------------------------------------------------*";
+        cout << "\n|               QUAN LY PHONG GAME                 |";
+        cout << "\n*--------------------------------------------------*";
+        cout << "\n|  1. Them may tinh                                |";
+        cout << "\n|  2. In danh sach may tinh                        |";
+        cout << "\n|  3. Xoa may tinh                                 |";
+        cout << "\n|  4. Chinh sua thong tin may tinh                 |";
+        cout << "\n*--------------------------------------------------*";
+        cout << "\n|             0. Thoat chuong trinh                |";
+        cout << "\n*--------------------------------------------------*";
+        cout << "\n\t-> Lua chon cua ban: ";
+        cin >> choose;
+        switch (choose) {
+            case 1:
+                system("cls");
+                cout << "\n\t1. THEM MAY TINH\n";
+                if (dsmt.soLuong == 100) {
+                    cout << "\n(!) Them khong thanh cong (Du lieu day)";
+                    system("pause");
+                } else
+                    themMayTinh(dsmt);
+                break;
+            case 2:
+                system("cls");
+                cout << "\n\t2. DANH SACH MAY TINH\n";
+                inMotMayTheoChieuNgang(dsmt);
+                system("pause");
+                break;
+            case 3:
+                system("cls");
+                cout << "\n\t3. XOA MAY TINH\n";
+                if (dsmt.soLuong == 0) {
+                    cout << "\n(!) Xoa khong thanh cong (Du lieu trong)";
+                    system("pause");
+                } else
+                    xoaMayTinh(dsmt);
+                break;
+            case 4:
+                system("cls");
+                cout << "\n\t4. CHINH SUA THONG TIN MAY TINH\n";
+                if (dsmt.soLuong == 0) {
+                    cout << "\n(!) Du lieu rong";
+                    system("pause");
+                } else
+                    chinhSuaMayTinh(dsmt);
+                break;
+            case 0:
+                break;
+            default:
+                cout << "\n\t(!) Lua chon khong hop le\n";
+                system("pause");
+                break;
+        }
+    } while (!exit);
+}
+
+void nhapDuLieuDanhSachMayTinh(DanhSachMayTinh &dsmt) {
+    system("cls");
+    cout << "\n\t(*) Dang nhap du lieu danh sach may tinh (*)\n";
+    Sleep(1000);  // delay 2s
+    docDanhSachMayTinh(dsmt);
+}
