@@ -8,6 +8,8 @@ void inMotMayTheoChieuNgang(DanhSachMayTinh dsmt);
 void docDanhSachMayTinh(DanhSachMayTinh &dsmt);
 void xoaMayTinh(DanhSachMayTinh &dsmt);
 void chinhSuaMayTinh(DanhSachMayTinh &dsmt);
+void xuatDanhSachCacMayTrong(DanhSachMayTinh dsmt);
+bool hetMay(DanhSachMayTinh dsmt);
 
 void themMayTinh(DanhSachMayTinh &dsmt) {
     MayTinh *p = new MayTinh;
@@ -113,4 +115,28 @@ void chinhSuaMayTinh(DanhSachMayTinh &dsmt) {
         cout << "\n(!) Da thay doi thong tin may tinh thanh cong\n";
         system("pause");
     }
+}
+
+void xuatDanhSachCacMayTrong(DanhSachMayTinh dsmt) {
+    if (hetMay(dsmt))
+        cout << "\n\t(!) Het may\n";
+    else {
+        cout << "\n";
+        cout << setw(10) << left << "So may"
+             << "\t";
+        cout << setw(20) << left << "Kieu may"
+             << "\t";
+        cout << setw(20) << left << "Tinh trang"
+             << "\t" << endl;
+        for (int i = 0; i < dsmt.soLuong; i++)
+            if (dsmt.ds[i]->tinhTrang == 0)
+                inMotMayTheoChieuNgang(dsmt);
+    }
+}
+
+bool hetMay(DanhSachMayTinh dsmt) {
+    for (int i = 0; i < dsmt.soLuong; i++)
+        if (dsmt.ds[i]->tinhTrang == 0)  // còn máy trống -> thì trả về false
+            return false;
+    return true;
 }
