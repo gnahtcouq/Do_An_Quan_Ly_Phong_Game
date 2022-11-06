@@ -1,7 +1,7 @@
-#include "menu.hpp"
+// #include "menu.hpp"
 
-int main() {
-    srand(time(NULL));
-    menu();
-    return 0;
-}
+// int main() {
+//     srand(time(NULL));
+//     menu();
+//     return 0;
+// }
