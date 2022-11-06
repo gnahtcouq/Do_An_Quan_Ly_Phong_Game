@@ -19,6 +19,8 @@ class ThueNhieuMay : public Node {
 };
 
 Node *createNode(ThueMotMay value);
+void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n);
+void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay);
 
 void ThueNhieuMay::createList() {
     pHead = NULL;
@@ -87,4 +89,40 @@ void ThueNhieuMay::moMayTrucTiep(MayTinh nhieuMay[], int n) {
     system("cls");
     cout << "\n\t(!) Mo may thanh cong (!)\n";
     addNodeInTail(r);
+}
+
+void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n) {
+    int count = 1;
+    ifstream fileIn("../File/khachhang/momaytructiep.txt");
+    if (fileIn.fail()) {
+        cout << "\n(!) Loi khi doc file (!)\n";
+        system("pause");
+    } else {
+        while (!fileIn.eof()) {
+            ThueMotMay r;
+            r.docMotNguoiThueTrucTiep(fileIn, nhieuMay, n);
+            thueNhieuMay.addNodeInTail(r);
+            Sleep(50);  // delay 0.05s
+            cout << "\n(*) Doc ban ghi thu " << count++ << "(*)";
+        }
+    }
+    fileIn.close();
+}
+
+void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay) {
+    int count = 1;
+    ofstream fileOut("../File/khachhang/momaytructiep.txt");
+    if (fileOut.fail()) {
+        cout << "\n(!) Loi khi mo file (!)\n";
+        system("pause");
+    } else {
+        for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext) {
+            t->data.ghiMotNguoiThueTrucTiep(fileOut);
+            Sleep(50);  // delay 0.05s
+            cout << "\n(*) Ban ghi thu " << count++ << "(*)";
+            if (t->pNext != NULL)
+                fileOut << endl;
+        }
+    }
+    fileOut.close();
 }

@@ -1,15 +1,19 @@
 #pragma once
 #include "NhieuMay.hpp"
+#include "ThueNhieuMay.hpp"
 
 void menu();
 void nhapDuLieuNhieuMay(MayTinh nhieuMay[], int &n);
+void nhapDuLieuDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n);
 
 void menu() {
     int choose, n;
     bool exit = false;
     MayTinh mt;
     MayTinh *nhieuMay = new MayTinh[200];  // tạo mảng động với 200 phần tử
+    ThueNhieuMay thueNhieuMay;
     nhapDuLieuNhieuMay(nhieuMay, n);
+    nhapDuLieuDanhSachNguoiThueTrucTiep(thueNhieuMay, nhieuMay, n);
     cout << "\n";
     do {
         system("cls");
@@ -116,6 +120,17 @@ void menu() {
                 break;
             }
             case 10: {
+                system("cls");
+                cout << "\n\t10. MO MAY TRUC TIEP\n";
+                if (hetMay(nhieuMay, n)) {  // nếu hết máy
+                    system("cls");
+                    cout << "\n\t(!) Het may (!)\n";
+                } else {
+                    xuatDanhSachCacMayTrong(nhieuMay, n);
+                    cout << "\tNhap may can mo -> ";
+                    thueNhieuMay.moMayTrucTiep(nhieuMay, n);
+                    system("pause");
+                }
                 break;
             }
             case 0: {
@@ -135,4 +150,12 @@ void nhapDuLieuNhieuMay(MayTinh nhieuMay[], int &n) {
     cout << "\n\t(*) Dang nhap du lieu danh sach may tinh (*)\n";
     Sleep(1000);  // delay 2s
     docDanhSachCacMay(nhieuMay, n);
+}
+
+void nhapDuLieuDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n) {
+    thueNhieuMay.createList();
+    system("cls");
+    cout << "\n\t(*) Dang nhap du lieu danh sach nguoi thue truc tiep (*)\n";
+    Sleep(1000);  // delay 2s
+    docDanhSachNguoiThueTrucTiep(thueNhieuMay, nhieuMay, n);
 }
