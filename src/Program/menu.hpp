@@ -1,18 +1,24 @@
 #pragma once
+#include "KhachHang.hpp"
 #include "NhieuMay.hpp"
 #include "ThueNhieuMay.hpp"
 
 void menu();
 void nhapDuLieuNhieuMay(MayTinh nhieuMay[], int &n);
+void nhapDuLieuDanhSachKhachHang(DanhSachKhachHang &dskh);
 void nhapDuLieuDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n);
+void luuFile(ThueNhieuMay thueNhieuMay, MayTinh nhieuMay[], int n);
 
 void menu() {
-    int choose, n;
-    bool exit = false;
+    int choose, n, nds;
+    bool exit = false, fileSaved = false;
     MayTinh mt;
-    MayTinh *nhieuMay = new MayTinh[200];  // tạo mảng động với 200 phần tử
     ThueNhieuMay thueNhieuMay;
+    MayTinh *nhieuMay = new MayTinh[200];  // tạo mảng động với 200 phần tử
+    KhachHang *ds[200];
+    DanhSachKhachHang dskh;
     nhapDuLieuNhieuMay(nhieuMay, n);
+    nhapDuLieuDanhSachKhachHang(dskh);
     nhapDuLieuDanhSachNguoiThueTrucTiep(thueNhieuMay, nhieuMay, n);
     cout << "\n";
     do {
@@ -102,21 +108,48 @@ void menu() {
                 break;
             }
             case 4: {
+                system("cls");
+                cout << "\n\t4. THEM KHACH HANG\n";
+                nhapMotKhachHang(dskh);
                 break;
             }
             case 5: {
+                system("cls");
+                nds = 0;
+                cout << "\n\t5. XOA KHACH HANG\n";
+                chuyenCaySangMang(dskh.TREE, ds, nds);
+                sapXepDanhSachKhachHang(ds, nds);
+                inDanhSachKhachHangTheoChieuNgang(ds, nds);
+                xoaKhachHang(dskh);
+                giaiPhongDanhSachKhachHang(ds, nds);
                 break;
             }
             case 6: {
+                system("cls");
+                cout << "\n\t6. CHINH SUA THONG TIN KHACH HANG\n";
+                chinhSuaThongTinKhachHang(dskh);
                 break;
             }
             case 7: {
+                system("cls");
+                nds = 0;
+                cout << "\n\t5. XEM DANH SACH KHACH HANG\n";
+                chuyenCaySangMang(dskh.TREE, ds, nds);
+                sapXepDanhSachKhachHang(ds, nds);
+                inDanhSachKhachHangTheoChieuNgang(ds, nds);
+                giaiPhongDanhSachKhachHang(ds, nds);
+                system("pause");
                 break;
             }
             case 8: {
                 break;
             }
             case 9: {
+                system("cls");
+                cout << "\n\t9. LUU THAY DOI\n";
+                luuFile(thueNhieuMay, nhieuMay, n);
+                fileSaved = true;
+                system("pause");
                 break;
             }
             case 10: {
@@ -134,6 +167,31 @@ void menu() {
                 break;
             }
             case 0: {
+                if (fileSaved) {
+                    cout << "\n\t(*) Thoat chuong trinh 5s (*)\n";
+                    Sleep(5000);
+                    exit = true;
+                } else {
+                    system("cls");
+                    cout << "\n\t0. THOAT CHUONG TRINH\n";
+                    char c;
+                    cout << "\n(!) Ban chua luu thay doi (!)\n";
+                    do {
+                        fflush(stdin);
+                        cout << "\n(?) Xac nhan thoat ma khong luu thay doi (y/n) (?): ";
+                        cin >> c;
+                        if (c != 'y' && c != 'n')
+                            cout << "\n(!) Lua chon khong hop le (!) - Nhap lai (!)";
+                        else {
+                            if (c == 'y') {
+                                cout << "\n\t(*) Thoat chuong trinh sau 5s (*)\n";
+                                Sleep(5000);
+                                exit = true;
+                            } else
+                                break;
+                        }
+                    } while (c != 'y' && c != 'n');
+                }
                 break;
             }
             default:
@@ -143,6 +201,7 @@ void menu() {
         }
     } while (!exit);    // exit == true
     delete[] nhieuMay;  // giải phóng bộ nhớ của ds máy tính
+    giaiPhongDanhSachKhachHang(ds, nds);
 }
 
 void nhapDuLieuNhieuMay(MayTinh nhieuMay[], int &n) {
@@ -152,10 +211,28 @@ void nhapDuLieuNhieuMay(MayTinh nhieuMay[], int &n) {
     docDanhSachCacMay(nhieuMay, n);
 }
 
+void nhapDuLieuDanhSachKhachHang(DanhSachKhachHang &dskh) {
+    system("cls");
+    cout << "\n\t(*) Dang nhap du lieu danh sach khach hang (*)\n";
+    Sleep(1000);  // delay 2s
+    docDanhSachKhachHang(dskh);
+}
+
 void nhapDuLieuDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n) {
     thueNhieuMay.createList();
     system("cls");
     cout << "\n\t(*) Dang nhap du lieu danh sach nguoi thue truc tiep (*)\n";
     Sleep(1000);  // delay 2s
     docDanhSachNguoiThueTrucTiep(thueNhieuMay, nhieuMay, n);
+}
+
+void luuFile(ThueNhieuMay thueNhieuMay, MayTinh nhieuMay[], int n) {
+    cout << "\n\t(*) Dang luu du lieu danh sach may tinh (*)\n";
+    Sleep(1000);  // delay 2s
+    ghiDanhSachCacMay(nhieuMay, n);
+    cout << "\n\n\t(*) Dang luu du lieu danh sach nguoi thue (*)\n";
+    Sleep(1000);  // delay 2s
+    ghiDanhSachNguoiThueTrucTiep(thueNhieuMay);
+    system("cls");
+    cout << "\n\t(*) Luu thanh cong (*)\n";
 }
