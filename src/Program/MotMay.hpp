@@ -27,9 +27,18 @@ class MayTinh {
     void setter_MaMay(string MAMAY) { maMay = MAMAY; };
 };
 
+void layThoiGianHeThong(int &gio, int &phut, int &giay);           // lấy thời gian hệ thống
 string taoMaMayTinh(MayTinh nhieuMay[], int n);                    // tạo mã máy tính ngẫu nhiên
 int kiemTraTrungMaMayTinh(MayTinh nhieuMay[], int n, string str);  // kiểm tra mã máy tính đã tồn tại
 int kiemTraTrungSoMay(MayTinh nhieuMay[], int n, int soMay);       // kiểm tra số máy đã tồn tại
+
+void layThoiGianHeThong(int &gio, int &phut, int &giay) {
+    time_t baygio = time(0);
+    tm *ltm = localtime(&baygio);
+    gio = ltm->tm_hour;
+    phut = ltm->tm_min;
+    giay = ltm->tm_sec;
+}
 
 string taoMaMayTinh(MayTinh nhieuMay[], int n) {
     string ma = "STU000";
