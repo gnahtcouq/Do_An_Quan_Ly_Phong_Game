@@ -2,7 +2,7 @@
 
 # 1. Giới thiệu
 - Thành viên:
-  - Trần Văn Quốc Thắng (Trưởng nhóm) - DH52007101
+  - Trần Văn Quốc Thắng - DH52007101
   - Võ Xuân Lam - DH52006929
   - Đặng Xuân Sang - DH52006904
   - Trần Nguyễn Thanh Sang - DH52007102
