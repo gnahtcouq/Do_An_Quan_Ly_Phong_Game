@@ -2,11 +2,11 @@
 
 # 1. Giới thiệu
 - Thành viên:
-  - Trần Văn Quốc Thắng (Trưởng nhóm)
-  - Võ Xuân Lam
-  - Đặng Xuân Sang
-  - Trần Nguyễn Thanh Sang
-  - Đỗ Trần Hải Sơn
+  - Trần Văn Quốc Thắng (Trưởng nhóm) - DH52007101
+  - Võ Xuân Lam - DH52006929
+  - Đặng Xuân Sang - DH52006904
+  - Trần Nguyễn Thanh Sang - DH52007102
+  - Đỗ Trần Hải Sơn - DH52007024
   
 # 2. Code
 - Được viết trên Visual Studio Code (VSCode)
