@@ -16,6 +16,7 @@ class ThueNhieuMay : public Node {
     void removeNodeInHead();
     void removeNodeInTail();
     void moMayTrucTiep(MayTinh[], int);
+    int tinhSoNgay(int ngayBD, int thangBD, int namBD, int ngayKT, int thangKT, int namKT);  // tính số ngày sử dụng
 };
 
 Node *createNode(ThueMotMay value);
@@ -125,4 +126,32 @@ void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay) {
         }
     }
     fileOut.close();
+}
+
+int tinhSoNgay(int ngayBD, int thangBD, int namBD, int ngayKT, int thangKT, int namKT) {
+    int soNgay = 0;
+    while (namKT >= namBD) {
+        if (namKT == namBD && thangKT == thangBD) {
+            soNgay += ngayKT - ngayBD;
+            break;
+        } else {
+            // Tháng 4, 6, 9, 11 có 30 ngày
+            if (thangBD == 4 || thangBD == 6 || thangBD == 9 || thangBD == 11)
+                soNgay += 30 - ngayBD;
+            // Tháng 1, 3, 5, 7, 8, 10, 12 có 31 ngày
+            if (thangBD == 1 || thangBD == 3 || thangBD == 5 || thangBD == 7 || thangBD == 8 || thangBD == 10 || thangBD == 12)
+                soNgay += 31 - ngayBD;
+            // Tháng 2 có 28 ngày (trừ năm nhuận có 29 ngày)
+            if (thangBD == 2) {
+                if ((namBD % 4 == 0) && (namBD % 100 != 0) || (namBD % 400 == 0))
+                    soNgay += 29 - ngayBD;
+                else
+                    soNgay += 28 - ngayBD;
+            }
+            thangBD++, ngayBD = 0;
+            if (thangBD == 13)  // tăng năm lên
+                namBD++, thangBD = 1;
+        }
+    }
+    return soNgay;
 }
