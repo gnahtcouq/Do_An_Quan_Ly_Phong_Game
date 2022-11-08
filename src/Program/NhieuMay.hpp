@@ -62,7 +62,7 @@ void xuatDanhSachCacMay(MayTinh nhieuMay[], int n) {
          << "\t";
     cout << setw(20) << left << "Tinh trang"
          << "\t";
-    cout << setw(20) << left << "Thoi gian bat dau"
+    cout << setw(30) << left << "Thoi gian bat dau"
          << "\t" << endl;
     for (int i = 0; i < n; i++)
         nhieuMay[i].inMotMayTheoChieuNgangCoThoiGian();
@@ -85,7 +85,7 @@ void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n) {
          << "\t";
     cout << setw(20) << left << "Tinh trang"
          << "\t";
-    cout << setw(20) << left << "Thoi gian bat dau"
+    cout << setw(30) << left << "Thoi gian bat dau"
          << "\t" << endl;
     for (int i = 0; i < n; i++)
         if (nhieuMay[i].tinhTrang == 1)

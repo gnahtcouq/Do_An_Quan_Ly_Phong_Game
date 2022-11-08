@@ -1,13 +1,13 @@
 #pragma once
 #include "ThueMotMay.hpp"
 
-class Node : public ThueMotMay {
+class Node {
    public:
     ThueMotMay data;
     Node *pNext;
 };
 
-class ThueNhieuMay : public Node {
+class ThueNhieuMay {
    public:
     Node *pHead;
     Node *pTail;

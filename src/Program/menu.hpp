@@ -3,6 +3,8 @@
 #include "NhieuMay.hpp"
 #include "ThueNhieuMay.hpp"
 
+#define MAX 200
+
 void menu();
 void nhapDuLieuNhieuMay(MayTinh nhieuMay[], int &n);
 void nhapDuLieuDanhSachKhachHang(DanhSachKhachHang &dskh);
@@ -14,8 +16,8 @@ void menu() {
     bool exit = false, fileSaved = false;
     MayTinh mt;
     ThueNhieuMay thueNhieuMay;
-    MayTinh *nhieuMay = new MayTinh[200];  // tạo mảng động với 200 phần tử
-    KhachHang *ds[200];
+    MayTinh *nhieuMay = new MayTinh[MAX];  // tạo mảng động với MAX phần tử
+    KhachHang *ds[MAX];
     DanhSachKhachHang dskh;
     nhapDuLieuNhieuMay(nhieuMay, n);
     nhapDuLieuDanhSachKhachHang(dskh);
@@ -36,6 +38,7 @@ void menu() {
         cout << "|    8. In danh sach nguoi thue truc tiep          |\n";
         cout << "|    9. Luu thay doi                               |\n";
         cout << "|    10. Mo may truc tiep                          |\n";
+        cout << "|    11. Thanh toan                                |\n";
         cout << "*--------------------------------------------------*\n";
         cout << "|            0. Thoat chuong trinh                 |\n";
         cout << "*--------------------------------------------------*\n";
@@ -166,6 +169,18 @@ void menu() {
                 }
                 break;
             }
+            case 11: {
+                system("cls");
+                cout << "\n\t11. THANH TOAN\n";
+                if (thueNhieuMay.pHead == NULL)
+                    cout << "\n\t(*) Danh sach tai khoan trong (*)\n";
+                else {
+                    thueNhieuMay.thanhToan(nhieuMay, n);
+                    xuatDanhSachCacMayDay(nhieuMay, n);
+                }
+                system("pause");
+                break;
+            }
             case 0: {
                 if (fileSaved) {
                     cout << "\n\t(*) Thoat chuong trinh 5s (*)\n";
@@ -199,9 +214,9 @@ void menu() {
                 system("pause");
                 break;
         }
-    } while (!exit);    // exit == true
-    delete[] nhieuMay;  // giải phóng bộ nhớ của ds máy tính
-    giaiPhongDanhSachKhachHang(ds, nds);
+    } while (!exit);                      // exit == true
+    delete[] nhieuMay;                    // giải phóng bộ nhớ của ds máy tính
+    giaiPhongDanhSachKhachHang(ds, nds);  // giải phóng bộ nhớ của ds khách hàng
 }
 
 void nhapDuLieuNhieuMay(MayTinh nhieuMay[], int &n) {

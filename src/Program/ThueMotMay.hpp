@@ -1,7 +1,7 @@
 #pragma once
 #include "NhieuMay.hpp"
 
-class ThueMotMay : public MayTinh {
+class ThueMotMay {
    public:
     MayTinh *maytinh = NULL;                                   // trỏ đến máy
     void chonMay(MayTinh[], int);                              // chọn máy
@@ -48,6 +48,9 @@ void ThueMotMay::docMotNguoiThueTrucTiep(ifstream &fileIn, MayTinh nhieuMay[], i
     fileIn >> maytinh->gioBD;
     fileIn >> maytinh->phutBD;
     fileIn >> maytinh->giayBD;
+    fileIn >> maytinh->ngayBD;
+    fileIn >> maytinh->thangBD;
+    fileIn >> maytinh->namBD;
     fileIn.ignore();
 }
 
@@ -55,5 +58,8 @@ void ThueMotMay::ghiMotNguoiThueTrucTiep(ofstream &fileOut) {
     fileOut << maytinh->soMay << ' ';
     fileOut << maytinh->gioBD << ' ';
     fileOut << maytinh->phutBD << ' ';
-    fileOut << maytinh->giayBD;
+    fileOut << maytinh->giayBD << ' ';
+    fileOut << maytinh->ngayBD << ' ';
+    fileOut << maytinh->thangBD << ' ';
+    fileOut << maytinh->namBD;
 }

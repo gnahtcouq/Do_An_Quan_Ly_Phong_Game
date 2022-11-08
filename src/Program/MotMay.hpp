@@ -11,8 +11,8 @@ class MayTinh {
 
    public:
     int soMay;                                // số máy
-    int kieuMay;                              // kiểu máy: - 0:thường     1:cao cấp
-    bool tinhTrang = 0;                       // tình trạng máy: - 0:trống     1:đã được sử dụng
+    int kieuMay;                              // kiểu máy:       - 0:thường     1:cao cấp
+    bool tinhTrang = 0;                       // tình trạng máy: - 0:trống      1:đã được sử dụng
     int gioBD = 0, phutBD = 0, giayBD = 0;    // thời gian bắt đầu (giờ:phút:giây)
     int ngayBD = 0, thangBD = 0, namBD = 0;   // thời gian bắt đầu (ngày/tháng/năm)
     int gioKT = 0, phutKT = 0, giayKT = 0;    // thời gian kết thúc (giờ:phút:giây)
@@ -30,10 +30,9 @@ class MayTinh {
 };
 
 void layThoiGianHeThong(int &gio, int &phut, int &giay, int &ngay, int &thang, int &nam);  // lấy thời gian hệ thống
-
-string taoMaMayTinh(MayTinh nhieuMay[], int n);                    // tạo mã máy tính ngẫu nhiên
-int kiemTraTrungMaMayTinh(MayTinh nhieuMay[], int n, string str);  // kiểm tra mã máy tính đã tồn tại
-int kiemTraTrungSoMay(MayTinh nhieuMay[], int n, int soMay);       // kiểm tra số máy đã tồn tại
+string taoMaMayTinh(MayTinh nhieuMay[], int n);                                            // tạo mã máy tính ngẫu nhiên
+int kiemTraTrungMaMayTinh(MayTinh nhieuMay[], int n, string str);                          // kiểm tra mã máy tính đã tồn tại
+int kiemTraTrungSoMay(MayTinh nhieuMay[], int n, int soMay);                               // kiểm tra số máy đã tồn tại
 
 void layThoiGianHeThong(int &gio, int &phut, int &giay, int &ngay, int &thang, int &nam) {
     time_t baygio = time(0);
@@ -133,6 +132,17 @@ void MayTinh::inMotMayTheoChieuNgang() {
 
 void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
     string loaiKieuMay, tinhTrangMay;
+    string GIOBD = to_string(gioBD);
+    string PHUTBD = to_string(phutBD);
+    string GIAYBD = to_string(giayBD);
+
+    if (GIOBD.length() == 1)
+        GIOBD = "0" + GIOBD;
+    if (PHUTBD.length() == 1)
+        PHUTBD = "0" + PHUTBD;
+    if (GIAYBD.length() == 1)
+        GIAYBD = "0" + GIAYBD;
+
     if (tinhTrang == 1)  // tinhTrang == 1 -> Máy đã có người sử dụng
         tinhTrangMay = "Day";
     else  // tinhTrang == 0 -> Máy trống
@@ -141,20 +151,29 @@ void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
         loaiKieuMay = "Cao cap";
     else  // kieuMay == 0 -> Máy thường
         loaiKieuMay = "Thuong";
+
     cout << setw(10) << left << maMay << "\t";
     cout << setw(10) << left << soMay << "\t";
     cout << setw(20) << left << loaiKieuMay << "\t";
     cout << setw(20) << left << tinhTrangMay << "\t";
+
     if (tinhTrang != 0) {
-        cout << setw(2) << left << gioBD << ":";
-        cout << setw(2) << left << phutBD << ":";
-        cout << setw(2) << left << giayBD << "\t" << endl;
-    } else {
-        cout << setw(2) << left << "__:";
-        cout << setw(2) << left << "__:";
-        cout << setw(2) << left << "__"
-             << "\t" << endl;
-    }
+        cout << setw(2) << right << "[" << GIOBD << ":";
+        cout << setw(2) << right << PHUTBD << ":";
+        cout << setw(2) << right << GIAYBD;
+        if (ngayBD != 0 && thangBD != 0 && namBD != 0) {
+            cout << setw(3) << right << " - ";
+            cout << setw(2) << right << ngayBD << "/";
+            cout << setw(2) << right << thangBD << "/";
+            cout << setw(4) << right << namBD << "]"
+                 << "\t";
+        } else {
+            cout << setw(3) << right << " - ";
+            cout << setw(8) << right << "__/__/__";
+        }
+        cout << "\n";
+    } else
+        cout << "\n";
 }
 
 void MayTinh::docMotMay(ifstream &fileIn) {
