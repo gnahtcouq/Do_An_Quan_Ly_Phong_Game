@@ -3,15 +3,16 @@
 
 #include "MotMay.hpp"
 
-void docDanhSachCacMay(MayTinh nhieuMay[], int &n);             // đọc danh sách các máy
-void ghiDanhSachCacMay(MayTinh nhieuMay[], int &n);             // ghi danh sách các máy
-void xuatDanhSachCacMay(MayTinh nhieuMay[], int n);             // xuất danh sách các máy (cả trống và đã được sử dụng)
-MayTinh *layViTriCuaMay(MayTinh nhieuMay[], int n, int soMay);  // lấy vị trí của máy
-void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n);          // xuất danh sách các máy đã được sử dụng
-void xuatDanhSachCacMayTrong(MayTinh nhieuMay[], int n);        // xuất danh sách các máy trống
-void sapXepDanhSachMayTinh(MayTinh nhieuMay[], int &n);         // sắp xếp danh sách máy tính tăng dần theo số máy
-bool hetMay(MayTinh nhieuMay[], int n);                         // kiểm tra hết máy
-bool kiemTraSoMay(MayTinh nhieuMay[], int n, int soMay);        // kiểm tra máy còn trống hay đã được sử dụng
+void docDanhSachCacMay(MayTinh nhieuMay[], int &n);                   // đọc danh sách các máy
+void ghiDanhSachCacMay(MayTinh nhieuMay[], int &n);                   // ghi danh sách các máy
+void xuatDanhSachCacMay(MayTinh nhieuMay[], int n);                   // xuất danh sách các máy (cả trống và đã được sử dụng)
+MayTinh *layViTriCuaMay(MayTinh nhieuMay[], int n, int soMay);        // lấy vị trí của máy
+void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n);                // xuất danh sách các máy đã được sử dụng
+void xuatDanhSachCacMayTrong(MayTinh nhieuMay[], int n);              // xuất danh sách các máy trống
+void sapXepDanhSachMayTinh(MayTinh nhieuMay[], int &n);               // sắp xếp danh sách máy tính tăng dần theo số máy
+bool hetMay(MayTinh nhieuMay[], int n);                               // kiểm tra hết máy
+bool kiemTraSoMay(MayTinh nhieuMay[], int n, int soMay);              // kiểm tra máy còn trống hay đã được sử dụng
+bool kiemTraSoMayCanThanhToan(MayTinh nhieuMay[], int n, int soMay);  // kiểm tra số máy cần thanh toán
 
 void docDanhSachCacMay(MayTinh nhieuMay[], int &n) {
     ifstream fileIn("../File/maytinh/danhsachmaytinh.txt");
@@ -132,4 +133,11 @@ bool kiemTraSoMay(MayTinh nhieuMay[], int n, int soMay) {
         if (nhieuMay[i].soMay == soMay && nhieuMay[i].tinhTrang == 0)
             return true;
     return false;
+}
+
+bool kiemTraSoMayCanThanhToan(MayTinh nhieuMay[], int n, int soMay) {
+    for (int i = 0; i < n; i++)
+        if (nhieuMay[i].soMay == soMay && nhieuMay[i].tinhTrang == 1)
+            return 1;
+    return 0;
 }

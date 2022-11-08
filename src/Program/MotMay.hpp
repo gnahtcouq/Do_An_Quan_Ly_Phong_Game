@@ -10,11 +10,13 @@ class MayTinh {
     string maMay;  // mã máy
 
    public:
-    int soMay;                              // số máy
-    int kieuMay;                            // kiểu máy: - 0:thường     1:cao cấp
-    bool tinhTrang = 0;                     // tình trạng máy: - 0:trống     1:đã được sử dụng
-    int gioBD = 0, phutBD = 0, giayBD = 0;  // thời gian bắt đầu (giờ:phút:giây)
-    int gioKT = 0, phutKT = 0, giayKT = 0;  // thời gian kết thúc (giờ:phút:giây)
+    int soMay;                               // số máy
+    int kieuMay;                             // kiểu máy: - 0:thường     1:cao cấp
+    bool tinhTrang = 0;                      // tình trạng máy: - 0:trống     1:đã được sử dụng
+    int gioBD = 0, phutBD = 0, giayBD = 0;   // thời gian bắt đầu (giờ:phút:giây)
+    int gioKT = 0, phutKT = 0, giayKT = 0;   // thời gian kết thúc (giờ:phút:giây)
+    int gioKT = 0, phutKT = 0, giayKT = 0;   // thời gian kết thúc (giờ:phút:giây)
+    int ngayKT = 0, thangKT = 0, namKT = 0;  // thời gian kết thúc (ngày/tháng/năm)
     void themMayTinh(MayTinh[], int &);
     void xoaMayTinh(MayTinh[], int &);
     void inMotMayTheoChieuNgang();
@@ -27,17 +29,21 @@ class MayTinh {
     void setter_MaMay(string MAMAY) { maMay = MAMAY; };
 };
 
-void layThoiGianHeThong(int &gio, int &phut, int &giay);           // lấy thời gian hệ thống
+void layThoiGianHeThong(int &gio, int &phut, int &giay, int &ngay, int &thang, int &nam);  // lấy thời gian hệ thống
+
 string taoMaMayTinh(MayTinh nhieuMay[], int n);                    // tạo mã máy tính ngẫu nhiên
 int kiemTraTrungMaMayTinh(MayTinh nhieuMay[], int n, string str);  // kiểm tra mã máy tính đã tồn tại
 int kiemTraTrungSoMay(MayTinh nhieuMay[], int n, int soMay);       // kiểm tra số máy đã tồn tại
 
-void layThoiGianHeThong(int &gio, int &phut, int &giay) {
+void layThoiGianHeThong(int &gio, int &phut, int &giay, int &ngay, int &thang, int &nam) {
     time_t baygio = time(0);
     tm *ltm = localtime(&baygio);
     gio = ltm->tm_hour;
     phut = ltm->tm_min;
     giay = ltm->tm_sec;
+    ngay = ltm->tm_mday;
+    thang = 1 + ltm->tm_mon;
+    nam = 1900 + ltm->tm_year;
 }
 
 string taoMaMayTinh(MayTinh nhieuMay[], int n) {
