@@ -15,13 +15,14 @@ class ThueNhieuMay : public Node {
     void addNodeInTail(ThueMotMay);
     void removeNodeInHead();
     void removeNodeInTail();
-    void moMayTrucTiep(MayTinh[], int);
-    int tinhSoNgay(int ngayBD, int thangBD, int namBD, int ngayKT, int thangKT, int namKT);  // tính số ngày sử dụng
+    void moMayTrucTiep(MayTinh[], int);  // mở máy trực tiếp
+    void thanhToan(MayTinh[], int);      // thanh toán
 };
 
 Node *createNode(ThueMotMay value);
-void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n);
-void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay);
+void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n);  // đọc danh sách người thuê trực tiếp từ file
+void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay);                              // ghi danh sách người thuê trực tiếp ra file
+int tinhSoNgay(int ngayBD, int thangBD, int namBD, int ngayKT, int thangKT, int namKT);    // tính số ngày sử dụng
 
 void ThueNhieuMay::createList() {
     pHead = NULL;
@@ -79,14 +80,17 @@ void ThueNhieuMay::removeNodeInTail() {
 }
 
 void ThueNhieuMay::moMayTrucTiep(MayTinh nhieuMay[], int n) {
-    int gioBD = 0, phutBD = 0, giayBD = 0;
+    int gioBD = 0, phutBD = 0, giayBD = 0, ngayBD = 0, thangBD = 0, namBD = 0;
     ThueMotMay r;
     r.chonMay(nhieuMay, n);
     r.maytinh->tinhTrang = 1;  // cập nhật lại tình trạng máy -> 1 (máy đã có người sử dụng)
-    layThoiGianHeThong(gioBD, phutBD, giayBD);
+    layThoiGianHeThong(gioBD, phutBD, giayBD, ngayBD, thangBD, namBD);
     r.maytinh->gioBD = gioBD;
     r.maytinh->phutBD = phutBD;
     r.maytinh->giayBD = giayBD;
+    r.maytinh->ngayBD = ngayBD;
+    r.maytinh->thangBD = thangBD;
+    r.maytinh->namBD = namBD;
     system("cls");
     cout << "\n\t(!) Mo may thanh cong (!)\n";
     addNodeInTail(r);
@@ -126,6 +130,103 @@ void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay) {
         }
     }
     fileOut.close();
+}
+
+void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
+    int gio = 0, phut = 0, giay = 0;
+    int gioKT = 0, phutKT = 0, giayKT = 0, ngayKT = 0, thangKT = 0, namKT = 0;
+    int soNgay = 0, thoiGian1 = 0, thoiGian2 = 0, tongThoiGian = 0;
+    long thoiGianBatDau = 0, thoiGianKetThuc = 0;
+
+    ThueMotMay r;
+    r.chonMayCanThanhToan(nhieuMay, n);
+    r.maytinh->tinhTrang = 0;  // cập nhật lại tình trạng máy -> 0 (máy trống)
+
+    layThoiGianHeThong(gioKT, phutKT, giayKT, ngayKT, thangKT, namKT);
+    r.maytinh->gioKT = gioKT;
+    r.maytinh->phutKT = phutKT;
+    r.maytinh->giayKT = giayKT;
+    r.maytinh->ngayKT = ngayKT;
+    r.maytinh->thangKT = thangKT;
+    r.maytinh->namKT = namKT;
+    //
+    //
+    if (r.maytinh->namBD == r.maytinh->namKT) {
+        if (r.maytinh->thangBD == r.maytinh->thangKT) {
+            if (r.maytinh->ngayBD == r.maytinh->ngayKT)
+                thoiGianBatDau = 3600 * r.maytinh->gioBD + 60 * r.maytinh->phutBD + r.maytinh->giayBD;
+            else
+                thoiGianBatDau = 86400 - (3600 * r.maytinh->gioBD + 60 * r.maytinh->phutBD + r.maytinh->giayBD);
+            if (r.maytinh->ngayBD < r.maytinh->ngayKT)
+                thoiGianKetThuc = 3600 * r.maytinh->gioKT + 60 * r.maytinh->phutKT + r.maytinh->giayKT;
+            else {
+                thoiGianKetThuc = thoiGianBatDau - (3600 * r.maytinh->gioKT + 60 * r.maytinh->phutKT + r.maytinh->giayKT);
+                if (thoiGianKetThuc < 0)
+                    thoiGianKetThuc = -thoiGianKetThuc;
+            }
+        } else {
+            thoiGianBatDau = 86400 - (3600 * r.maytinh->gioBD + 60 * r.maytinh->phutBD + r.maytinh->giayBD);
+            thoiGianKetThuc = 3600 * r.maytinh->gioKT + 60 * r.maytinh->phutKT + r.maytinh->giayKT;
+        }
+    } else {
+        thoiGianBatDau = 86400 - (3600 * r.maytinh->gioBD + 60 * r.maytinh->phutBD + r.maytinh->giayBD);
+        thoiGianKetThuc = 3600 * r.maytinh->gioKT + 60 * r.maytinh->phutKT + r.maytinh->giayKT;
+    }
+    //
+    //
+    soNgay = tinhSoNgay(r.maytinh->ngayBD, r.maytinh->thangBD, r.maytinh->namBD, r.maytinh->ngayKT, r.maytinh->thangKT, r.maytinh->namKT);
+    thoiGian1 = thoiGianBatDau + (86400 * (soNgay - 1));
+    thoiGian2 = thoiGianKetThuc;
+    tongThoiGian = thoiGian1 + thoiGian2;
+    //
+    //
+    if (r.maytinh->namBD == r.maytinh->namKT) {
+        if (r.maytinh->thangBD == r.maytinh->thangKT) {
+            if (r.maytinh->ngayBD == r.maytinh->ngayKT) {
+                gio = thoiGianKetThuc / 3600;
+                phut = (thoiGianKetThuc % 3600) / 60;
+                giay = (thoiGianKetThuc % 3600) % 60;
+            } else {
+                gio = tongThoiGian / 3600;
+                phut = (tongThoiGian % 3600) / 60;
+                giay = (tongThoiGian % 3600) % 60;
+            }
+        } else {
+            gio = tongThoiGian / 3600;
+            phut = (tongThoiGian % 3600) / 60;
+            giay = (tongThoiGian % 3600) % 60;
+        }
+    } else {
+        gio = tongThoiGian / 3600;
+        phut = (tongThoiGian % 3600) / 60;
+        giay = (tongThoiGian % 3600) % 60;
+    }
+    //
+    //
+    string thoiGianSuDung = to_string(gio) + ":" + to_string(phut) + ":" + to_string(giay);
+    string thoiGianThanhToan = to_string(gioKT) + ":" + to_string(phutKT) + ":" + to_string(giayKT) + " - " + to_string(ngayKT) + "/" + to_string(thangKT) + "/" + to_string(namKT);
+
+    system("cls");
+    string loaiKieuMay;
+    if (r.maytinh->kieuMay == 1)  // kieuMay == 1 -> Máy cao cấp
+        loaiKieuMay = "Cao cap";
+    else  // kieuMay == 0 -> Máy thường
+        loaiKieuMay = "Thuong";
+
+    cout << setw(30) << left << "So may: "
+         << "\t";
+    cout << setw(20) << right << r.maytinh->soMay << "\n";
+    cout << setw(30) << left << "Kieu may: "
+         << "\t";
+    cout << setw(20) << right << loaiKieuMay << "\n";
+    cout << setw(30) << left << "Thoi gian da su dung: "
+         << "\t";
+    cout << setw(20) << right << thoiGianSuDung << "\n";
+    cout << setw(30) << left << "Xuat hoa don luc: "
+         << "\t";
+    cout << setw(20) << right << thoiGianThanhToan << "\n";
+
+    removeNodeInHead();
 }
 
 int tinhSoNgay(int ngayBD, int thangBD, int namBD, int ngayKT, int thangKT, int namKT) {

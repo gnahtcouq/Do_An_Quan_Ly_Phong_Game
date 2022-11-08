@@ -10,19 +10,19 @@ class MayTinh {
     string maMay;  // mã máy
 
    public:
-    int soMay;                               // số máy
-    int kieuMay;                             // kiểu máy: - 0:thường     1:cao cấp
-    bool tinhTrang = 0;                      // tình trạng máy: - 0:trống     1:đã được sử dụng
-    int gioBD = 0, phutBD = 0, giayBD = 0;   // thời gian bắt đầu (giờ:phút:giây)
-    int gioKT = 0, phutKT = 0, giayKT = 0;   // thời gian kết thúc (giờ:phút:giây)
-    int gioKT = 0, phutKT = 0, giayKT = 0;   // thời gian kết thúc (giờ:phút:giây)
-    int ngayKT = 0, thangKT = 0, namKT = 0;  // thời gian kết thúc (ngày/tháng/năm)
-    void themMayTinh(MayTinh[], int &);
-    void xoaMayTinh(MayTinh[], int &);
-    void inMotMayTheoChieuNgang();
-    void inMotMayTheoChieuNgangCoThoiGian();
-    void docMotMay(ifstream &);
-    void ghiMotMay(ofstream &);
+    int soMay;                                // số máy
+    int kieuMay;                              // kiểu máy: - 0:thường     1:cao cấp
+    bool tinhTrang = 0;                       // tình trạng máy: - 0:trống     1:đã được sử dụng
+    int gioBD = 0, phutBD = 0, giayBD = 0;    // thời gian bắt đầu (giờ:phút:giây)
+    int ngayBD = 0, thangBD = 0, namBD = 0;   // thời gian bắt đầu (ngày/tháng/năm)
+    int gioKT = 0, phutKT = 0, giayKT = 0;    // thời gian kết thúc (giờ:phút:giây)
+    int ngayKT = 0, thangKT = 0, namKT = 0;   // thời gian kết thúc (ngày/tháng/năm)
+    void themMayTinh(MayTinh[], int &);       // thêm một máy tính
+    void xoaMayTinh(MayTinh[], int &);        // xóa một máy tính
+    void inMotMayTheoChieuNgang();            // in một máy theo chiều ngang
+    void inMotMayTheoChieuNgangCoThoiGian();  // im một máy theo chiều ngang có thời gian truy cập
+    void docMotMay(ifstream &);               // đọc thông tin một máy tính từ file
+    void ghiMotMay(ofstream &);               // ghi thông tin một máy tính ra file
 
     //** Getters, setters
     string getter_MaMay() { return maMay; };
