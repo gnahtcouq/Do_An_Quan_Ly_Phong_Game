@@ -1,5 +1,6 @@
 #pragma once
 #include "NhieuMay.hpp"
+#include "ThueMotMay.hpp"
 
 class ThueMotMay {
    public:
@@ -13,12 +14,11 @@ class ThueMotMay {
 void ThueMotMay::chonMay(MayTinh nhieuMay[], int n) {
     int soMay;
     do {
-        system("cls");
         xuatDanhSachCacMayTrong(nhieuMay, n);
         cout << "\n(?) Nhap so may: ";
         cin >> soMay;
         if (!kiemTraSoMay(nhieuMay, n, soMay)) {
-            cout << "\n\t(!) So may khong hop le - Nhap lai (!)\n";
+            cout << "\n(!) So may khong hop le. Hay nhap lai\n";
             system("pause");
         } else
             maytinh = layViTriCuaMay(nhieuMay, n, soMay);  // hàm này trong file NhieuMay.hpp
@@ -28,12 +28,11 @@ void ThueMotMay::chonMay(MayTinh nhieuMay[], int n) {
 void ThueMotMay::chonMayCanThanhToan(MayTinh nhieuMay[], int n) {
     int soMay;
     do {
-        system("cls");
-        xuatDanhSachCacMay(nhieuMay, n);
+        xuatDanhSachCacMayDay(nhieuMay, n);
         cout << "\n(?) Nhap so may: ";
         cin >> soMay;
         if (!kiemTraSoMayCanThanhToan(nhieuMay, n, soMay)) {
-            cout << "\n\t(!) So may khong hop le - Nhap lai (!)\n";
+            cout << "\n(!) So may khong hop le. Hay nhap lai\n";
             system("pause");
         } else
             maytinh = layViTriCuaMay(nhieuMay, n, soMay);  // hàm này trong file NhieuMay.hpp

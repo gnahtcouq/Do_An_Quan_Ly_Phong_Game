@@ -11,8 +11,8 @@ class MayTinh {
 
    public:
     int soMay;                                                    // số máy
-    int kieuMay;                                                  // kiểu máy:       - 0:thường     1:cao cấp
-    bool tinhTrang = 0;                                           // tình trạng máy: - 0:trống      1:đã được sử dụng
+    int kieuMay;                                                  // kiểu máy:       -0:thường  1:cao cấp
+    bool tinhTrang = 0;                                           // tình trạng máy: -0:trống   1:đã được sử dụng
     int gioBD = 0, phutBD = 0, giayBD = 0;                        // thời gian bắt đầu (giờ:phút:giây)
     int ngayBD = 0, thangBD = 0, namBD = 0;                       // thời gian bắt đầu (ngày/tháng/năm)
     int gioKT = 0, phutKT = 0, giayKT = 0;                        // thời gian kết thúc (giờ:phút:giây)
@@ -107,7 +107,7 @@ void MayTinh::xoaMayTinh(MayTinh nhieuMay[], int &n) {
     int vitri = kiemTraTrungMaMayTinh(nhieuMay, n, str);
     // Dời
     if (vitri < 0) {
-        cout << "\n(!) May tinh khong ton tai - Nhap lai (!)\n";
+        cout << "\n(!) May tinh khong ton tai. Hay kiem tra lai\n";
         system("pause");
     } else {
         for (int i = vitri; i < n - 1; i++) {
@@ -119,7 +119,7 @@ void MayTinh::xoaMayTinh(MayTinh nhieuMay[], int &n) {
         // Giảm số lượng
         MayTinh tam = nhieuMay[n - 1];
         n--;
-        cout << "\n(!) Da xoa thanh cong (!)\n";
+        cout << "\n(!) Da xoa thanh cong\n";
         system("pause");
     }
 }
@@ -145,6 +145,9 @@ void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
     string GIOBD = to_string(gioBD);
     string PHUTBD = to_string(phutBD);
     string GIAYBD = to_string(giayBD);
+    string NGAYBD = to_string(ngayBD);
+    string THANGBD = to_string(thangBD);
+    string NAMBD = to_string(namBD);
 
     if (GIOBD.length() == 1)
         GIOBD = "0" + GIOBD;
@@ -152,6 +155,14 @@ void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
         PHUTBD = "0" + PHUTBD;
     if (GIAYBD.length() == 1)
         GIAYBD = "0" + GIAYBD;
+    if (NGAYBD.length() == 1)
+        NGAYBD = "0" + NGAYBD;
+    if (THANGBD.length() == 1)
+        THANGBD = "0" + THANGBD;
+    if (NAMBD.length() == 1)
+        NAMBD = "0" + NAMBD;
+
+    string thoiGian = "[" + GIOBD + ":" + PHUTBD + ":" + GIAYBD + " - " + NGAYBD + "/" + THANGBD + "/" + NAMBD + "]";
 
     if (tinhTrang == 1)  // tinhTrang == 1 -> Máy đã có người sử dụng
         tinhTrangMay = "Day";
@@ -168,22 +179,23 @@ void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
     cout << setw(20) << left << tinhTrangMay << "\t";
 
     if (tinhTrang != 0) {
-        cout << setw(2) << right << "[" << GIOBD << ":";
-        cout << setw(2) << right << PHUTBD << ":";
-        cout << setw(2) << right << GIAYBD;
-        if (ngayBD != 0 && thangBD != 0 && namBD != 0) {
-            cout << setw(3) << right << " - ";
-            cout << setw(2) << right << ngayBD << "/";
-            cout << setw(2) << right << thangBD << "/";
-            cout << setw(4) << right << namBD << "]"
-                 << "\t";
-        } else {
-            cout << setw(3) << right << " - ";
-            cout << setw(8) << right << "__/__/__";
-        }
+        if (ngayBD != 0 && thangBD != 0 && namBD != 0)
+            cout << setw(20) << right << thoiGian << "\t";
+        else
+            cout << setw(20) << right << " ";
         cout << "\n";
     } else
         cout << "\n";
+}
+
+void MayTinh::thietLapGiaTien() {
+    cout << "\n(?) Nhap gia tien may thuong / 1 gio: ";
+    cin >> giaTienThuong;
+    cout << "\n(?) Nhap gia tien may cao cap / 1 gio: ";
+    cin >> giaTienCaoCap;
+    system("cls");
+    cout << "\n(!) Thiet lap gia tien thanh cong\n";
+    ghiGiaTien();
 }
 
 void MayTinh::docMotMay(ifstream &fileIn) {
@@ -199,16 +211,6 @@ void MayTinh::ghiMotMay(ofstream &fileOut) {
     fileOut << soMay << ' ';
     fileOut << kieuMay << ' ';
     fileOut << tinhTrang;
-}
-
-void MayTinh::thietLapGiaTien() {
-    cout << "\n(?) Nhap gia tien may thuong / 1 gio: ";
-    cin >> giaTienThuong;
-    cout << "\n(?) Nhap gia tien may cao cap / 1 gio: ";
-    cin >> giaTienCaoCap;
-    system("cls");
-    cout << "\n(!) Thiet lap gia tien thanh cong\n";
-    ghiGiaTien();
 }
 
 void MayTinh::docGiaTien() {

@@ -18,7 +18,7 @@ bool kiemTraSoMayCanThanhToan(MayTinh nhieuMay[], int n, int soMay);  // kiểm 
 void docDanhSachCacMay(MayTinh nhieuMay[], int &n) {
     ifstream fileIn("../File/maytinh/danhsachmaytinh.txt");
     if (fileIn.fail()) {
-        cout << "\n(!) Loi khi doc file (!)\n";
+        cout << "\n(!) Loi khi doc file\n";
         system("pause");
     } else {
         n = 0;
@@ -26,8 +26,8 @@ void docDanhSachCacMay(MayTinh nhieuMay[], int &n) {
             MayTinh mt;
             mt.docMotMay(fileIn);
             nhieuMay[n++] = mt;  // đưa máy vừa đọc vào mảng
-            Sleep(50);           // delay 0.05s
-            cout << "\n(*) Doc ban ghi thu " << n << " (*)";
+            // Sleep(50);           // delay 0.05s
+            // cout << "\n(*) Doc ban ghi thu " << n << " (*)";
         }
     }
     fileIn.close();
@@ -37,14 +37,14 @@ void ghiDanhSachCacMay(MayTinh nhieuMay[], int &n) {
     int count = 1;
     ofstream fileOut("../File/maytinh/danhsachmaytinh.txt");
     if (fileOut.fail()) {
-        cout << "\n(!) Loi khi mo file (!)\n";
+        cout << "\n(!) Loi khi mo file\n";
         system("pause");
     } else {
         for (int i = 0; i < n; i++) {
             fflush(stdin);
             nhieuMay[i].ghiMotMay(fileOut);
-            Sleep(50);  // delay 0.05s
-            cout << "\n(*) Ban ghi thu " << count++ << " (*)";
+            // Sleep(50);  // delay 0.05s
+            // cout << "\n(*) Ban ghi thu " << count++ << " (*)";
             if (i != n - 1)
                 fileOut << endl;
         }
@@ -95,7 +95,7 @@ void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n) {
 
 void xuatDanhSachCacMayTrong(MayTinh nhieuMay[], int n) {
     if (hetMay(nhieuMay, n))  // nếu hết máy
-        cout << "\n\t(!) Het may (!)\n";
+        cout << "\n\t(!) Het may\n";
     else {
         cout << "\n";
         cout << setw(10) << left << "Ma May"
@@ -150,6 +150,6 @@ bool kiemTraSoMay(MayTinh nhieuMay[], int n, int soMay) {
 bool kiemTraSoMayCanThanhToan(MayTinh nhieuMay[], int n, int soMay) {
     for (int i = 0; i < n; i++)
         if (nhieuMay[i].soMay == soMay && nhieuMay[i].tinhTrang == 1)
-            return 1;
-    return 0;
+            return true;
+    return false;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "ThueMotMay.hpp"
+#include "ThueNhieuMay.hpp"
 
 class Node {
    public:
@@ -21,7 +22,7 @@ class ThueNhieuMay {
 
 Node *createNode(ThueMotMay value);
 void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n);  // đọc danh sách người thuê trực tiếp từ file
-void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay);                              // ghi danh sách người thuê trực tiếp ra file
+void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay, int n);                       // ghi danh sách người thuê trực tiếp ra file
 int tinhSoNgay(int ngayBD, int thangBD, int namBD, int ngayKT, int thangKT, int namKT);    // tính số ngày sử dụng
 
 void ThueNhieuMay::createList() {
@@ -29,13 +30,13 @@ void ThueNhieuMay::createList() {
     pTail = NULL;
 }
 
-Node *createNode(ThueMotMay value) {
+Node *createNode(ThueMotMay thueMotMay) {
     Node *p = new Node;
     if (p == NULL) {
-        cout << "\n\t(!) Khong du bo nho (!)";
+        cout << "\n\t(!) Khong du bo nho";
         return NULL;
     } else {
-        p->data = value;
+        p->data = thueMotMay;
         p->pNext = NULL;
     }
     return p;
