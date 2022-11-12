@@ -99,31 +99,34 @@ void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[]
     int count = 1;
     ifstream fileIn("../File/khachhang/momaytructiep.txt");
     if (fileIn.fail()) {
-        cout << "\n(!) Loi khi doc file (!)\n";
+        cout << "\n(!) Loi khi doc file\n";
         system("pause");
     } else {
-        while (!fileIn.eof()) {
-            ThueMotMay r;
+        ThueMotMay r;
+        fileIn >> n;
+        fileIn.ignore();
+        for (int i = 0; i < n; i++) {
             r.docMotNguoiThueTrucTiep(fileIn, nhieuMay, n);
             thueNhieuMay.addNodeInTail(r);
-            Sleep(50);  // delay 0.05s
-            cout << "\n(*) Doc ban ghi thu " << count++ << "(*)";
+            // Sleep(50);  // delay 0.05s
+            // cout << "\n(*) Doc ban ghi thu " << count++ << " (*)";
         }
     }
     fileIn.close();
 }
 
-void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay) {
+void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay, int n) {
     int count = 1;
     ofstream fileOut("../File/khachhang/momaytructiep.txt");
     if (fileOut.fail()) {
-        cout << "\n(!) Loi khi mo file (!)\n";
+        cout << "\n(!) Loi khi mo file\n";
         system("pause");
     } else {
+        fileOut << n << endl;
         for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext) {
             t->data.ghiMotNguoiThueTrucTiep(fileOut);
-            Sleep(50);  // delay 0.05s
-            cout << "\n(*) Ban ghi thu " << count++ << "(*)";
+            // Sleep(50);  // delay 0.05s
+            // cout << "\n(*) Ban ghi thu " << count++ << " (*)";
             if (t->pNext != NULL)
                 fileOut << endl;
         }
@@ -132,15 +135,20 @@ void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay) {
 }
 
 void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
-    int gio = 0, phut = 0, giay = 0;
+    MayTinh mt;
+    ThueMotMay r;
+    int gioSD = 0, phutSD = 0, giaySD = 0;
     int gioKT = 0, phutKT = 0, giayKT = 0, ngayKT = 0, thangKT = 0, namKT = 0;
     int soNgay = 0, thoiGian1 = 0, thoiGian2 = 0, tongThoiGian = 0;
-    long thoiGianBatDau = 0, thoiGianKetThuc = 0;
-
-    ThueMotMay r;
-    r.chonMayCanThanhToan(nhieuMay, n);
-    r.maytinh->tinhTrang = 0;  // cập nhật lại tình trạng máy -> 0 (máy trống)
-
+    long long thoiGianBatDau = 0, thoiGianKetThuc = 0;
+    double soTienMotGiay = 0;
+    //
+    //
+    r.chonMayCanThanhToan(nhieuMay, n);  // hàm này trong file ThueMotMay.hpp
+    r.maytinh->tinhTrang = 0;            // cập nhật lại tình trạng máy -> 0 (máy trống)
+    //
+    //
+    // Lấy thời gian kết thúc
     layThoiGianHeThong(gioKT, phutKT, giayKT, ngayKT, thangKT, namKT);
     r.maytinh->gioKT = gioKT;
     r.maytinh->phutKT = phutKT;
@@ -150,6 +158,7 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
     r.maytinh->namKT = namKT;
     //
     //
+    // Tính khoảng thời gian giữa 2 mốc thời gian
     if (r.maytinh->namBD == r.maytinh->namKT) {
         if (r.maytinh->thangBD == r.maytinh->thangKT) {
             if (r.maytinh->ngayBD == r.maytinh->ngayKT)
@@ -173,59 +182,110 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
     }
     //
     //
+    // Tính tổng thời gian đã sử dụng
     soNgay = tinhSoNgay(r.maytinh->ngayBD, r.maytinh->thangBD, r.maytinh->namBD, r.maytinh->ngayKT, r.maytinh->thangKT, r.maytinh->namKT);
-    thoiGian1 = thoiGianBatDau + (86400 * (soNgay - 1));
-    thoiGian2 = thoiGianKetThuc;
-    tongThoiGian = thoiGian1 + thoiGian2;
+    thoiGian1 = thoiGianBatDau + (86400 * (soNgay - 1));  // tổng thời gian của ngày bắt đầu + với thời gian của những ngày sử dụng tròn 24 tiếng
+    thoiGian2 = thoiGianKetThuc;                          // tổng thời gian của ngày kết thúc
+    tongThoiGian = thoiGian1 + thoiGian2;                 // tổng thời gian đã sử dụng
     //
     //
-    if (r.maytinh->namBD == r.maytinh->namKT) {
-        if (r.maytinh->thangBD == r.maytinh->thangKT) {
-            if (r.maytinh->ngayBD == r.maytinh->ngayKT) {
-                gio = thoiGianKetThuc / 3600;
-                phut = (thoiGianKetThuc % 3600) / 60;
-                giay = (thoiGianKetThuc % 3600) % 60;
-            } else {
-                gio = tongThoiGian / 3600;
-                phut = (tongThoiGian % 3600) / 60;
-                giay = (tongThoiGian % 3600) % 60;
-            }
-        } else {
-            gio = tongThoiGian / 3600;
-            phut = (tongThoiGian % 3600) / 60;
-            giay = (tongThoiGian % 3600) % 60;
-        }
-    } else {
-        gio = tongThoiGian / 3600;
-        phut = (tongThoiGian % 3600) / 60;
-        giay = (tongThoiGian % 3600) % 60;
-    }
+    // Quy đổi tổng thời gian ra giờ, phút, giây
+    if (r.maytinh->namBD == r.maytinh->namKT)
+        if (r.maytinh->thangBD == r.maytinh->thangKT)
+            if (r.maytinh->ngayBD == r.maytinh->ngayKT)
+                tongThoiGian = thoiGianKetThuc;
+    gioSD = tongThoiGian / 3600;
+    phutSD = (tongThoiGian % 3600) / 60;
+    giaySD = (tongThoiGian % 3600) % 60;
     //
     //
-    string thoiGianSuDung = to_string(gio) + ":" + to_string(phut) + ":" + to_string(giay);
-    string thoiGianThanhToan = to_string(gioKT) + ":" + to_string(phutKT) + ":" + to_string(giayKT) + " - " + to_string(ngayKT) + "/" + to_string(thangKT) + "/" + to_string(namKT);
+    // Chuyển định dạng giờ, phút, giây, ngày, tháng, năm sang kiểu chuỗi
+    // Nếu (ngày, phút, giây, ngày, tháng, năm) < 10 -> Thêm '0' vào đằng trước
+    string GIOSD = to_string(gioSD);
+    string PHUTSD = to_string(phutSD);
+    string GIAYSD = to_string(giaySD);
+    string GIOBD = to_string(r.maytinh->gioBD);
+    string PHUTBD = to_string(r.maytinh->phutBD);
+    string GIAYBD = to_string(r.maytinh->giayBD);
+    string NGAYBD = to_string(r.maytinh->ngayBD);
+    string THANGBD = to_string(r.maytinh->thangBD);
+    string NAMBD = to_string(r.maytinh->namBD);
+    string GIOKT = to_string(gioKT);
+    string PHUTKT = to_string(phutKT);
+    string GIAYKT = to_string(giayKT);
+    string NGAYKT = to_string(ngayKT);
+    string THANGKT = to_string(thangKT);
+    string NAMKT = to_string(namKT);
 
-    system("cls");
+    if (GIOSD.length() == 1) GIOSD = "0" + GIOSD;
+    if (PHUTSD.length() == 1) PHUTSD = "0" + PHUTSD;
+    if (GIAYSD.length() == 1) GIAYSD = "0" + GIAYSD;
+    if (GIOBD.length() == 1) GIOBD = "0" + GIOBD;
+    if (PHUTBD.length() == 1) PHUTBD = "0" + PHUTBD;
+    if (GIAYBD.length() == 1) GIAYBD = "0" + GIAYBD;
+    if (NGAYBD.length() == 1) NGAYBD = "0" + NGAYBD;
+    if (THANGBD.length() == 1) THANGBD = "0" + THANGBD;
+    if (NAMBD.length() == 1) NAMBD = "0" + NAMBD;
+    if (GIOKT.length() == 1) GIOKT = "0" + GIOKT;
+    if (PHUTKT.length() == 1) PHUTKT = "0" + PHUTKT;
+    if (GIAYKT.length() == 1) GIAYKT = "0" + GIAYKT;
+    if (NGAYKT.length() == 1) NGAYKT = "0" + NGAYKT;
+    if (THANGKT.length() == 1) THANGKT = "0" + THANGKT;
+    if (NAMKT.length() == 1) NAMKT = "0" + NAMKT;
+    //
+    //
+    string thoiGianSuDung = GIOSD + ":" + PHUTSD + ":" + GIAYSD;
+    string thoiGianLucDau = GIOBD + ":" + PHUTBD + ":" + GIAYBD + " - " + NGAYBD + "/" + THANGBD + "/" + NAMBD;
+    string thoiGianThanhToan = GIOKT + ":" + PHUTKT + ":" + GIAYKT + " - " + NGAYKT + "/" + THANGKT + "/" + NAMKT;
+    //
+    //
+    mt.docGiaTien();
+    r.maytinh->giaTienThuong = mt.giaTienThuong;
+    r.maytinh->giaTienCaoCap = mt.giaTienCaoCap;
+    if (r.maytinh->kieuMay == 0)
+        soTienMotGiay = r.maytinh->giaTienThuong / 3600;
+    else
+        soTienMotGiay = r.maytinh->giaTienCaoCap / 3600;
+    r.maytinh->giaTien = tongThoiGian * soTienMotGiay;
+    string giaTien = to_string(r.maytinh->giaTien) + " VND";
+    //
+    //
     string loaiKieuMay;
     if (r.maytinh->kieuMay == 1)  // kieuMay == 1 -> Máy cao cấp
         loaiKieuMay = "Cao cap";
     else  // kieuMay == 0 -> Máy thường
         loaiKieuMay = "Thuong";
-
-    cout << setw(30) << left << "So may: "
+    //
+    //
+    system("cls");
+    cout << "\n\t\t\t\tTHONG TIN THANH TOAN\n";
+    cout << setw(30) << left << "\t\tSo may: "
          << "\t";
-    cout << setw(20) << right << r.maytinh->soMay << "\n";
-    cout << setw(30) << left << "Kieu may: "
+    cout << setw(25) << right << r.maytinh->soMay << "\n";
+    cout << setw(30) << left << "\t\tKieu may: "
          << "\t";
-    cout << setw(20) << right << loaiKieuMay << "\n";
-    cout << setw(30) << left << "Thoi gian da su dung: "
+    cout << setw(25) << right << loaiKieuMay << "\n";
+    cout << setw(30) << left << "\t\tThoi gian bat dau: "
          << "\t";
-    cout << setw(20) << right << thoiGianSuDung << "\n";
-    cout << setw(30) << left << "Xuat hoa don luc: "
+    cout << setw(25) << right << thoiGianLucDau << "\n";
+    cout << setw(30) << left << "\t\tXuat hoa don luc: "
          << "\t";
-    cout << setw(20) << right << thoiGianThanhToan << "\n";
-
-    removeNodeInHead();
+    cout << setw(25) << right << thoiGianThanhToan << "\n";
+    cout << setw(30) << left << "\t\tThoi gian da su dung: "
+         << "\t";
+    cout << setw(25) << right << thoiGianSuDung << "\n";
+    cout << setw(30) << left << "\t\tSo tien can thanh toan: "
+         << "\t";
+    cout << setw(25) << right << giaTien << "\n";
+    //
+    //
+    r.maytinh->gioBD = 0;
+    r.maytinh->phutBD = 0;
+    r.maytinh->giayBD = 0;
+    r.maytinh->ngayBD = 0;
+    r.maytinh->thangBD = 0;
+    r.maytinh->namBD = 0;
+    // removeNodeInHead();
 }
 
 int tinhSoNgay(int ngayBD, int thangBD, int namBD, int ngayKT, int thangKT, int namKT) {
