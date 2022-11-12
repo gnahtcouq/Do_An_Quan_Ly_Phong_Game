@@ -44,7 +44,6 @@ void ThueMotMay::docMotNguoiThueTrucTiep(ifstream &fileIn, MayTinh nhieuMay[], i
     int soMay = 0;  // lưu tạm số máy lúc đọc từ file
     fileIn >> soMay;
     maytinh = layViTriCuaMay(nhieuMay, n, soMay);  // lấy số máy lưu tạm để trả về máy của số máy đó
-    maytinh->tinhTrang = 1;                        // cập nhật lại tình trạng máy -> 1 (máy đã có người sử dụng)
     fileIn >> maytinh->gioBD;
     fileIn >> maytinh->phutBD;
     fileIn >> maytinh->giayBD;
@@ -52,6 +51,10 @@ void ThueMotMay::docMotNguoiThueTrucTiep(ifstream &fileIn, MayTinh nhieuMay[], i
     fileIn >> maytinh->thangBD;
     fileIn >> maytinh->namBD;
     fileIn.ignore();
+    if (maytinh->gioBD == 0 && maytinh->phutBD == 0 && maytinh->giayBD == 0 && maytinh->ngayBD == 0 && maytinh->thangBD == 0 && maytinh->namBD == 0)
+        maytinh->tinhTrang = 0;
+    else
+        maytinh->tinhTrang = 1;  // cập nhật lại tình trạng máy -> 1 (máy đã có người sử dụng)
 }
 
 void ThueMotMay::ghiMotNguoiThueTrucTiep(ofstream &fileOut) {

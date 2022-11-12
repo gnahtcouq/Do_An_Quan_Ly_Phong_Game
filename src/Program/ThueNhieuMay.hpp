@@ -92,8 +92,7 @@ void ThueNhieuMay::moMayTrucTiep(MayTinh nhieuMay[], int n) {
     r.maytinh->thangBD = thangBD;
     r.maytinh->namBD = namBD;
     system("cls");
-    cout << "\n\t(!) Mo may thanh cong (!)\n";
-    addNodeInTail(r);
+    cout << "\n\t(!) Mo may thanh cong\n";
 }
 
 void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n) {

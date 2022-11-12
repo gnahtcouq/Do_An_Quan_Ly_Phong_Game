@@ -74,24 +74,30 @@ int kiemTraTrungSoMay(MayTinh nhieuMay[], int n, int soMay) {
 
 void MayTinh::themMayTinh(MayTinh nhieuMay[], int &n) {
     MayTinh mt;
+    int soMayTam;
     mt.maMay = taoMaMayTinh(nhieuMay, n);
     do {
         cout << "\n(?) Nhap so may: ";
         // cin.ignore();
         cin >> mt.soMay;
+        soMayTam = n + 1;
         if (kiemTraTrungSoMay(nhieuMay, n, mt.soMay) != -1)
-            cout << "\n\t(!) So may da ton tai - Nhap lai (!)\n";
-    } while (kiemTraTrungSoMay(nhieuMay, n, mt.soMay) != -1);
+            cout << "\n\t(!) So may da ton tai. Hay nhap lai\n";
+        else if (mt.soMay > soMayTam)
+            cout << "\n\t(!) So may chi duoc lon hon so may cu 1 don vi. Hay nhap lai\n";
+    } while (kiemTraTrungSoMay(nhieuMay, n, mt.soMay) != -1 || mt.soMay > soMayTam);
     do {
         cout << "\n(?) Nhap kieu may (0: Thuong - 1: Cao cap): ";
         cin >> mt.kieuMay;
         if (mt.kieuMay < 0 || mt.kieuMay > 1)
-            cout << "\n\t(!) Kieu may khong hop le - Nhap lai (!)\n";
+            cout << "\n\t(!) Kieu may khong hop le. Hay nhap lai\n";
     } while (mt.kieuMay < 0 || mt.kieuMay > 1);
     for (int i = n - 1; i >= 0; i--)
         nhieuMay[i + 1] = nhieuMay[i];
     nhieuMay[0] = mt;
     n++;
+    cout << "\n(!) Da them thanh cong\n";
+    system("pause");
 }
 
 void MayTinh::xoaMayTinh(MayTinh nhieuMay[], int &n) {
