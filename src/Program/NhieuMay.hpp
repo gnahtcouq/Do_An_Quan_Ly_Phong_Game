@@ -11,6 +11,7 @@ void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n);                // xuất 
 void xuatDanhSachCacMayTrong(MayTinh nhieuMay[], int n);              // xuất danh sách các máy trống
 void sapXepDanhSachMayTinh(MayTinh nhieuMay[], int &n);               // sắp xếp danh sách máy tính tăng dần theo số máy
 bool hetMay(MayTinh nhieuMay[], int n);                               // kiểm tra hết máy
+bool kiemTraTrangThai(MayTinh nhieuMay[], int n);                     // kiểm tra trạng thái
 bool kiemTraSoMay(MayTinh nhieuMay[], int n, int soMay);              // kiểm tra máy còn trống hay đã được sử dụng
 bool kiemTraSoMayCanThanhToan(MayTinh nhieuMay[], int n, int soMay);  // kiểm tra số máy cần thanh toán
 
@@ -126,6 +127,17 @@ bool hetMay(MayTinh nhieuMay[], int n) {
         if (nhieuMay[i].tinhTrang == 0)  // còn máy trống -> thì trả về false
             return false;
     return true;
+}
+
+bool kiemTraTrangThai(MayTinh nhieuMay[], int n) {
+    bool kiemTra = false;
+    for (int i = 0; i < n; i++) {
+        if (nhieuMay[i].tinhTrang == 1) {
+            kiemTra = true;
+            break;
+        }
+    }
+    return kiemTra;
 }
 
 bool kiemTraSoMay(MayTinh nhieuMay[], int n, int soMay) {

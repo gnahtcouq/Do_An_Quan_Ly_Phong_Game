@@ -10,19 +10,23 @@ class MayTinh {
     string maMay;  // mã máy
 
    public:
-    int soMay;                                // số máy
-    int kieuMay;                              // kiểu máy:       - 0:thường     1:cao cấp
-    bool tinhTrang = 0;                       // tình trạng máy: - 0:trống      1:đã được sử dụng
-    int gioBD = 0, phutBD = 0, giayBD = 0;    // thời gian bắt đầu (giờ:phút:giây)
-    int ngayBD = 0, thangBD = 0, namBD = 0;   // thời gian bắt đầu (ngày/tháng/năm)
-    int gioKT = 0, phutKT = 0, giayKT = 0;    // thời gian kết thúc (giờ:phút:giây)
-    int ngayKT = 0, thangKT = 0, namKT = 0;   // thời gian kết thúc (ngày/tháng/năm)
-    void themMayTinh(MayTinh[], int &);       // thêm một máy tính
-    void xoaMayTinh(MayTinh[], int &);        // xóa một máy tính
-    void inMotMayTheoChieuNgang();            // in một máy theo chiều ngang
-    void inMotMayTheoChieuNgangCoThoiGian();  // im một máy theo chiều ngang có thời gian truy cập
-    void docMotMay(ifstream &);               // đọc thông tin một máy tính từ file
-    void ghiMotMay(ofstream &);               // ghi thông tin một máy tính ra file
+    int soMay;                                                    // số máy
+    int kieuMay;                                                  // kiểu máy:       - 0:thường     1:cao cấp
+    bool tinhTrang = 0;                                           // tình trạng máy: - 0:trống      1:đã được sử dụng
+    int gioBD = 0, phutBD = 0, giayBD = 0;                        // thời gian bắt đầu (giờ:phút:giây)
+    int ngayBD = 0, thangBD = 0, namBD = 0;                       // thời gian bắt đầu (ngày/tháng/năm)
+    int gioKT = 0, phutKT = 0, giayKT = 0;                        // thời gian kết thúc (giờ:phút:giây)
+    int ngayKT = 0, thangKT = 0, namKT = 0;                       // thời gian kết thúc (ngày/tháng/năm)
+    long long giaTien = 0, giaTienThuong = 0, giaTienCaoCap = 0;  // giá tiền
+    void themMayTinh(MayTinh[], int &);                           // thêm một máy tính
+    void xoaMayTinh(MayTinh[], int &);                            // xóa một máy tính
+    void inMotMayTheoChieuNgang();                                // in một máy theo chiều ngang
+    void inMotMayTheoChieuNgangCoThoiGian();                      // im một máy theo chiều ngang có thời gian truy cập
+    void docMotMay(ifstream &);                                   // đọc thông tin một máy tính từ file
+    void ghiMotMay(ofstream &);                                   // ghi thông tin một máy tính ra file
+    void thietLapGiaTien();                                       // thiết lập giá tiền
+    void docGiaTien();                                            // đọc giá tiền từ file
+    void ghiGiaTien();                                            // ghi giá tiền ra file
 
     //** Getters, setters
     string getter_MaMay() { return maMay; };
@@ -189,4 +193,41 @@ void MayTinh::ghiMotMay(ofstream &fileOut) {
     fileOut << soMay << ' ';
     fileOut << kieuMay << ' ';
     fileOut << tinhTrang;
+}
+
+void MayTinh::thietLapGiaTien() {
+    cout << "\n(?) Nhap gia tien may thuong / 1 gio: ";
+    cin >> giaTienThuong;
+    cout << "\n(?) Nhap gia tien may cao cap / 1 gio: ";
+    cin >> giaTienCaoCap;
+    system("cls");
+    cout << "\n(!) Thiet lap gia tien thanh cong\n";
+    ghiGiaTien();
+}
+
+void MayTinh::docGiaTien() {
+    ifstream fileIn("../File/thanhtoan/giatien.txt");
+    if (fileIn.fail()) {
+        cout << "\n(!) Loi khi doc file\n";
+        system("pause");
+    } else {
+        while (!fileIn.eof()) {
+            fileIn >> giaTienThuong;
+            fileIn >> giaTienCaoCap;
+        }
+    }
+    fileIn.close();
+}
+
+void MayTinh::ghiGiaTien() {
+    ofstream fileOut("../File/thanhtoan/giatien.txt");
+    if (fileOut.fail()) {
+        cout << "\n(!) Loi khi mo file\n";
+        system("pause");
+    } else {
+        fflush(stdin);
+        fileOut << giaTienThuong << ' ';
+        fileOut << giaTienCaoCap;
+    }
+    fileOut.close();
 }
