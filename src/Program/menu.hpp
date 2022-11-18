@@ -1,47 +1,53 @@
 #pragma once
-#include "KhachHang.hpp"
-#include "NhieuMay.hpp"
+#include "NhanVien.hpp"
 #include "QuanLy.hpp"
 #include "ThueNhieuMay.hpp"
 
 #define MAX 200
 
 void menu();
+void loading(MayTinh &mt, MayTinh nhieuMay[], int &n, DanhSachNhanVien &dsnv, ThueNhieuMay &thueNhieuMay);
+void khoiTaoSoLuongDauVaoCuaFile();
 void nhapDuLieuGiaTien(MayTinh &mt);
 void nhapDuLieuNhieuMay(MayTinh nhieuMay[], int &n);
-void nhapDuLieuDanhSachKhachHang(DanhSachKhachHang &dskh);
-void nhapDuLieuDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n);
+void nhapDuLieuDanhSachNhanVien(DanhSachNhanVien &dsnv);
+void nhapDuLieuDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int &n);
 void luuFile(ThueNhieuMay thueNhieuMay, MayTinh nhieuMay[], int n);
 
 void menu() {
-    int luaChon, n, nds;
-    bool thoat = false, fileSaved = false;
+    khoiTaoSoLuongDauVaoCuaFile();
+    int luaChon;
+    bool thoat = false;
+    //
+    int n;
     MayTinh mt;
     ThueNhieuMay thueNhieuMay;
     MayTinh *nhieuMay = new MayTinh[MAX];  // tạo mảng động với MAX phần tử
-    KhachHang *ds[MAX];
-    DanhSachKhachHang dskh;
-    // dangNhap();
-    nhapDuLieuGiaTien(mt);
-    nhapDuLieuNhieuMay(nhieuMay, n);
-    nhapDuLieuDanhSachKhachHang(dskh);
-    nhapDuLieuDanhSachNguoiThueTrucTiep(thueNhieuMay, nhieuMay, n);
-    cout << "\n";
+    //
+    DanhSachNhanVien dsnv;
+    khoiTaoDanhSachNhanVien(dsnv);
+    //
+    loading(mt, nhieuMay, n, dsnv, thueNhieuMay);
+    //
+    int phanQuyen;
+    string ten;
+    dangNhap(dsnv, phanQuyen, ten);
+    //
     do {
         system("cls");
-        cout << "*--------------------------------------------------*\n";
-        cout << "|              ~  QUAN LY STU CYBER  ~             |\n";
-        cout << "*--------------------------------------------------*\n";
-        cout << "|    1. Quan ly may tinh                           |\n";
-        cout << "|    2. Quan ly khach hang                         |\n";
-        cout << "|    3. Xem tinh trang may                         |\n";
-        cout << "|    4. Nap tien                                   |\n";
-        cout << "|    9. Luu thay doi                               |\n";
-        cout << "|    10. Mo may truc tiep                          |\n";
-        cout << "|    11. Thanh toan                                |\n";
-        cout << "|    12. Thiet lap gia tien                        |\n";
-        cout << "|    0. Thoat chuong trinh                         |\n";
-        cout << "*--------------------------------------------------*\n";
+        cout << "\nXin chao, " << ten << "\n\n";
+        cout << "*---------------------------------------------------*\n";
+        cout << "|              ~  QUAN LY STU CYBER  ~              |\n";
+        cout << "*---------------------------------------------------*\n";
+        cout << "|      1.   Quan ly may tinh                        |\n";
+        cout << "|      2.   Quan ly nhan vien                       |\n";
+        cout << "|      3.   Xem tinh trang may                      |\n";
+        cout << "|      4.   Lich su thanh toan                      |\n";
+        cout << "|      10.  Mo may truc tiep                        |\n";
+        cout << "|      11.  Thanh toan                              |\n";
+        cout << "|      12.  Thiet lap gia tien                      |\n";
+        cout << "|      0.   Dang xuat                               |\n";
+        cout << "*---------------------------------------------------*\n";
         cout << "\tLua chon cua ban -> ";
         cin >> luaChon;
         fflush(stdin);
@@ -62,9 +68,9 @@ void menu() {
                     switch (luaChon) {
                         case 1: {
                             system("cls");
-                            cout << "\nMENU/QUAN LY MAY TINH/THEM MAY TINH";
-                            cout << "\n*---------------------------------*\n";
-                            xuatDanhSachCacMay(nhieuMay, n);
+                            cout << "\nMENU/QUAN LY MAY TINH/THEM MAY TINH\n";
+                            if (n != 0)
+                                xuatDanhSachCacMay(nhieuMay, n);
                             mt.themMayTinh(nhieuMay, n);
                             sapXepDanhSachMayTinh(nhieuMay, n);
                             ThueMotMay r;
@@ -83,13 +89,17 @@ void menu() {
                         }
                         case 2: {
                             system("cls");
-                            cout << "\nMENU/QUAN LY MAY TINH/XOA MAY TINH";
-                            cout << "\n*--------------------------------*\n";
-                            xuatDanhSachCacMay(nhieuMay, n);
-                            mt.xoaMayTinh(nhieuMay, n);
-                            sapXepDanhSachMayTinh(nhieuMay, n);
-                            thueNhieuMay.removeNodeInTail();
-                            luuFile(thueNhieuMay, nhieuMay, n);
+                            cout << "\nMENU/QUAN LY MAY TINH/XOA MAY TINH\n";
+                            if (n != 0) {
+                                xuatDanhSachCacMay(nhieuMay, n);
+                                mt.xoaMayTinh(nhieuMay, n);
+                                sapXepDanhSachMayTinh(nhieuMay, n);
+                                thueNhieuMay.removeNodeInTail();
+                                luuFile(thueNhieuMay, nhieuMay, n);
+                            } else {
+                                cout << "\n\t(!) Danh sach may tinh trong\n";
+                                system("pause");
+                            }
                             break;
                         }
                         case 0:
@@ -108,13 +118,12 @@ void menu() {
                 bool thoat = false;
                 do {
                     system("cls");
-                    cout << "\nMENU/QUAN LY KHACH HANG\n";
+                    cout << "\nMENU/QUAN LY NHAN VIEN\n";
                     cout << "*----------------------------------------*\n";
-                    cout << "|      1. Them khach hang                |\n";
-                    cout << "|      2. Xoa khach hang                 |\n";
+                    cout << "|      1. Them nhan vien                 |\n";
+                    cout << "|      2. Xoa nhan vien                  |\n";
                     cout << "|      3. Chinh sua thong tin            |\n";
-                    cout << "|      4. Kiem tra so du                 |\n";
-                    cout << "|      5. Xem danh sach                  |\n";
+                    cout << "|      4. Xem danh sach                  |\n";
                     cout << "|      0. Tro ve                         |\n";
                     cout << "*----------------------------------------*\n";
                     cout << "\tLua chon cua ban -> ";
@@ -122,56 +131,38 @@ void menu() {
                     switch (luaChon) {
                         case 1: {
                             system("cls");
-                            nds = 0;
-                            cout << "\nMENU/QUAN LY KHACH HANG/THEM KHACH HANG";
-                            cout << "\n*-------------------------------------*\n";
-                            chuyenCaySangMang(dskh.TREE, ds, nds);
-                            nhapMotKhachHang(dskh);
-                            sapXepDanhSachKhachHang(ds, nds);
-                            ghiDanhSachKhachHang(ds, nds);
+                            cout << "\nMENU/QUAN LY NHAN VIEN/THEM NHAN VIEN\n";
+                            nhapMotNhanVien(dsnv);
+                            ghiDanhSachNhanVien(dsnv);
+                            system("pause");
                             break;
                         }
                         case 2: {
                             system("cls");
-                            nds = 0;
-                            cout << "\nMENU/QUAN LY KHACH HANG/XOA KHACH HANG";
-                            cout << "\n*------------------------------------*\n";
-                            chuyenCaySangMang(dskh.TREE, ds, nds);
-                            sapXepDanhSachKhachHang(ds, nds);
-                            inDanhSachKhachHangTheoChieuNgang(ds, nds);
-                            xoaKhachHang(dskh);
-                            giaiPhongDanhSachKhachHang(ds, nds);
+                            cout << "\nMENU/QUAN LY NHAN VIEN/XOA NHAN VIEN\n";
+                            if (dsnv) {
+                                inDanhSachNhanVien(dsnv);
+                                xoaMotNhanVien(dsnv);
+                                ghiDanhSachNhanVien(dsnv);
+                            } else
+                                cout << "\n\t(!) Danh sach nhan vien trong\n";
+                            system("pause");
                             break;
                         }
                         case 3: {
                             system("cls");
-                            cout << "\nMENU/QUAN LY KHACH HANG/CHINH SUA THONG TIN";
-                            cout << "\n*------------------------------------------*\n";
-                            chinhSuaThongTinKhachHang(dskh);
+                            cout << "\nMENU/QUAN LY NHAN VIEN/CHINH SUA THONG TIN\n";
+                            cout << "\n\t(!) Tinh nang dang duoc phat trien\n";
+                            system("pause");
                             break;
                         }
                         case 4: {
                             system("cls");
-                            cout << "\nMENU/QUAN LY KHACH HANG/KIEM TRA SO DU";
-                            cout << "\n*------------------------------------*\n";
-                            nds = 0;
-                            chuyenCaySangMang(dskh.TREE, ds, nds);
-                            sapXepDanhSachKhachHang(ds, nds);
-                            inDanhSachKhachHangTheoChieuNgang(ds, nds);
-                            giaiPhongDanhSachKhachHang(ds, nds);
-                            xuatThongTinKhachHangTheoTenTaiKhoan();
-                            system("pause");
-                            break;
-                        }
-                        case 5: {
-                            system("cls");
-                            nds = 0;
-                            cout << "\nMENU/QUAN LY KHACH HANG/XEM DANH SACH";
-                            cout << "\n*-----------------------------------*\n";
-                            chuyenCaySangMang(dskh.TREE, ds, nds);
-                            sapXepDanhSachKhachHang(ds, nds);
-                            inDanhSachKhachHangTheoChieuNgang(ds, nds);
-                            giaiPhongDanhSachKhachHang(ds, nds);
+                            cout << "\nMENU/QUAN LY NHAN VIEN/XEM DANH SACH\n";
+                            if (dsnv)
+                                inDanhSachNhanVien(dsnv);
+                            else
+                                cout << "\n\t(!) Danh sach nhan vien trong\n";
                             system("pause");
                         }
                         case 0:
@@ -202,24 +193,21 @@ void menu() {
                     switch (luaChon) {
                         case 1: {
                             system("cls");
-                            cout << "\nMENU/TINH TRANG MAY/MAY TRONG";
-                            cout << "\n*---------------------------*\n";
+                            cout << "\nMENU/TINH TRANG MAY/MAY TRONG\n";
                             xuatDanhSachCacMayTrong(nhieuMay, n);
                             system("pause");
                             break;
                         }
                         case 2: {
                             system("cls");
-                            cout << "\nMENU/TINH TRANG MAY/MAY DAY";
-                            cout << "\n*-------------------------*\n";
+                            cout << "\nMENU/TINH TRANG MAY/MAY DAY\n";
                             xuatDanhSachCacMayDay(nhieuMay, n);
                             system("pause");
                             break;
                         }
                         case 3: {
                             system("cls");
-                            cout << "\nMENU/TINH TRANG MAY/TAT CA";
-                            cout << "\n*------------------------*\n";
+                            cout << "\nMENU/TINH TRANG MAY/TAT CA\n";
                             xuatDanhSachCacMay(nhieuMay, n);
                             system("pause");
                             break;
@@ -237,14 +225,25 @@ void menu() {
             }
             case 4: {
                 system("cls");
-                cout << "\nMENU/NAP TIEN";
-                cout << "\n*-----------*\n";
-                nds = 0;
-                chuyenCaySangMang(dskh.TREE, ds, nds);
-                sapXepDanhSachKhachHang(ds, nds);
-                inDanhSachKhachHangTheoChieuNgang(ds, nds);
-                giaiPhongDanhSachKhachHang(ds, nds);
-                napTien();
+                cout << "\nMENU/LICH SU THANH TOAN\n";
+                string fileName = "../File/lichsu/lichsuthanhtoan.txt";
+                if (kiemTraFileTrong(fileName) != -1) {
+                    cout << "*------------------------*-------------------------------*----------------*---------------*--------------------------*\n";
+                    cout << setw(25) << left << "| Thoi gian bat dau"
+                         << "|\t";
+                    cout << setw(25) << left << "Thoi gian ket thuc"
+                         << "|\t";
+                    cout << setw(10) << left << "So may"
+                         << "|\t";
+                    cout << setw(10) << left << "Kieu may"
+                         << "|\t";
+                    cout << setw(20) << right << "So tien"
+                         << " |\n";
+                    cout << "*------------------------*-------------------------------*----------------*---------------*--------------------------*\n";
+                    docLichSuThanhToan(fileName);
+                    cout << "*------------------------*-------------------------------*----------------*---------------*--------------------------*\n";
+                } else
+                    cout << "\n\t(!) Lich su thanh toan trong\n";
                 system("pause");
                 break;
             }
@@ -261,75 +260,35 @@ void menu() {
                 break;
             }
             case 9: {
-                system("cls");
-                cout << "\n\t9. LUU THAY DOI\n";
-                luuFile(thueNhieuMay, nhieuMay, n);
-                fileSaved = true;
-                system("pause");
                 break;
             }
             case 10: {
                 system("cls");
-                cout << "\nMENU/MO MAY TRUC TIEP";
-                cout << "\n*-------------------*\n";
-                if (hetMay(nhieuMay, n)) {  // nếu hết máy
-                    system("cls");
-                    cout << "\n\t(!) Het may\n";
-                } else {
-                    thueNhieuMay.moMayTrucTiep(nhieuMay, n);
-                    luuFile(thueNhieuMay, nhieuMay, n);
-                }
-                system("pause");
+                cout << "\nMENU/MO MAY TRUC TIEP\n";
+                thueNhieuMay.moMayTrucTiep(nhieuMay, n);
+                luuFile(thueNhieuMay, nhieuMay, n);
                 break;
             }
             case 11: {
                 system("cls");
-                cout << "\nMENU/THANH TOAN";
-                cout << "\n*-------------*\n";
-                bool kiemTra = kiemTraTrangThai(nhieuMay, n);
-                if (kiemTra == true) {
-                    thueNhieuMay.thanhToan(nhieuMay, n);
-                    system("pause");
-                    luuFile(thueNhieuMay, nhieuMay, n);
-                } else
-                    cout << "\n(!) Khong co may dang duoc su dung\n";
-                system("pause");
+                cout << "\nMENU/THANH TOAN\n";
+                thueNhieuMay.thanhToan(nhieuMay, n);
+                luuFile(thueNhieuMay, nhieuMay, n);
                 break;
             }
             case 12: {
                 system("cls");
-                cout << "\nMENU/THIET LAP GIA TIEN";
-                cout << "\n*---------------------*\n";
+                cout << "\nMENU/THIET LAP GIA TIEN\n";
                 mt.thietLapGiaTien();
                 system("pause");
                 break;
             }
             case 0: {
-                if (fileSaved) {
-                    cout << "\n\t(*) Thoat chuong trinh sau 5s (*)\n";
-                    Sleep(5000);
-                    thoat = true;
-                } else {
-                    system("cls");
-                    cout << "\n\t0. THOAT CHUONG TRINH\n";
-                    char c;
-                    cout << "\n(!) Ban chua luu thay doi\n";
-                    do {
-                        fflush(stdin);
-                        cout << "\n(?) Xac nhan thoat ma khong luu thay doi (y/n) (?): ";
-                        cin >> c;
-                        if (c != 'y' && c != 'n')
-                            cout << "\n(!) Lua chon khong hop le. Hay nhap lai";
-                        else {
-                            if (c == 'y') {
-                                cout << "\n\t(*) Thoat chuong trinh sau 5s (*)\n";
-                                Sleep(5000);
-                                thoat = true;
-                            } else
-                                break;
-                        }
-                    } while (c != 'y' && c != 'n');
-                }
+                system("cls");
+                cout << "\n\t(!) Dang xuat thanh cong\n";
+                system("pause");
+                thoat = true;
+                menu();
                 break;
             }
             default:
@@ -337,40 +296,92 @@ void menu() {
                 system("pause");
                 break;
         }
-    } while (!thoat);                     // thoat == true
-    delete[] nhieuMay;                    // giải phóng bộ nhớ của ds máy tính
-    giaiPhongDanhSachKhachHang(ds, nds);  // giải phóng bộ nhớ của ds khách hàng
+    } while (!thoat);           // thoat == true
+    delete[] nhieuMay;          // giải phóng bộ nhớ của ds máy tính
+    xoaDanhSachNhanVien(dsnv);  // giải phóng bộ nhớ của ds khách hàng
 }
 
-void nhapDuLieuGiaTien(MayTinh &mt) {
+void loading(MayTinh &mt, MayTinh nhieuMay[], int &n, DanhSachNhanVien &dsnv, ThueNhieuMay &thueNhieuMay) {
     system("cls");
-    mt.docGiaTien();
-    if (mt.giaTienThuong == 0 || mt.giaTienCaoCap == 0) {
-        cout << "\n(!) Chua thiet lap gia tien. Hay thiet lap gia tien bay gio\n";
-        system("pause");
-        mt.thietLapGiaTien();
+    float tienTrinh = 0.0;
+    while (tienTrinh <= 1) {
+        int doDaiThanh = 100;
+
+        cout << "[";
+        int viTri = doDaiThanh * tienTrinh;
+        for (int i = 0; i < doDaiThanh; ++i) {
+            if (i < viTri)
+                cout << "=";
+            else if (i == viTri)
+                cout << ">";
+            else
+                cout << " ";
+        }
+        cout << "] " << int(tienTrinh * 100.0) << " %\r";
+        cout.flush();
+        if (tienTrinh == float(0.2))
+            nhapDuLieuGiaTien(mt);
+        else if (tienTrinh == float(0.4))
+            nhapDuLieuNhieuMay(nhieuMay, n);
+        else if (tienTrinh == float(0.6))
+            nhapDuLieuDanhSachNhanVien(dsnv);
+        else if (tienTrinh == float(0.8))
+            nhapDuLieuDanhSachNguoiThueTrucTiep(thueNhieuMay, nhieuMay, n);
+        else if (tienTrinh == float(1))
+            cout << "\n\t(*) Tai du lieu thanh cong (*)\n";
+        tienTrinh += 0.2;
+        Sleep(350);
+        system("cls");
+    }
+    cout << endl;
+}
+
+void khoiTaoSoLuongDauVaoCuaFile() {
+    string fileName = "../File/maytinh/momaytructiep.txt";
+    int x = kiemTraFileTrong(fileName);
+    if (x == -1) {
+        ofstream fileOut(fileName);
+        fileOut << '0';
+        fileOut.close();
     }
 }
 
+void nhapDuLieuGiaTien(MayTinh &mt) {
+    // system("cls");
+    mt.docGiaTien();
+    if (mt.giaTienThuong == 0 || mt.giaTienCaoCap == 0) {
+        cout << "\n\t(!) Chua thiet lap gia tien. Hay thiet lap gia tien bay gio\n";
+        system("pause");
+        mt.thietLapGiaTien();
+    } else
+        cout << "\n\t(*) Dang nhap du lieu gia tien (*)\n";
+}
+
 void nhapDuLieuNhieuMay(MayTinh nhieuMay[], int &n) {
-    system("cls");
-    cout << "\n\t(*) Dang nhap du lieu danh sach may tinh (*)\n";
-    Sleep(1000);  // delay 2s
-    docDanhSachCacMay(nhieuMay, n);
+    // system("cls");
+    string fileName = "../File/maytinh/danhsachmaytinh.txt";
+    int x = kiemTraFileTrong(fileName);
+    if (x == -1)
+        n = 0;
+    else {
+        cout << "\n\t(*) Dang nhap du lieu danh sach may tinh (*)\n";
+        // Sleep(1000);  // delay 2s
+        docDanhSachCacMay(nhieuMay, n);
+    }
 }
 
-void nhapDuLieuDanhSachKhachHang(DanhSachKhachHang &dskh) {
-    system("cls");
-    cout << "\n\t(*) Dang nhap du lieu danh sach khach hang (*)\n";
-    Sleep(1000);  // delay 2s
-    docDanhSachKhachHang(dskh);
+void nhapDuLieuDanhSachNhanVien(DanhSachNhanVien &dsnv) {
+    // system("cls");
+    cout << "\n\t(*) Dang nhap du lieu danh sach nhan vien (*)\n";
+    // Sleep(1000);  // delay 2s
+    docDanhSachNhanVien(dsnv);
 }
 
-void nhapDuLieuDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int n) {
+void nhapDuLieuDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int &n) {
+    // system("cls");
     thueNhieuMay.createList();
-    system("cls");
     cout << "\n\t(*) Dang nhap du lieu danh sach nguoi thue truc tiep (*)\n";
-    Sleep(1000);  // delay 2s
+    // Sleep(1000);  // delay 2s
     docDanhSachNguoiThueTrucTiep(thueNhieuMay, nhieuMay, n);
 }
 
@@ -382,5 +393,5 @@ void luuFile(ThueNhieuMay thueNhieuMay, MayTinh nhieuMay[], int n) {
     // Sleep(1000);  // delay 2s
     ghiDanhSachNguoiThueTrucTiep(thueNhieuMay, n);
     system("cls");
-    cout << "\n\t\t(*) Luu thanh cong (*)\n";
+    cout << "\n\t(*) Luu thanh cong (*)\n";
 }
