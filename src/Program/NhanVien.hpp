@@ -29,6 +29,11 @@ void xoaMotNhanVien(DanhSachNhanVien &dsnv);
 void xoaNhanVien(DanhSachNhanVien &dsnv, int ma);
 void xoaDanhSachNhanVien(DanhSachNhanVien &dsnv);
 bool kiemTraMaNhanVienTrung(DanhSachNhanVien dsnv, int ma);
+void inMotNhanVien(DanhSachNhanVien dsnv);
+void inDanhSachNhanVien(DanhSachNhanVien dsnv);
+void docDanhSachNhanVien(DanhSachNhanVien &dsnv);
+void ghiMotNhanVien(DanhSachNhanVien &dsnv, ofstream &fileOut);
+void ghiDanhSachNhanVien(DanhSachNhanVien &dsnv);
 
 DanhSachNhanVien taoNodeNhanVien(NhanVien nv) {
     DanhSachNhanVien nNV = new NodeT;
@@ -153,4 +158,68 @@ bool kiemTraMaNhanVienTrung(DanhSachNhanVien dsnv, int ma) {
             kiemTraMaNhanVienTrung(dsnv->right, ma);
     }
     return false;
+}
+
+void inMotNhanVien(DanhSachNhanVien dsnv) {
+    if (dsnv) {
+        cout << setw(5) << left << dsnv->nv.ma << "\t";
+        cout << setw(15) << left << dsnv->nv.ho + " " + dsnv->nv.ten << "\t";
+        cout << setw(20) << left << dsnv->nv.taiKhoan << "\t";
+        cout << setw(20) << left << dsnv->nv.matKhau << "\t";
+        cout << setw(15) << left << dsnv->nv.soDienThoai << "\t" << endl;
+        inMotNhanVien(dsnv->left);
+        inMotNhanVien(dsnv->right);
+    }
+}
+
+void inDanhSachNhanVien(DanhSachNhanVien dsnv) {
+    cout << "\n";
+    cout << setw(5) << left << "Ma"
+         << "\t";
+    cout << setw(15) << left << "Ho ten"
+         << "\t";
+    cout << setw(20) << left << "Tai khoan"
+         << "\t";
+    cout << setw(20) << left << "Mat khau"
+         << "\t";
+    cout << setw(15) << left << "So dien thoai"
+         << "\t" << endl;
+    inMotNhanVien(dsnv);
+}
+
+void docDanhSachNhanVien(DanhSachNhanVien &dsnv) {
+    string dsnvPath = "../File/nhanvien/danhsachnhanvien.txt";
+    ifstream fileIn(dsnvPath);
+    if (fileIn.fail()) {
+        cout << "\n\t(!) Khong tim thay tap tin\n";
+        system("pause");
+    } else {
+        if (kiemTraFileTrong(dsnvPath) != -1) {
+            while (!fileIn.eof()) {
+                NhanVien nv;
+                fileIn >> nv.ma >> nv.ten >> nv.ho >> nv.taiKhoan >> nv.matKhau >> nv.soDienThoai;
+                themNhanVien(dsnv, taoNodeNhanVien(nv));
+            }
+        }
+    }
+    fileIn.close();
+}
+
+void ghiMotNhanVien(DanhSachNhanVien &dsnv, ofstream &fileOut) {
+    if (dsnv) {
+        fileOut << dsnv->nv.ma << " " << dsnv->nv.ho << " " << dsnv->nv.ten << " " << dsnv->nv.taiKhoan << " " << dsnv->nv.matKhau << " " << dsnv->nv.soDienThoai << endl;
+        ghiMotNhanVien(dsnv->left, fileOut);
+        ghiMotNhanVien(dsnv->right, fileOut);
+    }
+}
+
+void ghiDanhSachNhanVien(DanhSachNhanVien &dsnv) {
+    string dsnvPath = "../File/nhanvien/danhsachnhanvien.txt";
+    ofstream fileOut(dsnvPath);
+    if (fileOut.fail()) {
+        cout << "\n\t(!) Khong tim thay tap tin\n";
+        system("pause");
+    } else
+        ghiMotNhanVien(dsnv, fileOut);
+    fileOut.close();
 }
