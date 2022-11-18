@@ -5,20 +5,21 @@
 
 void docDanhSachCacMay(MayTinh nhieuMay[], int &n);                   // đọc danh sách các máy
 void ghiDanhSachCacMay(MayTinh nhieuMay[], int &n);                   // ghi danh sách các máy
-void xuatDanhSachCacMay(MayTinh nhieuMay[], int n);                   // xuất danh sách các máy (cả trống và đã được sử dụng)
 MayTinh *layViTriCuaMay(MayTinh nhieuMay[], int n, int soMay);        // lấy vị trí của máy
+void xuatDanhSachCacMay(MayTinh nhieuMay[], int n);                   // xuất danh sách các máy (cả trống và đã được sử dụng)
 void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n);                // xuất danh sách các máy đã được sử dụng
 void xuatDanhSachCacMayTrong(MayTinh nhieuMay[], int n);              // xuất danh sách các máy trống
 void sapXepDanhSachMayTinh(MayTinh nhieuMay[], int &n);               // sắp xếp danh sách máy tính tăng dần theo số máy
-bool hetMay(MayTinh nhieuMay[], int n);                               // kiểm tra hết máy
+bool kiemTraHetMay(MayTinh nhieuMay[], int n);                        // kiểm tra hết máy
 bool kiemTraTrangThai(MayTinh nhieuMay[], int n);                     // kiểm tra trạng thái
 bool kiemTraSoMay(MayTinh nhieuMay[], int n, int soMay);              // kiểm tra máy còn trống hay đã được sử dụng
 bool kiemTraSoMayCanThanhToan(MayTinh nhieuMay[], int n, int soMay);  // kiểm tra số máy cần thanh toán
 
 void docDanhSachCacMay(MayTinh nhieuMay[], int &n) {
-    ifstream fileIn("../File/maytinh/danhsachmaytinh.txt");
+    string fileName = "../File/maytinh/danhsachmaytinh.txt";
+    ifstream fileIn(fileName);
     if (fileIn.fail()) {
-        cout << "\n(!) Loi khi doc file\n";
+        cout << "\n\t(!) Tap tin khong ton tai\n";
         system("pause");
     } else {
         n = 0;
@@ -34,10 +35,11 @@ void docDanhSachCacMay(MayTinh nhieuMay[], int &n) {
 }
 
 void ghiDanhSachCacMay(MayTinh nhieuMay[], int &n) {
-    int count = 1;
-    ofstream fileOut("../File/maytinh/danhsachmaytinh.txt");
+    string fileName = "../File/maytinh/danhsachmaytinh.txt";
+    // int count = 1;
+    ofstream fileOut(fileName);
     if (fileOut.fail()) {
-        cout << "\n(!) Loi khi mo file\n";
+        cout << "\n\t(!) Tap tin khong ton tai\n";
         system("pause");
     } else {
         for (int i = 0; i < n; i++) {
@@ -52,23 +54,6 @@ void ghiDanhSachCacMay(MayTinh nhieuMay[], int &n) {
     fileOut.close();
 }
 
-void xuatDanhSachCacMay(MayTinh nhieuMay[], int n) {
-    MayTinh mt;
-    cout << "\n";
-    cout << setw(10) << left << "Ma may"
-         << "\t";
-    cout << setw(10) << left << "So may"
-         << "\t";
-    cout << setw(20) << left << "Kieu may"
-         << "\t";
-    cout << setw(20) << left << "Tinh trang"
-         << "\t";
-    cout << setw(30) << left << "Thoi gian bat dau"
-         << "\t" << endl;
-    for (int i = 0; i < n; i++)
-        nhieuMay[i].inMotMayTheoChieuNgangCoThoiGian();
-}
-
 MayTinh *layViTriCuaMay(MayTinh nhieuMay[], int n, int soMay) {
     for (int i = 0; i < n; i++)
         if (nhieuMay[i].soMay == soMay)
@@ -76,40 +61,72 @@ MayTinh *layViTriCuaMay(MayTinh nhieuMay[], int n, int soMay) {
     return NULL;
 }
 
-void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n) {
-    cout << "\n";
-    cout << setw(10) << left << "Ma May"
-         << "\t";
-    cout << setw(10) << left << "So may"
-         << "\t";
-    cout << setw(20) << left << "Kieu may"
-         << "\t";
-    cout << setw(20) << left << "Tinh trang"
-         << "\t";
-    cout << setw(30) << left << "Thoi gian bat dau"
-         << "\t" << endl;
-    for (int i = 0; i < n; i++)
-        if (nhieuMay[i].tinhTrang == 1)
+void xuatDanhSachCacMay(MayTinh nhieuMay[], int n) {
+    if (n != 0) {
+        MayTinh mt;
+        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
+        cout << setw(10) << left << "| Ma may"
+             << "|\t";
+        cout << setw(10) << left << "So may"
+             << "|\t";
+        cout << setw(20) << left << "Kieu may"
+             << "|\t";
+        cout << setw(20) << left << "Tinh trang"
+             << "|\t";
+        cout << setw(23) << left << "Thoi gian bat dau"
+             << "|\n";
+        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
+        for (int i = 0; i < n; i++)
             nhieuMay[i].inMotMayTheoChieuNgangCoThoiGian();
+        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
+    } else
+        cout << "\n\t(!) Danh sach may tinh trong\n";
+}
+
+void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n) {
+    if (n != 0) {
+        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
+        cout << setw(10) << left << "| Ma May"
+             << "|\t";
+        cout << setw(10) << left << "So may"
+             << "|\t";
+        cout << setw(20) << left << "Kieu may"
+             << "|\t";
+        cout << setw(20) << left << "Tinh trang"
+             << "|\t";
+        cout << setw(23) << left << "Thoi gian bat dau"
+             << "|\n";
+        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
+        for (int i = 0; i < n; i++)
+            if (nhieuMay[i].tinhTrang == 1)
+                nhieuMay[i].inMotMayTheoChieuNgangCoThoiGian();
+        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
+    } else
+        cout << "\n\t(!) Danh sach may tinh trong\n";
 }
 
 void xuatDanhSachCacMayTrong(MayTinh nhieuMay[], int n) {
-    if (hetMay(nhieuMay, n))  // nếu hết máy
-        cout << "\n\t(!) Het may\n";
-    else {
-        cout << "\n";
-        cout << setw(10) << left << "Ma May"
-             << "\t";
-        cout << setw(10) << left << "So may"
-             << "\t";
-        cout << setw(20) << left << "Kieu may"
-             << "\t";
-        cout << setw(20) << left << "Tinh trang"
-             << "\t" << endl;
-        for (int i = 0; i < n; i++)
-            if (nhieuMay[i].tinhTrang == 0)
-                nhieuMay[i].inMotMayTheoChieuNgang();
-    }
+    if (n != 0) {
+        if (kiemTraHetMay(nhieuMay, n))  // nếu hết máy
+            cout << "\n\t(!) Het may\n";
+        else {
+            cout << "*---------*---------------*-------------------------*-----------------------*\n";
+            cout << setw(10) << left << "| Ma May"
+                 << "|\t";
+            cout << setw(10) << left << "So may"
+                 << "|\t";
+            cout << setw(20) << left << "Kieu may"
+                 << "|\t";
+            cout << setw(20) << left << "Tinh trang"
+                 << "|\n";
+            cout << "*---------*---------------*-------------------------*-----------------------*\n";
+            for (int i = 0; i < n; i++)
+                if (nhieuMay[i].tinhTrang == 0)
+                    nhieuMay[i].inMotMayTheoChieuNgang();
+            cout << "*---------*---------------*-------------------------*-----------------------*\n";
+        }
+    } else
+        cout << "\n\t(!) Danh sach may tinh trong\n";
 }
 
 void sapXepDanhSachMayTinh(MayTinh nhieuMay[], int &n) {
@@ -122,7 +139,7 @@ void sapXepDanhSachMayTinh(MayTinh nhieuMay[], int &n) {
             }
 }
 
-bool hetMay(MayTinh nhieuMay[], int n) {
+bool kiemTraHetMay(MayTinh nhieuMay[], int n) {
     for (int i = 0; i < n; i++)
         if (nhieuMay[i].tinhTrang == 0)  // còn máy trống -> thì trả về false
             return false;

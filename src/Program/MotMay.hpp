@@ -37,6 +37,7 @@ void layThoiGianHeThong(int &gio, int &phut, int &giay, int &ngay, int &thang, i
 string taoMaMayTinh(MayTinh nhieuMay[], int n);                                            // tạo mã máy tính ngẫu nhiên
 int kiemTraTrungMaMayTinh(MayTinh nhieuMay[], int n, string str);                          // kiểm tra mã máy tính đã tồn tại
 int kiemTraTrungSoMay(MayTinh nhieuMay[], int n, int soMay);                               // kiểm tra số máy đã tồn tại
+int kiemTraFileTrong(string fileName);                                                     // kiểm tra file đầu vào trống
 
 void layThoiGianHeThong(int &gio, int &phut, int &giay, int &ngay, int &thang, int &nam) {
     time_t baygio = time(0);
@@ -76,16 +77,27 @@ void MayTinh::themMayTinh(MayTinh nhieuMay[], int &n) {
     MayTinh mt;
     int soMayTam;
     mt.maMay = taoMaMayTinh(nhieuMay, n);
-    do {
-        cout << "\n(?) Nhap so may: ";
-        // cin.ignore();
-        cin >> mt.soMay;
-        soMayTam = n + 1;
-        if (kiemTraTrungSoMay(nhieuMay, n, mt.soMay) != -1)
-            cout << "\n\t(!) So may da ton tai. Hay nhap lai\n";
-        else if (mt.soMay > soMayTam)
-            cout << "\n\t(!) So may chi duoc lon hon so may cu 1 don vi. Hay nhap lai\n";
-    } while (kiemTraTrungSoMay(nhieuMay, n, mt.soMay) != -1 || mt.soMay > soMayTam);
+    string fileName = "../File/maytinh/danhsachmaytinh.txt";
+    int x = kiemTraFileTrong(fileName);
+    if (x != -1) {
+        do {
+            cout << "\n(?) Nhap so may: ";
+            // cin.ignore();
+            cin >> mt.soMay;
+            soMayTam = n + 1;
+            if (kiemTraTrungSoMay(nhieuMay, n, mt.soMay) != -1)
+                cout << "\n\t(!) So may da ton tai. Hay nhap lai\n";
+            else if (mt.soMay > soMayTam)
+                cout << "\n\t(!) So may chi duoc lon hon so may cu 1 don vi. Hay nhap lai\n";
+        } while (kiemTraTrungSoMay(nhieuMay, n, mt.soMay) != -1 || mt.soMay > soMayTam);
+    } else {
+        do {
+            cout << "\n(?) Nhap so may: ";
+            cin >> mt.soMay;
+            if (mt.soMay != 1)
+                cout << "\n\t(!) So may khoi dau mac dinh se la 1. Xin hay nhap lai\n";
+        } while (mt.soMay != 1);
+    }
     do {
         cout << "\n(?) Nhap kieu may (0: Thuong - 1: Cao cap): ";
         cin >> mt.kieuMay;
@@ -96,7 +108,7 @@ void MayTinh::themMayTinh(MayTinh nhieuMay[], int &n) {
         nhieuMay[i + 1] = nhieuMay[i];
     nhieuMay[0] = mt;
     n++;
-    cout << "\n(!) Da them thanh cong\n";
+    cout << "\n\t(!) Da them thanh cong\n";
     system("pause");
 }
 
@@ -107,7 +119,7 @@ void MayTinh::xoaMayTinh(MayTinh nhieuMay[], int &n) {
     int vitri = kiemTraTrungMaMayTinh(nhieuMay, n, str);
     // Dời
     if (vitri < 0) {
-        cout << "\n(!) May tinh khong ton tai. Hay kiem tra lai\n";
+        cout << "\n\t(!) May tinh khong ton tai. Hay kiem tra lai\n";
         system("pause");
     } else {
         for (int i = vitri; i < n - 1; i++) {
@@ -119,7 +131,7 @@ void MayTinh::xoaMayTinh(MayTinh nhieuMay[], int &n) {
         // Giảm số lượng
         MayTinh tam = nhieuMay[n - 1];
         n--;
-        cout << "\n(!) Da xoa thanh cong\n";
+        cout << "\n\t(!) Da xoa thanh cong\n";
         system("pause");
     }
 }
@@ -134,10 +146,10 @@ void MayTinh::inMotMayTheoChieuNgang() {
         loaiKieuMay = "Cao cap";
     else  // kieuMay == 0 -> Máy thường
         loaiKieuMay = "Thuong";
-    cout << setw(10) << left << maMay << "\t";
-    cout << setw(10) << left << soMay << "\t";
-    cout << setw(20) << left << loaiKieuMay << "\t";
-    cout << setw(20) << left << tinhTrangMay << "\t" << endl;
+    cout << setw(10) << left << "| " + maMay << "|\t";
+    cout << setw(10) << left << soMay << "|\t";
+    cout << setw(20) << left << loaiKieuMay << "|\t";
+    cout << setw(20) << left << tinhTrangMay << "|\t\n";
 }
 
 void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
@@ -162,7 +174,7 @@ void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
     if (NAMBD.length() == 1)
         NAMBD = "0" + NAMBD;
 
-    string thoiGian = "[" + GIOBD + ":" + PHUTBD + ":" + GIAYBD + " - " + NGAYBD + "/" + THANGBD + "/" + NAMBD + "]";
+    string thoiGian = GIOBD + ":" + PHUTBD + ":" + GIAYBD + " - " + NGAYBD + "/" + THANGBD + "/" + NAMBD;
 
     if (tinhTrang == 1)  // tinhTrang == 1 -> Máy đã có người sử dụng
         tinhTrangMay = "Day";
@@ -173,28 +185,33 @@ void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
     else  // kieuMay == 0 -> Máy thường
         loaiKieuMay = "Thuong";
 
-    cout << setw(10) << left << maMay << "\t";
-    cout << setw(10) << left << soMay << "\t";
-    cout << setw(20) << left << loaiKieuMay << "\t";
-    cout << setw(20) << left << tinhTrangMay << "\t";
+    cout << setw(10) << left << "| " + maMay << "|\t";
+    cout << setw(10) << left << soMay << "|\t";
+    cout << setw(20) << left << loaiKieuMay << "|\t";
+    cout << setw(20) << left << tinhTrangMay << "|\t";
 
     if (tinhTrang != 0) {
         if (ngayBD != 0 && thangBD != 0 && namBD != 0)
-            cout << setw(20) << right << thoiGian << "\t";
+            cout << setw(23) << left << thoiGian << "|";
         else
-            cout << setw(20) << right << " ";
+            cout << setw(23) << left << " ";
         cout << "\n";
     } else
-        cout << "\n";
+        cout << setw(23) << left << " "
+             << "|\n";
 }
 
 void MayTinh::thietLapGiaTien() {
+    cout << "\n\tGIA TIEN HIEN TAI\n";
+    cout << setw(15) << left << "- May thuong:";
+    cout << setw(20) << right << giaTienThuong << endl;
+    cout << setw(15) << left << "- May cao cap:";
+    cout << setw(20) << right << giaTienCaoCap << endl;
     cout << "\n(?) Nhap gia tien may thuong / 1 gio: ";
     cin >> giaTienThuong;
     cout << "\n(?) Nhap gia tien may cao cap / 1 gio: ";
     cin >> giaTienCaoCap;
-    system("cls");
-    cout << "\n(!) Thiet lap gia tien thanh cong\n";
+    cout << "\n\t(!) Thiet lap gia tien thanh cong\n";
     ghiGiaTien();
 }
 
@@ -214,9 +231,9 @@ void MayTinh::ghiMotMay(ofstream &fileOut) {
 }
 
 void MayTinh::docGiaTien() {
-    ifstream fileIn("../File/thanhtoan/giatien.txt");
+    ifstream fileIn("../File/maytinh/giatien.txt");
     if (fileIn.fail()) {
-        cout << "\n(!) Loi khi doc file\n";
+        cout << "\n\t(!) Tap tin khong ton tai\n";
         system("pause");
     } else {
         while (!fileIn.eof()) {
@@ -228,9 +245,9 @@ void MayTinh::docGiaTien() {
 }
 
 void MayTinh::ghiGiaTien() {
-    ofstream fileOut("../File/thanhtoan/giatien.txt");
+    ofstream fileOut("../File/maytinh/giatien.txt");
     if (fileOut.fail()) {
-        cout << "\n(!) Loi khi mo file\n";
+        cout << "\n\t(!) Tap tin khong ton tai\n";
         system("pause");
     } else {
         fflush(stdin);
@@ -238,4 +255,13 @@ void MayTinh::ghiGiaTien() {
         fileOut << giaTienCaoCap;
     }
     fileOut.close();
+}
+
+int kiemTraFileTrong(string fileName) {
+    ifstream fileIn(fileName);
+    int n = -1;
+    fileIn >> n;
+    fileIn.ignore();
+    fileIn.close();
+    return n;
 }
