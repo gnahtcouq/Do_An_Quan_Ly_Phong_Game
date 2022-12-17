@@ -2,11 +2,11 @@
 
 # 1. Giới thiệu
 - Thành viên:
-  - Trần Văn Quốc Thắng - DH52007101
-  - Võ Xuân Lam - DH52006929
-  - Đặng Xuân Sang - DH52006904
-  - Trần Nguyễn Thanh Sang - DH52007102
-  - Đỗ Trần Hải Sơn - DH52007024
+  - Trần Văn Quốc Thắng - DH52007101 - D20_TH11
+  - Võ Xuân Lam - DH52006929 - D20_TH11
+  - Đặng Xuân Sang - DH52006904 - D20_TH11
+  - Trần Nguyễn Thanh Sang - DH52007102 - D20_TH11
+  - Đỗ Trần Hải Sơn - DH52007024 - D20_TH11
 
 # 2. Sử dụng thư viện
 * Đồ án có sử dụng thư viện màu colors.hpp
@@ -15,4 +15,4 @@
 # 3. Code
 - Được viết trên Visual Studio Code (VSCode)
 - Ngôn ngữ: C++
-- Build file [main.cpp](Code/Program/main.cpp) -> **main.exe** rồi chạy file **main.exe**
+- Build file [main.cpp](src/Program/main.cpp) -> **main.exe** rồi chạy file **main.exe**
