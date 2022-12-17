@@ -13,6 +13,6 @@
 * Cài đặt thư viện colors. [Xem hướng dẫn cài đặt tại đây](https://github.com/hugorplobo/colors.hpp)
 
 # 3. Code
-- Được viết trên Visual Studio Code (VSCode)
+- Được viết trên Visual Studio Code (VSCode). [Xemm hướng dẫn cài đặt tại đây](https://codelearn.io/sharing/huong-dan-cai-dat-visual-studio-code-lap-trinh-cpp)
 - Ngôn ngữ: C++
 - Build file [main.cpp](src/Program/main.cpp) -> **main.exe** rồi chạy file **main.exe**
