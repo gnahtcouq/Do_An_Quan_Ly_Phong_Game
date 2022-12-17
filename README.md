@@ -9,8 +9,8 @@
   - Đỗ Trần Hải Sơn - DH52007024
 
 # 2. Sử dụng thư viện
-Đồ án có sử dụng thư viện màu colors.hpp
-Cài đặt thư viện colors. [Xem hướng dẫn cài đặt tại đây](https://github.com/hugorplobo/colors.hpp)
+* Đồ án có sử dụng thư viện màu colors.hpp
+* Cài đặt thư viện colors. [Xem hướng dẫn cài đặt tại đây](https://github.com/hugorplobo/colors.hpp)
 
 # 3. Code
 - Được viết trên Visual Studio Code (VSCode)
