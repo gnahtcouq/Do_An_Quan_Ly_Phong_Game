@@ -2,8 +2,7 @@
 #include "ThueMotMay.hpp"
 #include "ThueNhieuMay.hpp"
 
-class Node {
-   public:
+struct Node {
     ThueMotMay data;
     Node *pNext;
 };
@@ -12,29 +11,30 @@ class ThueNhieuMay {
    public:
     Node *pHead;
     Node *pTail;
-    void createList();
-    void addNodeInTail(ThueMotMay);
-    void removeNodeInHead();
-    void removeNodeInTail();
+    void taoListThueMotMay();          // tạo List
+    void themNodeVaoCuoi(ThueMotMay);  // thêm Node vào cuối
+    void xoaNodeDauTien();             // xóa Node đầu tiên
+    void xoaNodeCuoiCung();            // xóa Node cuối cùng
+    void giaiPhongDanhSachNguoiThueTrucTiep();
     void moMayTrucTiep(MayTinh[], int);  // mở máy trực tiếp
     void thanhToan(MayTinh[], int);      // thanh toán
 };
 
-Node *createNode(ThueMotMay value);
-void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int &n);  // đọc danh sách người thuê trực tiếp từ file
-void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay, int n);                        // ghi danh sách người thuê trực tiếp ra file
-void docLichSuThanhToan(string &fileName);
-int tinhSoNgay(int ngayBD, int thangBD, int namBD, int ngayKT, int thangKT, int namKT);  // tính số ngày sử dụng
+Node *taoNodeThueMotMay(ThueMotMay);                                  // tạo Node
+void sapXepDanhSachNguoiThueTheoSoMay(ThueNhieuMay &);                // sắp xếp danh sách người thuê theo số máy
+void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &, MayTinh[], int &);  // đọc danh sách người thuê trực tiếp từ file
+void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay, int);                 // ghi danh sách người thuê trực tiếp ra file
+int tinhSoNgayGiuaHaiMocThoiGian(int, int, int, int, int, int);       // tính số ngày sử dụng
 
-void ThueNhieuMay::createList() {
+void ThueNhieuMay::taoListThueMotMay() {
     pHead = NULL;
     pTail = NULL;
 }
 
-Node *createNode(ThueMotMay thueMotMay) {
+Node *taoNodeThueMotMay(ThueMotMay thueMotMay) {
     Node *p = new Node;
     if (p == NULL) {
-        cout << "\n\t(!) Khong du bo nho";
+        cout << bright_red << "\n\t(!) Khong du bo nho" << reset << "\n";
         return NULL;
     } else {
         p->data = thueMotMay;
@@ -43,8 +43,8 @@ Node *createNode(ThueMotMay thueMotMay) {
     return p;
 }
 
-void ThueNhieuMay::addNodeInTail(ThueMotMay thueMotMay) {
-    Node *p = createNode(thueMotMay);
+void ThueNhieuMay::themNodeVaoCuoi(ThueMotMay thueMotMay) {
+    Node *p = taoNodeThueMotMay(thueMotMay);
     if (pHead == NULL)
         pHead = pTail = p;
     else {
@@ -53,7 +53,7 @@ void ThueNhieuMay::addNodeInTail(ThueMotMay thueMotMay) {
     }
 }
 
-void ThueNhieuMay::removeNodeInHead() {
+void ThueNhieuMay::xoaNodeDauTien() {
     if (pHead == NULL)  // không có phần tử nào
         return;
     else {
@@ -63,16 +63,16 @@ void ThueNhieuMay::removeNodeInHead() {
     }
 }
 
-void ThueNhieuMay::removeNodeInTail() {
+void ThueNhieuMay::xoaNodeCuoiCung() {
     if (pHead == NULL)
         return;
     // nếu phần tử nằm đầu cũng là phần tử nằm cuối
     else if (pHead == pTail)
-        removeNodeInHead();
+        xoaNodeDauTien();
     else {
         for (Node *t = pHead; t != NULL; t = t->pNext) {
             if (t->pNext == pTail) {
-                free(pTail);
+                delete pTail;
                 t->pNext = NULL;
                 pTail = t;
                 return;
@@ -81,11 +81,31 @@ void ThueNhieuMay::removeNodeInTail() {
     }
 }
 
+void ThueNhieuMay::giaiPhongDanhSachNguoiThueTrucTiep() {
+    Node *t = NULL;
+    while (pHead != NULL) {
+        t = pHead;
+        pHead = pHead->pNext;
+        delete t;
+    }
+}
+
+void sapXepDanhSachNguoiThueTheoSoMay(ThueNhieuMay &thueNhieuMay) {
+    for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext) {
+        Node *minIndex = t;
+        for (Node *g = t->pNext; g != NULL; g = g->pNext)
+            if (minIndex->data.maytinh->soMay > g->data.maytinh->soMay)
+                minIndex = g;
+        if (minIndex != t)
+            swap(t->data, minIndex->data);
+    }
+}
+
 void ThueNhieuMay::moMayTrucTiep(MayTinh nhieuMay[], int n) {
     if (n != 0) {
         if (kiemTraHetMay(nhieuMay, n)) {  // nếu hết máy
             system("cls");
-            cout << "\n\t(!) Het may\n";
+            cout << bright_red << "\n\t(!) Het may" << reset << "\n";
         } else {
             int gioBD = 0, phutBD = 0, giayBD = 0, ngayBD = 0, thangBD = 0, namBD = 0;
             ThueMotMay r;
@@ -98,11 +118,11 @@ void ThueNhieuMay::moMayTrucTiep(MayTinh nhieuMay[], int n) {
             r.maytinh->ngayBD = ngayBD;
             r.maytinh->thangBD = thangBD;
             r.maytinh->namBD = namBD;
-            cout << "\n\t(!) Mo may thanh cong\n";
+            cout << bright_green << "\n\t(!) Mo may thanh cong" << reset << "\n";
             system("pause");
         }
     } else {
-        cout << "\n\t(!) Danh sach may tinh trong\n";
+        cout << bright_red << "\n\t(!) Danh sach may tinh trong" << reset << "\n";
         system("pause");
     }
 }
@@ -112,7 +132,7 @@ void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[]
     ifstream fileIn(fileName);
     n = kiemTraFileTrong(fileName);
     if (fileIn.fail()) {
-        cout << "\n\t(!) Khong tim thay tap tin\n";
+        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
         system("pause");
     } else {
         ThueMotMay r;
@@ -122,7 +142,7 @@ void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[]
         if (n != -1) {
             for (int i = 0; i < n; i++) {
                 r.docMotNguoiThueTrucTiep(fileIn, nhieuMay, n);
-                thueNhieuMay.addNodeInTail(r);
+                thueNhieuMay.themNodeVaoCuoi(r);
             }
         }
     }
@@ -134,7 +154,7 @@ void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay, int n) {
     string fileName = "../File/maytinh/momaytructiep.txt";
     ofstream fileOut(fileName);
     if (fileOut.fail()) {
-        cout << "\n\t(!) Khong tim thay tap tin\n";
+        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
         system("pause");
     } else {
         fileOut << n << endl;
@@ -201,7 +221,7 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
             //
             //
             // Tính tổng thời gian đã sử dụng
-            soNgay = tinhSoNgay(r.maytinh->ngayBD, r.maytinh->thangBD, r.maytinh->namBD, r.maytinh->ngayKT, r.maytinh->thangKT, r.maytinh->namKT);
+            soNgay = tinhSoNgayGiuaHaiMocThoiGian(r.maytinh->ngayBD, r.maytinh->thangBD, r.maytinh->namBD, r.maytinh->ngayKT, r.maytinh->thangKT, r.maytinh->namKT);
             thoiGian1 = thoiGianBatDau + (86400 * (soNgay - 1));  // tổng thời gian của ngày bắt đầu + với thời gian của những ngày sử dụng tròn 24 tiếng
             thoiGian2 = thoiGianKetThuc;                          // tổng thời gian của ngày kết thúc
             tongThoiGian = thoiGian1 + thoiGian2;                 // tổng thời gian đã sử dụng
@@ -218,7 +238,6 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
             //
             //
             // Chuyển định dạng giờ, phút, giây, ngày, tháng, năm sang kiểu chuỗi
-            // Nếu (ngày, phút, giây, ngày, tháng, năm) < 10 -> Thêm '0' vào đằng trước
             string GIOSD = to_string(gioSD);
             string PHUTSD = to_string(phutSD);
             string GIAYSD = to_string(giaySD);
@@ -234,7 +253,9 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
             string NGAYKT = to_string(ngayKT);
             string THANGKT = to_string(thangKT);
             string NAMKT = to_string(namKT);
-
+            //
+            //
+            // Nếu (ngày, phút, giây, ngày, tháng, năm) < 10 -> Thêm '0' vào đằng trước
             if (GIOSD.length() == 1) GIOSD = "0" + GIOSD;
             if (PHUTSD.length() == 1) PHUTSD = "0" + PHUTSD;
             if (GIAYSD.length() == 1) GIAYSD = "0" + GIAYSD;
@@ -275,26 +296,28 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
                 loaiKieuMay = "Thuong";
             //
             //
+            // Xuất thông tin thanh toán
             system("cls");
-            cout << "\n\t\t\t\tTHONG TIN THANH TOAN\n";
-            cout << setw(30) << left << "\t\tSo may: "
+            cout << "\n*------------------ THONG TIN THANH TOAN -----------------*\n";
+            cout << setw(30) << left << "| So may: "
                  << "\t";
-            cout << setw(25) << right << r.maytinh->soMay << "\n";
-            cout << setw(30) << left << "\t\tKieu may: "
+            cout << setw(25) << right << r.maytinh->soMay << " |\n";
+            cout << setw(30) << left << "| Kieu may: "
                  << "\t";
-            cout << setw(25) << right << loaiKieuMay << "\n";
-            cout << setw(30) << left << "\t\tThoi gian bat dau: "
+            cout << setw(25) << right << loaiKieuMay << " |\n";
+            cout << setw(30) << left << "| Thoi gian bat dau: "
                  << "\t";
-            cout << setw(25) << right << thoiGianLucDau << "\n";
-            cout << setw(30) << left << "\t\tXuat hoa don luc: "
+            cout << setw(25) << right << thoiGianLucDau << " |\n";
+            cout << setw(30) << left << "| Xuat hoa don luc: "
                  << "\t";
-            cout << setw(25) << right << thoiGianThanhToan << "\n";
-            cout << setw(30) << left << "\t\tThoi gian da su dung: "
+            cout << setw(25) << right << thoiGianThanhToan << " |\n";
+            cout << setw(30) << left << "| Thoi gian da su dung: "
                  << "\t";
-            cout << setw(25) << right << thoiGianSuDung << "\n";
-            cout << setw(30) << left << "\t\tSo tien can thanh toan: "
+            cout << setw(25) << right << thoiGianSuDung << " |\n";
+            cout << setw(30) << left << "| So tien can thanh toan: "
                  << "\t";
-            cout << setw(25) << right << giaTien << "\n";
+            cout << setw(25) << right << giaTien << " |";
+            cout << "\n*---------------------------------------------------------*\n";
             system("pause");
             //
             //
@@ -304,49 +327,53 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
             r.maytinh->ngayBD = 0;
             r.maytinh->thangBD = 0;
             r.maytinh->namBD = 0;
-            // removeNodeInHead();
-
-            string fileName = "../File/lichsu/lichsuthanhtoan.txt";
-            ofstream fileOut(fileName, ios::app);
+            // xoaNodeDauTien();
+            //
+            //
+            // Ghi lịch sử thanh toán ra file
+            string fileNameLichSu = "../File/lichsu/lichsuthanhtoan.txt";
+            ofstream fileOut(fileNameLichSu, ios::app);
             if (fileOut.fail()) {
-                cout << "\n\t(!) Tap tin khong ton tai\n";
+                cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
                 system("pause");
             } else {
                 fileOut << setw(25) << left << "| " + thoiGianLucDau << "|\t";
                 fileOut << setw(25) << left << thoiGianThanhToan << "|\t";
                 fileOut << setw(10) << left << r.maytinh->soMay << "|\t";
                 fileOut << setw(10) << left << loaiKieuMay << "|\t";
-                fileOut << setw(20) << right << giaTien + " |\n";
+                fileOut << setw(20) << right << giaTien << " |\n";
             }
             fileOut.close();
+            //
+            //
+            // Ghi doanh thu ra file
+            double doanhThu;
+            string fileNameDoanhThu = "../File/doanhthu/" + NGAYKT + "_" + THANGKT + "_" + NAMKT + ".txt";
+            fstream docGhiDoanhThu;
+            // Đọc doanh thu cũ vào trước
+            docGhiDoanhThu.open(fileNameDoanhThu, ios::in);
+            docGhiDoanhThu >> doanhThu;
+            docGhiDoanhThu.close();
+            // Cộng doanh thu mới vào rồi ghi ngược lại vào file
+            docGhiDoanhThu.open(fileNameDoanhThu, ios::out);
+            doanhThu += (double)r.maytinh->giaTien;
+            docGhiDoanhThu << to_string((long long)doanhThu);
+            docGhiDoanhThu.close();
 
             system("cls");
-            cout << "\n\t(!) Thanh toan thanh cong\n";
+            cout << bright_green << "\n\t(!) Thanh toan thanh cong" << reset << "\n";
             system("pause");
         } else {
-            cout << "\n\t(!) Khong co may dang duoc su dung\n";
+            cout << bright_red << "\n\t(!) Khong co may dang duoc su dung" << reset << "\n";
             system("pause");
         }
     } else {
-        cout << "\n\t(!) Danh sach may tinh trong\n";
+        cout << bright_red << "\n\t(!) Danh sach may tinh trong" << reset << "\n";
         system("pause");
     }
 }
 
-void docLichSuThanhToan(string &fileName) {
-    char ch;
-    ifstream fileIn(fileName, ios::in);
-    if (fileIn.fail()) {
-        cout << "\n\t(!) Tap tin khong ton tai\n";
-        system("pause");
-    } else {
-        while (fileIn.get(ch))
-            cout << ch;
-    }
-    fileIn.close();
-}
-
-int tinhSoNgay(int ngayBD, int thangBD, int namBD, int ngayKT, int thangKT, int namKT) {
+int tinhSoNgayGiuaHaiMocThoiGian(int ngayBD, int thangBD, int namBD, int ngayKT, int thangKT, int namKT) {
     int soNgay = 0;
     while (namKT >= namBD) {
         if (namKT == namBD && thangKT == thangBD) {

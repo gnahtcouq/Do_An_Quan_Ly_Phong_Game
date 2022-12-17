@@ -15,13 +15,12 @@ void ThueMotMay::chonMay(MayTinh nhieuMay[], int n) {
     int soMay;
     do {
         system("cls");
-        cout << "\nMENU/MO MAY TRUC TIEP";
-        cout << "\n*-------------------*\n";
+        cout << bright_yellow << "\nMENU/MO MAY TRUC TIEP" << reset << "\n";
         xuatDanhSachCacMayTrong(nhieuMay, n);
         cout << "\n(?) Nhap so may: ";
         cin >> soMay;
         if (!kiemTraSoMay(nhieuMay, n, soMay)) {
-            cout << "\n\t(!) So may khong hop le. Hay nhap lai\n";
+            cout << bright_red << "\n\t(!) So may khong hop le. Xin hay nhap lai" << reset << "\n";
             system("pause");
         } else
             maytinh = layViTriCuaMay(nhieuMay, n, soMay);  // hàm này trong file NhieuMay.hpp
@@ -32,13 +31,12 @@ void ThueMotMay::chonMayCanThanhToan(MayTinh nhieuMay[], int n) {
     int soMay;
     do {
         system("cls");
-        cout << "\nMENU/THANH TOAN";
-        cout << "\n*-------------*\n";
+        cout << bright_yellow << "\nMENU/THANH TOAN" << reset << "\n";
         xuatDanhSachCacMayDay(nhieuMay, n);
         cout << "\n(?) Nhap so may: ";
         cin >> soMay;
         if (!kiemTraSoMayCanThanhToan(nhieuMay, n, soMay)) {
-            cout << "\n\t(!) So may khong hop le. Hay nhap lai\n";
+            cout << bright_red << "\n\t(!) So may khong hop le. Xin hay nhap lai" << reset << "\n";
             system("pause");
         } else
             maytinh = layViTriCuaMay(nhieuMay, n, soMay);  // hàm này trong file NhieuMay.hpp

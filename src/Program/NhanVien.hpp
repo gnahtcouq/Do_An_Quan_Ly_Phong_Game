@@ -1,6 +1,4 @@
 #pragma once
-#include <random>
-
 #include "NhieuMay.hpp"
 
 struct NhanVien {
@@ -19,21 +17,22 @@ struct NodeT {
 };
 typedef struct NodeT *DanhSachNhanVien;
 
-DanhSachNhanVien taoNodeNhanVien(NhanVien nv);
-void khoiTaoDanhSachNhanVien(DanhSachNhanVien &dsnv);
-void timNutNhoNhatBenPhai(DanhSachNhanVien &p, DanhSachNhanVien &dsnv);
-int taoMaNhanVien(DanhSachNhanVien dsnv);
-void nhapMotNhanVien(DanhSachNhanVien &dsnv);
-void themNhanVien(DanhSachNhanVien &dsnv, DanhSachNhanVien nv);
-void xoaMotNhanVien(DanhSachNhanVien &dsnv);
-void xoaNhanVien(DanhSachNhanVien &dsnv, int ma);
-void xoaDanhSachNhanVien(DanhSachNhanVien &dsnv);
-bool kiemTraMaNhanVienTrung(DanhSachNhanVien dsnv, int ma);
-void inMotNhanVien(DanhSachNhanVien dsnv);
-void inDanhSachNhanVien(DanhSachNhanVien dsnv);
-void docDanhSachNhanVien(DanhSachNhanVien &dsnv);
-void ghiMotNhanVien(DanhSachNhanVien &dsnv, ofstream &fileOut);
-void ghiDanhSachNhanVien(DanhSachNhanVien &dsnv);
+DanhSachNhanVien taoNodeNhanVien(NhanVien);                         // tạo Node
+void khoiTaoDanhSachNhanVien(DanhSachNhanVien &);                   // tạo List
+void timNutNhoNhatBenPhai(DanhSachNhanVien &, DanhSachNhanVien &);  // tìm nút nhỏ nhất bên phải
+int taoMaNhanVien(DanhSachNhanVien);                                // tạo mã nhân viên ngẫu nhiên
+void nhapMotNhanVien(DanhSachNhanVien &);                           // nhập một nhân viên
+void themNhanVien(DanhSachNhanVien &, DanhSachNhanVien);            // thêm nhân viên vào cây
+void xoaMotNhanVien(DanhSachNhanVien &);                            // xóa một nhân viên
+void xoaNhanVien(DanhSachNhanVien &, int);                          // xóa nhân viên khỏi cây
+void giaiPhongDanhSachNhanVien(DanhSachNhanVien &);                 // xóa danh sách nhân viên
+bool kiemTraMaNhanVienTrung(DanhSachNhanVien, int);                 // kiểm tra mã nhân viên trùng
+bool kiemTraTaiKhoanNhanVienTrung(string);                          // kiểm tra tài khoản nhân viên trùng
+void inMotNhanVien(DanhSachNhanVien);                               // in một nhân viên
+void inDanhSachNhanVien(DanhSachNhanVien);                          // in danh sách nhân viên
+void docDanhSachNhanVien(DanhSachNhanVien &);                       // đọc danh sách nhân viên
+void ghiMotNhanVien(DanhSachNhanVien &, ofstream &);                // ghi một nhân viên
+void ghiDanhSachNhanVien(DanhSachNhanVien &);                       // ghi danh sách nhân viên
 
 DanhSachNhanVien taoNodeNhanVien(NhanVien nv) {
     DanhSachNhanVien nNV = new NodeT;
@@ -60,44 +59,69 @@ void timNutNhoNhatBenPhai(DanhSachNhanVien &p, DanhSachNhanVien &dsnv) {
 int taoMaNhanVien(DanhSachNhanVien dsnv) {
     int ma;
     do {
-        random_device rd;
-        mt19937 rng(rd());
-        uniform_int_distribution<int> uni(1, 100);
-        ma = (100 + rand() % 890) + uni(rng);
+        ma = rand() % (999 - 100 + 1) + 100;
     } while (kiemTraMaNhanVienTrung(dsnv, ma) == true);
     return ma;
 }
 
 void nhapMotNhanVien(DanhSachNhanVien &dsnv) {
     NhanVien nv;
-    cin.ignore();
     do {
-        cout << "\n(?) Nhap tai khoan :\t\t";
+        cout << "\n(?) Nhap tai khoan:   \t\t";
         getline(cin, nv.taiKhoan);
-        if (nv.taiKhoan == "admin")
-            cout << "\n\t(!) Tai khoan khong duoc trung voi admin";
-    } while (nv.taiKhoan == "admin");
-    cout << "\n(?) Nhap mat khau  :\t\t";
-    getline(cin, nv.matKhau);
+        if (nv.taiKhoan == "admin") {
+            cout << bright_red << "\n\t(!) Tai khoan khong duoc trung voi Admin" << reset << "\n";
+        } else if (nv.taiKhoan.length() > 30) {
+            cout << bright_red << "\n\t(!) Tai khoan khong duoc lon hon 30 ki tu. Xin hay nhap lai" << reset << "\n";
+        } else if (kiemTraTaiKhoanNhanVienTrung(nv.taiKhoan) == true)
+            cout << bright_red << "\n\t(!) Tai khoan da ton tai. Xin hay nhap lai" << reset << "\n";
+    } while (nv.taiKhoan == "admin" || nv.taiKhoan.length() > 30 || kiemTraTaiKhoanNhanVienTrung(nv.taiKhoan) == true);
+    xoaKhoangTrangThua(nv.taiKhoan);
+
+    do {
+        cout << "\n(?) Nhap mat khau:   \t\t";
+        getline(cin, nv.matKhau);
+        if (nv.matKhau.length() > 30) {
+            cout << bright_red << "\n\t(!) Mat khau khong duoc lon hon 30 ki tu. Xin hay nhap lai" << reset << "\n";
+        }
+    } while (nv.matKhau.length() > 30);
+    xoaKhoangTrangThua(nv.matKhau);
+
     do {
         cout << "\n(?) Nhap so dien thoai (10 so):\t";
         getline(cin, nv.soDienThoai);
-        if (nv.soDienThoai.length() <= 0 || nv.soDienThoai.length() > 10 || nv.soDienThoai.length() != 10)
-            cout << "\n\t(!) So dien thoai khong hop le. Hay nhap lai\n";
+        if (nv.soDienThoai.length() <= 0 || nv.soDienThoai.length() > 10 || nv.soDienThoai.length() != 10) {
+            cout << bright_red << "\n\t(!) So dien thoai khong hop le. Xin hay nhap lai" << reset << "\n";
+        }
     } while (nv.soDienThoai.length() <= 0 || nv.soDienThoai.length() > 10 || nv.soDienThoai.length() != 10);
+
     nv.ma = taoMaNhanVien(dsnv);
 
-    cout << "\n(?) Nhap ten :\t\t\t";
-    cin >> nv.ten;
+    do {
+        cout << "\n(?) Nhap ten:  \t\t\t";
+        cin >> nv.ten;
+        if (nv.ten.length() > 8) {
+            cout << bright_red << "\n\t(!) Ten khong duoc lon hon 8 ki tu. Xin hay nhap lai" << reset << "\n";
+        }
+    } while (nv.ten.length() > 8);
+    xoaKhoangTrangThua(nv.ten);
+    vietHoaKiTuDauMoiTu(nv.ten);
     cin.ignore();
 
-    cout << "\n(?) Nhap ho  :\t\t\t";
-    cin >> nv.ho;
+    do {
+        cout << "\n(?) Nhap ho:   \t\t\t";
+        cin >> nv.ho;
+        if (nv.ho.length() > 8) {
+            cout << bright_red << "\n\t(!) Ho khong duoc lon hon 8 ki tu. Xin hay nhap lai" << reset << "\n";
+        }
+    } while (nv.ho.length() > 8);
+    xoaKhoangTrangThua(nv.ho);
+    vietHoaKiTuDauMoiTu(nv.ho);
     cin.ignore();
 
     themNhanVien(dsnv, taoNodeNhanVien(nv));
     system("cls");
-    cout << "\n\t(!) Tao tai khoan thanh cong. Ma tai khoan " << nv.ma << "\n";
+    cout << bright_green << "\n\t(!) Tao tai khoan thanh cong. Ma tai khoan la " << nv.ma << reset << "\n";
 }
 
 void themNhanVien(DanhSachNhanVien &dsnv, DanhSachNhanVien nv) {
@@ -134,16 +158,17 @@ void xoaNhanVien(DanhSachNhanVien &dsnv, int ma) {
             else
                 timNutNhoNhatBenPhai(p, dsnv->right);
             delete p;
-            cout << "\n\t(!) Xoa thanh cong\n";
+            cout << bright_green << "\n\t(!) Xoa thanh cong" << reset << "\n";
         }
-    } else
-        cout << "\n\t(!) Khong tim thay nhan vien can xoa\n";
+    } else {
+        cout << bright_red << "\n\t(!) Khong tim thay nhan vien can xoa" << reset << "\n";
+    }
 }
 
-void xoaDanhSachNhanVien(DanhSachNhanVien &dsnv) {
+void giaiPhongDanhSachNhanVien(DanhSachNhanVien &dsnv) {
     if (dsnv) {
-        xoaDanhSachNhanVien(dsnv->left);
-        xoaDanhSachNhanVien(dsnv->right);
+        giaiPhongDanhSachNhanVien(dsnv->left);
+        giaiPhongDanhSachNhanVien(dsnv->right);
         delete dsnv;
     }
 }
@@ -160,41 +185,55 @@ bool kiemTraMaNhanVienTrung(DanhSachNhanVien dsnv, int ma) {
     return false;
 }
 
+bool kiemTraTaiKhoanNhanVienTrung(string taiKhoan) {
+    string layMa, layTen, layHo, layTaiKhoan, layMatKhau, laySoDienThoai;
+    string fileName = "../File/nhanvien/danhsachnhanvien.txt";
+    ifstream fileIn(fileName);
+    while (fileIn >> layMa >> layTen >> layHo >> layTaiKhoan >> layMatKhau >> laySoDienThoai) {
+        if (taiKhoan == layTaiKhoan) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void inMotNhanVien(DanhSachNhanVien dsnv) {
     if (dsnv) {
-        cout << setw(5) << left << dsnv->nv.ma << "\t";
-        cout << setw(15) << left << dsnv->nv.ho + " " + dsnv->nv.ten << "\t";
-        cout << setw(20) << left << dsnv->nv.taiKhoan << "\t";
-        cout << setw(20) << left << dsnv->nv.matKhau << "\t";
-        cout << setw(15) << left << dsnv->nv.soDienThoai << "\t" << endl;
+        cout << setw(6) << left << "| " + to_string(dsnv->nv.ma) << "|\t";
+        cout << setw(20) << left << dsnv->nv.ho + " " + dsnv->nv.ten << "|\t";
+        cout << setw(30) << left << dsnv->nv.taiKhoan << "|\t";
+        cout << setw(30) << left << dsnv->nv.matKhau << "|\t";
+        cout << setw(14) << left << dsnv->nv.soDienThoai << "|\t\n";
         inMotNhanVien(dsnv->left);
         inMotNhanVien(dsnv->right);
     }
 }
 
 void inDanhSachNhanVien(DanhSachNhanVien dsnv) {
-    cout << "\n";
-    cout << setw(5) << left << "Ma"
-         << "\t";
-    cout << setw(15) << left << "Ho ten"
-         << "\t";
-    cout << setw(20) << left << "Tai khoan"
-         << "\t";
-    cout << setw(20) << left << "Mat khau"
-         << "\t";
-    cout << setw(15) << left << "So dien thoai"
-         << "\t" << endl;
+    cout << "*-----*---------------------*---------------------------------*-------------------------------*---------------*\n";
+    cout << setw(6) << left << "| Ma"
+         << "|\t";
+    cout << setw(20) << left << "Ho ten"
+         << "|\t";
+    cout << setw(30) << left << "Tai khoan"
+         << "|\t";
+    cout << setw(30) << left << "Mat khau"
+         << "|\t";
+    cout << setw(14) << left << "So dien thoai"
+         << "|\t\n";
+    cout << "*-----*---------------------*---------------------------------*-------------------------------*---------------*\n";
     inMotNhanVien(dsnv);
+    cout << "*-----*---------------------*---------------------------------*-------------------------------*---------------*\n";
 }
 
 void docDanhSachNhanVien(DanhSachNhanVien &dsnv) {
-    string dsnvPath = "../File/nhanvien/danhsachnhanvien.txt";
-    ifstream fileIn(dsnvPath);
+    string fileName = "../File/nhanvien/danhsachnhanvien.txt";
+    ifstream fileIn(fileName);
     if (fileIn.fail()) {
-        cout << "\n\t(!) Khong tim thay tap tin\n";
+        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
         system("pause");
     } else {
-        if (kiemTraFileTrong(dsnvPath) != -1) {
+        if (kiemTraFileTrong(fileName) != -1) {
             while (!fileIn.eof()) {
                 NhanVien nv;
                 fileIn >> nv.ma >> nv.ten >> nv.ho >> nv.taiKhoan >> nv.matKhau >> nv.soDienThoai;
@@ -207,17 +246,22 @@ void docDanhSachNhanVien(DanhSachNhanVien &dsnv) {
 
 void ghiMotNhanVien(DanhSachNhanVien &dsnv, ofstream &fileOut) {
     if (dsnv) {
-        fileOut << dsnv->nv.ma << " " << dsnv->nv.ho << " " << dsnv->nv.ten << " " << dsnv->nv.taiKhoan << " " << dsnv->nv.matKhau << " " << dsnv->nv.soDienThoai << endl;
+        fileOut << dsnv->nv.ma << " ";
+        fileOut << dsnv->nv.ho << " ";
+        fileOut << dsnv->nv.ten << " ";
+        fileOut << dsnv->nv.taiKhoan << " ";
+        fileOut << dsnv->nv.matKhau << " ";
+        fileOut << dsnv->nv.soDienThoai << endl;
         ghiMotNhanVien(dsnv->left, fileOut);
         ghiMotNhanVien(dsnv->right, fileOut);
     }
 }
 
 void ghiDanhSachNhanVien(DanhSachNhanVien &dsnv) {
-    string dsnvPath = "../File/nhanvien/danhsachnhanvien.txt";
-    ofstream fileOut(dsnvPath);
+    string fileName = "../File/nhanvien/danhsachnhanvien.txt";
+    ofstream fileOut(fileName);
     if (fileOut.fail()) {
-        cout << "\n\t(!) Khong tim thay tap tin\n";
+        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
         system("pause");
     } else
         ghiMotNhanVien(dsnv, fileOut);
