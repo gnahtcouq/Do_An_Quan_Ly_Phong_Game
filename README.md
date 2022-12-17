@@ -7,8 +7,12 @@
   - Đặng Xuân Sang - DH52006904
   - Trần Nguyễn Thanh Sang - DH52007102
   - Đỗ Trần Hải Sơn - DH52007024
-  
-# 2. Code
+
+# 2. Sử dụng thư viện
+Đồ án có sử dụng thư viện màu colors.hpp
+Cài đặt thư viện colors. [Xem hướng dẫn cài đặt tại đây](https://github.com/hugorplobo/colors.hpp)
+
+# 3. Code
 - Được viết trên Visual Studio Code (VSCode)
 - Ngôn ngữ: C++
 - Build file [main.cpp](Code/Program/main.cpp) -> **main.exe** rồi chạy file **main.exe**
