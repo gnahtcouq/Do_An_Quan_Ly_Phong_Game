@@ -116,10 +116,10 @@ void dangNhap(DanhSachNhanVien dsnv, int &phanQuyen, string &ten) {
         cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
         system("pause");
     } else {
-        fileOut << setw(25) << left << "| " + thoiGianDangNhap << "|\t";
-        fileOut << setw(30) << left << ten << "|\t";
-        fileOut << setw(10) << left << "Dang nhap"
-                << " |\n";
+        fileOut << setw(25) << left << "| " + thoiGianDangNhap << "|";
+        fileOut << setw(30) << left << " " + ten << "|";
+        fileOut << setw(12) << left << " Dang nhap"
+                << "|\n";
     }
     fileOut.close();
 }
@@ -137,7 +137,7 @@ void docLichSu(string &fileName) {
         }
         fileIn.close();
         for (int i = 0; i < list.size(); i++)
-            cout << list[i] << endl;
+            cout << on_bright_blue << list[i] << reset << "\n";
     }
 }
 
@@ -341,28 +341,28 @@ void kiemTraDoanhThu7NgayGanNhat() {
 
     system("cls");
     cout << bright_yellow << "\nMENU/KIEM TRA DOANH THU/DOANH THU 7 NGAY GAN NHAT" << reset << "\n";
-    cout << "*------------------------*------------------------------------*\n";
-    cout << setw(25) << left << "| Thoi gian"
-         << "|\t";
-    cout << setw(30) << left << "Tong doanh thu"
+    cout << on_bright_blue << "*------------------------*------------------------------*" << reset << "\n";
+    cout << on_bright_blue << setw(25) << left << "| Thoi gian"
+         << "|";
+    cout << on_bright_blue << setw(30) << left << " Tong doanh thu"
          << "|\n";
-    cout << "*------------------------*------------------------------------*\n";
-    cout << setw(25) << "| " + NGAY1 + "/" + THANG1 + "/" + NAM1 + " (Hom nay)"
-         << "|\t";
-    cout << setw(30) << doanhThu1 << "|\n";
-    cout << setw(25) << "| " + NGAY2 + "/" + THANG1 + "/" + NAM1 << "|\t";
-    cout << setw(30) << doanhThu2 << "|\n";
-    cout << setw(25) << "| " + NGAY3 + "/" + THANG1 + "/" + NAM1 << "|\t";
-    cout << setw(30) << doanhThu3 << "|\n";
-    cout << setw(25) << "| " + NGAY4 + "/" + THANG1 + "/" + NAM1 << "|\t";
-    cout << setw(30) << doanhThu4 << "|\n";
-    cout << setw(25) << "| " + NGAY5 + "/" + THANG1 + "/" + NAM1 << "|\t";
-    cout << setw(30) << doanhThu5 << "|\n";
-    cout << setw(25) << "| " + NGAY6 + "/" + THANG1 + "/" + NAM1 << "|\t";
-    cout << setw(30) << doanhThu6 << "|\n";
-    cout << setw(25) << "| " + NGAY7 + "/" + THANG1 + "/" + NAM1 << "|\t";
-    cout << setw(30) << doanhThu7 << "|\n";
-    cout << "*------------------------*------------------------------------*\n";
+    cout << on_bright_blue << "*------------------------*------------------------------*" << reset << "\n";
+    cout << on_bright_blue << setw(25) << "| " + NGAY1 + "/" + THANG1 + "/" + NAM1 + " (Hom nay)"
+         << "|";
+    cout << on_bright_blue << setw(30) << " " + doanhThu1 << "|" << reset << "\n";
+    cout << on_bright_blue << setw(25) << "| " + NGAY2 + "/" + THANG1 + "/" + NAM1 << "|";
+    cout << on_bright_blue << setw(30) << " " + doanhThu2 << "|" << reset << "\n";
+    cout << on_bright_blue << setw(25) << "| " + NGAY3 + "/" + THANG1 + "/" + NAM1 << "|";
+    cout << on_bright_blue << setw(30) << " " + doanhThu3 << "|" << reset << "\n";
+    cout << on_bright_blue << setw(25) << "| " + NGAY4 + "/" + THANG1 + "/" + NAM1 << "|";
+    cout << on_bright_blue << setw(30) << " " + doanhThu4 << "|" << reset << "\n";
+    cout << on_bright_blue << setw(25) << "| " + NGAY5 + "/" + THANG1 + "/" + NAM1 << "|";
+    cout << on_bright_blue << setw(30) << " " + doanhThu5 << "|" << reset << "\n";
+    cout << on_bright_blue << setw(25) << "| " + NGAY6 + "/" + THANG1 + "/" + NAM1 << "|";
+    cout << on_bright_blue << setw(30) << " " + doanhThu6 << "|" << reset << "\n";
+    cout << on_bright_blue << setw(25) << "| " + NGAY7 + "/" + THANG1 + "/" + NAM1 << "|";
+    cout << on_bright_blue << setw(30) << " " + doanhThu7 << "|" << reset << "\n";
+    cout << on_bright_blue << "*------------------------*------------------------------*" << reset << "\n";
 }
 
 void kiemTraDoanhThuNgayTuyChinh() {
@@ -403,13 +403,13 @@ void kiemTraDoanhThuNgayTuyChinh() {
 
     system("cls");
     cout << bright_yellow << "\nMENU/KIEM TRA DOANH THU/DOANH THU NGAY TUY CHINH" << reset << "\n";
-    cout << "*------------------------*------------------------------------*\n";
-    cout << setw(25) << left << "| Thoi gian"
-         << "|\t";
-    cout << setw(30) << left << "Tong doanh thu"
+    cout << on_bright_blue << "*------------------------*------------------------------*" << reset << "\n";
+    cout << on_bright_blue << setw(25) << left << "| Thoi gian"
+         << "|";
+    cout << on_bright_blue << setw(30) << left << " Tong doanh thu"
          << "|\n";
-    cout << "*------------------------*------------------------------------*\n";
-    cout << setw(25) << "| " + NGAY + "/" + THANG + "/" + NAM << "|\t";
-    cout << setw(30) << doanhThu << "|\n";
-    cout << "*------------------------*------------------------------------*\n";
+    cout << on_bright_blue << "*------------------------*------------------------------*" << reset << "\n";
+    cout << on_bright_blue << setw(25) << "| " + NGAY + "/" + THANG + "/" + NAM << "|";
+    cout << on_bright_blue << setw(30) << " " + doanhThu << "|" << reset << "\n";
+    cout << on_bright_blue << "*------------------------*------------------------------*" << reset << "\n";
 }

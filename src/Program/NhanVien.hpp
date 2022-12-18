@@ -199,31 +199,31 @@ bool kiemTraTaiKhoanNhanVienTrung(string taiKhoan) {
 
 void inMotNhanVien(DanhSachNhanVien dsnv) {
     if (dsnv) {
-        cout << setw(6) << left << "| " + to_string(dsnv->nv.ma) << "|\t";
-        cout << setw(20) << left << dsnv->nv.ho + " " + dsnv->nv.ten << "|\t";
-        cout << setw(30) << left << dsnv->nv.taiKhoan << "|\t";
-        cout << setw(30) << left << dsnv->nv.matKhau << "|\t";
-        cout << setw(14) << left << dsnv->nv.soDienThoai << "|\t\n";
+        cout << setw(6) << left << "| " + to_string(dsnv->nv.ma) << "|";
+        cout << setw(20) << left << " " + dsnv->nv.ho + " " + dsnv->nv.ten << "|";
+        cout << setw(30) << left << " " + dsnv->nv.taiKhoan << "|";
+        cout << setw(30) << left << " " + dsnv->nv.matKhau << "|";
+        cout << setw(14) << left << " " + dsnv->nv.soDienThoai << "|\n";
         inMotNhanVien(dsnv->left);
         inMotNhanVien(dsnv->right);
     }
 }
 
 void inDanhSachNhanVien(DanhSachNhanVien dsnv) {
-    cout << "*-----*---------------------*---------------------------------*-------------------------------*---------------*\n";
+    cout << on_bright_blue << "*-----*--------------------*------------------------------*------------------------------*--------------*\n";
     cout << setw(6) << left << "| Ma"
-         << "|\t";
-    cout << setw(20) << left << "Ho ten"
-         << "|\t";
-    cout << setw(30) << left << "Tai khoan"
-         << "|\t";
-    cout << setw(30) << left << "Mat khau"
-         << "|\t";
-    cout << setw(14) << left << "So dien thoai"
-         << "|\t\n";
-    cout << "*-----*---------------------*---------------------------------*-------------------------------*---------------*\n";
+         << "|";
+    cout << setw(20) << left << " Ho ten"
+         << "|";
+    cout << setw(30) << left << " Tai khoan"
+         << "|";
+    cout << setw(30) << left << " Mat khau"
+         << "|";
+    cout << setw(14) << left << " So dien thoai"
+         << "|\n";
+    cout << "*-----*--------------------*------------------------------*------------------------------*--------------*\n";
     inMotNhanVien(dsnv);
-    cout << "*-----*---------------------*---------------------------------*-------------------------------*---------------*\n";
+    cout << "*-----*--------------------*------------------------------*------------------------------*--------------*" << reset << "\n";
 }
 
 void docDanhSachNhanVien(DanhSachNhanVien &dsnv) {

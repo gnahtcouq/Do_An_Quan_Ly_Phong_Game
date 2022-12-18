@@ -590,20 +590,20 @@ DANGNHAP:
             cout << bright_yellow << "\nMENU/LICH SU THANH TOAN" << reset << "\n";
             string fileName = "../File/lichsu/lichsuthanhtoan.txt";
             if (kiemTraFileTrong(fileName) != -1) {
-                cout << "*------------------------*-------------------------------*----------------*---------------*--------------------------*\n";
-                cout << setw(25) << left << "| Thoi gian bat dau"
-                     << "|\t";
-                cout << setw(25) << left << "Thoi gian ket thuc"
-                     << "|\t";
-                cout << setw(10) << left << "So may"
-                     << "|\t";
-                cout << setw(10) << left << "Kieu may"
-                     << "|\t";
-                cout << setw(20) << right << "So tien"
-                     << " |\n";
-                cout << "*------------------------*-------------------------------*----------------*---------------*--------------------------*\n";
+                cout << on_bright_blue << "*------------------------*-------------------------*----------*----------*--------------------*" << reset << "\n";
+                cout << on_bright_blue << setw(25) << left << "| Thoi gian bat dau"
+                     << "|" << reset;
+                cout << on_bright_blue << setw(25) << left << " Thoi gian ket thuc"
+                     << "|" << reset;
+                cout << on_bright_blue << setw(10) << left << " So may"
+                     << "|" << reset;
+                cout << on_bright_blue << setw(10) << left << " Kieu may"
+                     << "|" << reset;
+                cout << on_bright_blue << setw(20) << right << "So tien "
+                     << "|" << reset << "\n";
+                cout << on_bright_blue << "*------------------------*-------------------------*----------*----------*--------------------*" << reset << "\n";
                 docLichSu(fileName);
-                cout << "*------------------------*-------------------------------*----------------*---------------*--------------------------*\n";
+                cout << on_bright_blue << "*------------------------*-------------------------*----------*----------*--------------------*" << reset << "\n";
             } else
                 cout << "\n\t(!) Lich su thanh toan trong\n";
             system("pause");
@@ -612,16 +612,16 @@ DANGNHAP:
             cout << bright_yellow << "\nMENU/LICH SU DANG NHAP" << reset << "\n";
             string fileName = "../File/lichsu/lichsudangnhap.txt";
             if (kiemTraFileTrong(fileName) != -1) {
-                cout << "*------------------------*------------------------------------*------------*\n";
-                cout << setw(25) << left << "| Thoi gian"
-                     << "|\t";
-                cout << setw(30) << left << "Tai khoan"
-                     << "|\t";
-                cout << setw(10) << left << "Trang thai"
-                     << " |\n";
-                cout << "*------------------------*------------------------------------*------------*\n";
+                cout << on_bright_blue << "*------------------------*------------------------------*------------*" << reset << "\n";
+                cout << on_bright_blue << setw(25) << left << "| Thoi gian"
+                     << "|" << reset;
+                cout << on_bright_blue << setw(30) << left << " Tai khoan"
+                     << "|" << reset;
+                cout << on_bright_blue << setw(12) << left << " Trang thai"
+                     << "|" << reset << "\n";
+                cout << on_bright_blue << "*------------------------*------------------------------*------------*" << reset << "\n";
                 docLichSu(fileName);
-                cout << "*------------------------*------------------------------------*------------*\n";
+                cout << on_bright_blue << "*------------------------*------------------------------*------------*" << reset << "\n";
             } else
                 cout << "\n\t(!) Lich su dang nhap trong\n";
             system("pause");
@@ -748,10 +748,10 @@ DANGNHAP:
                 cout << "\n\t(!) Tap tin khong ton tai\n";
                 system("pause");
             } else {
-                fileOut << setw(25) << left << "| " + thoiGianDangXuat << "|\t";
-                fileOut << setw(30) << left << ten << "|\t";
-                fileOut << setw(10) << left << "Dang xuat"
-                        << " |\n";
+                fileOut << setw(25) << left << "| " + thoiGianDangXuat << "|";
+                fileOut << setw(30) << left << " " + ten << "|";
+                fileOut << setw(12) << left << " Dang xuat"
+                        << "|\n";
             }
             fileOut.close();
             goto DANGNHAP;
@@ -1008,10 +1008,10 @@ DANGNHAP:
                 cout << "\n\t(!) Tap tin khong ton tai\n";
                 system("pause");
             } else {
-                fileOut << setw(25) << left << "| " + thoiGianDangXuat << "|\t";
-                fileOut << setw(30) << left << ten << "|\t";
-                fileOut << setw(10) << left << "Dang xuat"
-                        << " |\n";
+                fileOut << setw(25) << left << "| " + thoiGianDangXuat << "|";
+                fileOut << setw(30) << left << " " + ten << "|";
+                fileOut << setw(12) << left << " Dang xuat"
+                        << "|\n";
             }
             fileOut.close();
             goto DANGNHAP;
@@ -1092,15 +1092,15 @@ void nhapDuLieuDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhi
 
 void thongTinGioiThieu() {
     cout << bright_yellow << "\nMENU/THONG TIN GIOI THIEU" << reset << "\n";
-    cout << "\n*--------------------" << on_blue << " DAI HOC CONG NGHE SAI GON " << reset << "--------------------*";
-    cout << "\n|" << cyan << " * Do an:      " << reset << "Quan Ly Phong Game                                  |";
-    cout << "\n|                                                                   |";
-    cout << "\n|" << cyan << " * Giang vien: " << reset << "Hoang Khue                                          |";
-    cout << "\n|                                                                   |";
-    cout << "\n|" << cyan << " * Sinh vien:  " << reset << "1. Tran Van Quoc Thang - DH52007101 - D20_TH11      |";
-    cout << "\n|" << cyan << "               " << reset << "2. Vo Xuan Lam - DH52006929 - D20_TH11              |";
-    cout << "\n|" << cyan << "               " << reset << "3. Dang Xuan Sang - DH52006904 - D20_TH11           |";
-    cout << "\n|" << cyan << "               " << reset << "4. Tran Nguyen Thanh Sang - DH52007102 - D20_TH11   |";
-    cout << "\n|" << cyan << "               " << reset << "5. Do Tran Hai Son - DH52007024 - D20_TH11          |";
-    cout << "\n*-------------------------------" << cyan << " 2022 " << reset << "------------------------------*\n";
+    cout << on_bright_blue << "\n*-------------------- DAI HOC CONG NGHE SAI GON --------------------*" << reset;
+    cout << on_bright_blue << "\n| * Do an:      Quan Ly Phong Game                                  |" << reset;
+    cout << on_bright_blue << "\n|                                                                   |" << reset;
+    cout << on_bright_blue << "\n| * Giang vien: Hoang Khue                                          |" << reset;
+    cout << on_bright_blue << "\n|                                                                   |" << reset;
+    cout << on_bright_blue << "\n| * Sinh vien:  1. Tran Van Quoc Thang - DH52007101 - D20_TH11      |" << reset;
+    cout << on_bright_blue << "\n|               2. Vo Xuan Lam - DH52006929 - D20_TH11              |" << reset;
+    cout << on_bright_blue << "\n|               3. Dang Xuan Sang - DH52006904 - D20_TH11           |" << reset;
+    cout << on_bright_blue << "\n|               4. Tran Nguyen Thanh Sang - DH52007102 - D20_TH11   |" << reset;
+    cout << on_bright_blue << "\n|               5. Do Tran Hai Son - DH52007024 - D20_TH11          |" << reset;
+    cout << on_bright_blue << "\n*------------------------------- 2022 ------------------------------*" << reset << "\n";
 }

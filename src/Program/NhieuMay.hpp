@@ -59,43 +59,48 @@ MayTinh *layViTriCuaMay(MayTinh nhieuMay[], int n, int soMay) {
 
 void xuatDanhSachCacMay(MayTinh nhieuMay[], int n) {
     if (n != 0) {
-        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
-        cout << setw(10) << left << "| Ma may"
-             << "|\t";
-        cout << setw(10) << left << "So may"
-             << "|\t";
-        cout << setw(20) << left << "Kieu may"
-             << "|\t";
-        cout << setw(20) << left << "Tinh trang"
-             << "|\t";
-        cout << setw(23) << left << "Thoi gian bat dau"
-             << "|\n";
-        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
+        cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*" << reset << "\n";
+        cout << on_bright_blue << setw(10) << left << "| Ma may"
+             << "|" << reset;
+        cout << on_bright_blue << setw(10) << left << " So may"
+             << "|" << reset;
+        cout << on_bright_blue << setw(20) << left << " Kieu may"
+             << "|" << reset;
+        cout << on_bright_blue << setw(20) << left << " Tinh trang"
+             << "|" << reset;
+        cout << on_bright_blue << setw(23) << left << " Thoi gian bat dau"
+             << "|" << reset << "\n";
+        cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*\n";
         for (int i = 0; i < n; i++)
             nhieuMay[i].inMotMayTheoChieuNgangCoThoiGian();
-        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
+        cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*" << reset << "\n";
     } else
         cout << bright_red << "\n\t(!) Danh sach may tinh trong" << reset << "\n";
 }
 
 void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n) {
     if (n != 0) {
-        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
-        cout << setw(10) << left << "| Ma May"
-             << "|\t";
-        cout << setw(10) << left << "So may"
-             << "|\t";
-        cout << setw(20) << left << "Kieu may"
-             << "|\t";
-        cout << setw(20) << left << "Tinh trang"
-             << "|\t";
-        cout << setw(23) << left << "Thoi gian bat dau"
-             << "|\n";
-        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
-        for (int i = 0; i < n; i++)
-            if (nhieuMay[i].tinhTrang == 1)
-                nhieuMay[i].inMotMayTheoChieuNgangCoThoiGian();
-        cout << "*---------*---------------*-------------------------*-----------------------*--------------------------*\n";
+        // nếu không có máy nào được bật
+        if (!kiemTraTrangThai(nhieuMay, n))
+            cout << bright_red << "\n\t(!) Khong co may dang duoc su dung" << reset << "\n";
+        else {
+            cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*" << reset << "\n";
+            cout << on_bright_blue << setw(10) << left << "| Ma may"
+                 << "|" << reset;
+            cout << on_bright_blue << setw(10) << left << " So may"
+                 << "|" << reset;
+            cout << on_bright_blue << setw(20) << left << " Kieu may"
+                 << "|" << reset;
+            cout << on_bright_blue << setw(20) << left << " Tinh trang"
+                 << "|" << reset;
+            cout << on_bright_blue << setw(23) << left << " Thoi gian bat dau"
+                 << "|" << reset << "\n";
+            cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*\n";
+            for (int i = 0; i < n; i++)
+                if (nhieuMay[i].tinhTrang == 1)
+                    nhieuMay[i].inMotMayTheoChieuNgangCoThoiGian();
+            cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*" << reset << "\n";
+        }
     } else
         cout << bright_red << "\n\t(!) Danh sach may tinh trong" << reset << "\n";
 }
@@ -106,20 +111,20 @@ void xuatDanhSachCacMayTrong(MayTinh nhieuMay[], int n) {
         if (kiemTraHetMay(nhieuMay, n))
             cout << bright_red << "\n\t(!) Het may" << reset << "\n";
         else {
-            cout << "*---------*---------------*-------------------------*-----------------------*\n";
-            cout << setw(10) << left << "| Ma May"
-                 << "|\t";
-            cout << setw(10) << left << "So may"
-                 << "|\t";
-            cout << setw(20) << left << "Kieu may"
-                 << "|\t";
-            cout << setw(20) << left << "Tinh trang"
-                 << "|\n";
-            cout << "*---------*---------------*-------------------------*-----------------------*\n";
+            cout << on_bright_blue << "*---------*----------*--------------------*--------------------*" << reset << "\n";
+            cout << on_bright_blue << setw(10) << left << "| Ma may"
+                 << "|" << reset;
+            cout << on_bright_blue << setw(10) << left << " So may"
+                 << "|" << reset;
+            cout << on_bright_blue << setw(20) << left << " Kieu may"
+                 << "|" << reset;
+            cout << on_bright_blue << setw(20) << left << " Tinh trang"
+                 << "|" << reset << "\n";
+            cout << on_bright_blue << "*---------*----------*--------------------*--------------------*" << reset << "\n";
             for (int i = 0; i < n; i++)
                 if (nhieuMay[i].tinhTrang == 0)
                     nhieuMay[i].inMotMayTheoChieuNgang();
-            cout << "*---------*---------------*-------------------------*-----------------------*\n";
+            cout << on_bright_blue << "*---------*----------*--------------------*--------------------*" << reset << "" << reset << "\n";
         }
     } else
         cout << bright_red << "\n\t(!) Danh sach may tinh trong" << reset << "\n";

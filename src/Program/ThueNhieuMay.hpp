@@ -298,26 +298,21 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
             //
             // Xuất thông tin thanh toán
             system("cls");
-            cout << "\n*------------------ THONG TIN THANH TOAN -----------------*\n";
-            cout << setw(30) << left << "| So may: "
-                 << "\t";
+            cout << bright_yellow << "\nMENU/THANH TOAN" << reset << "\n";
+            cout << on_bright_blue << "\n*----------------- THONG TIN THANH TOAN ----------------*\n";
+            cout << setw(30) << left << "| So may: ";
             cout << setw(25) << right << r.maytinh->soMay << " |\n";
-            cout << setw(30) << left << "| Kieu may: "
-                 << "\t";
+            cout << setw(30) << left << "| Kieu may: ";
             cout << setw(25) << right << loaiKieuMay << " |\n";
-            cout << setw(30) << left << "| Thoi gian bat dau: "
-                 << "\t";
+            cout << setw(30) << left << "| Thoi gian bat dau: ";
             cout << setw(25) << right << thoiGianLucDau << " |\n";
-            cout << setw(30) << left << "| Xuat hoa don luc: "
-                 << "\t";
+            cout << setw(30) << left << "| Xuat hoa don luc: ";
             cout << setw(25) << right << thoiGianThanhToan << " |\n";
-            cout << setw(30) << left << "| Thoi gian da su dung: "
-                 << "\t";
+            cout << setw(30) << left << "| Thoi gian da su dung: ";
             cout << setw(25) << right << thoiGianSuDung << " |\n";
-            cout << setw(30) << left << "| So tien can thanh toan: "
-                 << "\t";
+            cout << setw(30) << left << "| So tien can thanh toan: ";
             cout << setw(25) << right << giaTien << " |";
-            cout << "\n*---------------------------------------------------------*\n";
+            cout << "\n*-------------------------------------------------------*" << reset << "\n";
             system("pause");
             //
             //
@@ -337,11 +332,12 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
                 cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
                 system("pause");
             } else {
-                fileOut << setw(25) << left << "| " + thoiGianLucDau << "|\t";
-                fileOut << setw(25) << left << thoiGianThanhToan << "|\t";
-                fileOut << setw(10) << left << r.maytinh->soMay << "|\t";
-                fileOut << setw(10) << left << loaiKieuMay << "|\t";
-                fileOut << setw(20) << right << giaTien << " |\n";
+                fileOut << setw(25) << left << "| " + thoiGianLucDau << "|";
+                fileOut << setw(25) << left << " " + thoiGianThanhToan << "|";
+                fileOut << setw(10) << left << " " + to_string(r.maytinh->soMay) << "|";
+                fileOut << setw(10) << left << " " + loaiKieuMay << "|";
+                fileOut << setw(20) << right << giaTien + " "
+                        << "|\n";
             }
             fileOut.close();
             //
@@ -360,7 +356,6 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
             docGhiDoanhThu << to_string((long long)doanhThu);
             docGhiDoanhThu.close();
 
-            system("cls");
             cout << bright_green << "\n\t(!) Thanh toan thanh cong" << reset << "\n";
             system("pause");
         } else {

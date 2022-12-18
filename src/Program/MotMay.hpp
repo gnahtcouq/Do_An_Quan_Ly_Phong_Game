@@ -134,10 +134,10 @@ void MayTinh::inMotMayTheoChieuNgang() {
         loaiKieuMay = "Cao cap";
     else  // kieuMay == 0 -> Máy thường
         loaiKieuMay = "Thuong";
-    cout << setw(10) << left << "| " + maMay << "|\t";
-    cout << setw(10) << left << soMay << "|\t";
-    cout << setw(20) << left << loaiKieuMay << "|\t";
-    cout << setw(20) << left << tinhTrangMay << "|\t\n";
+    cout << on_bright_blue << setw(10) << left << "| " + maMay << "|" << reset;
+    cout << on_bright_blue << setw(10) << left << " " + to_string(soMay) << "|" << reset;
+    cout << on_bright_blue << setw(20) << left << " " + loaiKieuMay << "|" << reset;
+    cout << on_bright_blue << setw(20) << left << " " + tinhTrangMay << "|" << reset << "\n";
 }
 
 void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
@@ -174,20 +174,20 @@ void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
     else  // kieuMay == 0 -> Máy thường
         loaiKieuMay = "Thuong";
 
-    cout << setw(10) << left << "| " + maMay << "|\t";
-    cout << setw(10) << left << soMay << "|\t";
-    cout << setw(20) << left << loaiKieuMay << "|\t";
-    cout << setw(20) << left << tinhTrangMay << "|\t";
+    cout << on_bright_blue << setw(10) << left << "| " + maMay << "|" << reset;
+    cout << on_bright_blue << setw(10) << left << " " + to_string(soMay) << "|" << reset;
+    cout << on_bright_blue << setw(20) << left << " " + loaiKieuMay << "|" << reset;
+    cout << on_bright_blue << setw(20) << left << " " + tinhTrangMay << "|" << reset;
 
     if (tinhTrang != 0) {
         if (ngayBD != 0 && thangBD != 0 && namBD != 0)
-            cout << setw(23) << left << thoiGian << "|";
+            cout << on_bright_blue << setw(23) << left << " " + thoiGian << "|" << reset;
         else
-            cout << setw(23) << left << " ";
+            cout << on_bright_blue << setw(23) << left << " ";
         cout << "\n";
     } else
-        cout << setw(23) << left << " "
-             << "|\n";
+        cout << on_bright_blue << setw(23) << left << " "
+             << "|" << reset << "\n";
 }
 
 void MayTinh::docMotMay(ifstream &fileIn) {
@@ -235,14 +235,14 @@ void MayTinh::ghiGiaTien() {
 }
 
 void MayTinh::thietLapGiaTien() {
-    cout << "\n*--------- GIA TIEN HIEN TAI ---------*\n";
-    cout << setw(17) << left << "| May thuong:";
-    cout << setw(20) << right << to_string(giaTienThuong) + " VND"
-         << " |\n";
-    cout << setw(17) << left << "| May cao cap:";
-    cout << setw(20) << right << to_string(giaTienCaoCap) + " VND"
-         << " |";
-    cout << "\n*-------------------------------------*\n";
+    cout << on_bright_blue << "\n*--------- GIA TIEN HIEN TAI ---------*" << reset << "\n";
+    cout << on_bright_blue << setw(17) << left << "| May thuong:" << reset;
+    cout << on_bright_blue << setw(20) << right << to_string(giaTienThuong) + " VND"
+         << " |" << reset << "\n";
+    cout << on_bright_blue << setw(17) << left << "| May cao cap:" << reset;
+    cout << on_bright_blue << setw(20) << right << to_string(giaTienCaoCap) + " VND"
+         << " |" << reset;
+    cout << on_bright_blue << "\n*-------------------------------------*" << reset << "\n";
     cout << "\n(?) Nhap gia tien may thuong / 1 gio: ";
     cin >> giaTienThuong;
     cout << "\n(?) Nhap gia tien may cao cap / 1 gio: ";
