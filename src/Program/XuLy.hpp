@@ -17,10 +17,13 @@ using namespace colors;
 
 #define MAX 200
 
+constexpr auto KEY_ENTER = 13;
 constexpr auto KEY_UP = 72;
 constexpr auto KEY_DOWN = 80;
 constexpr auto KEY_LEFT = 75;
 constexpr auto KEY_RIGHT = 77;
+
+const HWND consoleWindow = GetConsoleWindow();
 
 void inLogo();                                                      // in logo
 int kiemTraFileTrong(string);                                       // kiểm tra file đầu vào trống
@@ -28,6 +31,10 @@ void khoiTaoSoLuongDauVaoCuaFile();                                 // khởi t�
 void layThoiGianHeThong(int &, int &, int &, int &, int &, int &);  // lấy thời gian hệ thống
 void xoaKhoangTrangThua(string &);                                  // xóa khoảng trắng thừa ở giữa
 void vietHoaKiTuDauMoiTu(string &);                                 // viết hoa kí tự đầu
+void thietLapKichThuocManHinh(SHORT, SHORT);                        // thiết lập kích thước màn hình
+void chanThayDoiKichThuocManHinh();                                 // chặn thay đổi kích thước màn hình
+void chanNutCtrl(bool, bool, bool);                                 // chặn nút Ctrl
+void anThanhTruot(BOOL);                                            // ẩn thanh trượt ngang
 
 void inLogo() {
     string line = "";
@@ -36,7 +43,7 @@ void inLogo() {
     fileIn.open(fileName);
     if (fileIn.is_open()) {
         while (getline(fileIn, line))
-            cout << on_blue << line << reset << "\n";
+            cout << "\t\t" << on_blue << line << reset << "\n";
     }
     fileIn.close();
 }
@@ -106,4 +113,38 @@ void vietHoaKiTuDauMoiTu(string &str) {
             }
         }
     }
+}
+
+void thietLapKichThuocManHinh(SHORT width, SHORT height) {
+    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    SMALL_RECT WindowSize;
+    WindowSize.Top = 0;
+    WindowSize.Left = 0;
+    WindowSize.Right = width;
+    WindowSize.Bottom = height;
+
+    SetConsoleWindowInfo(hStdout, 1, &WindowSize);
+}
+
+void chanThayDoiKichThuocManHinh() {
+    HWND hWnd = GetConsoleWindow();
+    SetWindowLong(hWnd, GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) & ~WS_SIZEBOX);
+}
+
+void chanNutCtrl(bool Close, bool Min, bool Max) {
+    HWND hWnd = GetConsoleWindow();
+    HMENU hMenu = GetSystemMenu(hWnd, false);
+
+    if (Close == 1)
+        DeleteMenu(hMenu, SC_CLOSE, MF_BYCOMMAND);
+    if (Min == 1)
+        DeleteMenu(hMenu, SC_MINIMIZE, MF_BYCOMMAND);
+    if (Max == 1)
+        DeleteMenu(hMenu, SC_MAXIMIZE, MF_BYCOMMAND);
+}
+
+void anThanhTruot(BOOL Show) {
+    HWND hWnd = GetConsoleWindow();
+    ShowScrollBar(hWnd, SB_HORZ, Show);
 }

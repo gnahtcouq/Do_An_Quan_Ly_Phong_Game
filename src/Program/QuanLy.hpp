@@ -55,14 +55,14 @@ void dangNhap(DanhSachNhanVien dsnv, int &phanQuyen, string &ten) {
         assert(str != NULL);
         system("cls");
         inLogo();
-        cout << "\t\t\t*-----------------------------------*\n";
-        cout << "\t\t\t|" << on_blue << "         QUAN LY STU CYBER         " << reset << "|\n";
-        cout << "\t\t\t|" << on_blue << "             DANG NHAP             " << reset << "|\n";
-        cout << "\t\t\t*-----------------------------------*\n";
-        cout << "\n\t\t\t(?) Nhap tai khoan: \t";
+        cout << "\t\t\t\t\t*-----------------------------------*\n";
+        cout << "\t\t\t\t\t|" << on_blue << "         QUẢN LÝ STU CYBER         " << reset << "|\n";
+        cout << "\t\t\t\t\t|" << on_blue << "             ĐĂNG NHẬP             " << reset << "|\n";
+        cout << "\t\t\t\t\t*-----------------------------------*\n";
+        cout << "\n\t\t\t\t\t(?) Nhập tài khoản: \t";
         cin >> taiKhoan;
         cin.ignore();
-        cout << "\n\t\t\t(?) Nhap mat khau:  \t";
+        cout << "\n\t\t\t\t\t(?) Nhập mật khẩu:  \t";
         while (true) {
             c = getch();
             if (c == 13)  // break vì nhấn ENTER
@@ -84,12 +84,23 @@ void dangNhap(DanhSachNhanVien dsnv, int &phanQuyen, string &ten) {
         ten = taiKhoan;
         phanQuyen = xacThucDangNhap(dsnv, taiKhoan, matKhau);
         if (phanQuyen == 0) {
-            cout << bright_red << "\n\n\t\t\t(!) Tai khoan/Mat khau khong chinh xac. Xin hay nhap lai" << reset << "\n";
-            system("pause");
+            cout << bright_red << "\n\n\t\t\t\t\t(!) Tài khoản/Mật khẩu không chính xác. Xin hãy nhập lại" << reset << "\n";
+            int key = 0;
+            cout << "\n\t\t\t\t\t[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         }
     } while (phanQuyen == 0);
-    cout << bright_green << "\n\n\t\t\t(!) Dang nhap thanh cong" << reset << "\n";
-    system("pause");
+    cout << bright_green << "\n\n\t\t\t\t\t(!) Đăng nhập thành công" << reset << "\n";
+    cout << "\n\t\t\t\t\t[Nhấn ENTER để tiếp tục...]";
+    while (true) {
+        int key = _getch();
+        if (key == KEY_ENTER)
+            break;
+    }
 
     // Ghi lịch sử đăng nhập
     int gio, phut, giay, ngay, thang, nam;
@@ -113,12 +124,17 @@ void dangNhap(DanhSachNhanVien dsnv, int &phanQuyen, string &ten) {
     string fileName = "../File/lichsu/lichsudangnhap.txt";
     ofstream fileOut(fileName, ios::app);
     if (fileOut.fail()) {
-        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Không tìm thấy tập tin" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     } else {
         fileOut << setw(25) << left << "| " + thoiGianDangNhap << "|";
         fileOut << setw(30) << left << " " + ten << "|";
-        fileOut << setw(12) << left << " Dang nhap"
+        fileOut << setw(16) << left << " Đăng nhập"
                 << "|\n";
     }
     fileOut.close();
@@ -127,8 +143,13 @@ void dangNhap(DanhSachNhanVien dsnv, int &phanQuyen, string &ten) {
 void docLichSu(string &fileName) {
     ifstream fileIn(fileName);
     if (fileIn.fail()) {
-        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Không tìm thấy tập tin" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     } else {
         string line;
         vector<string> list;
@@ -340,14 +361,14 @@ void kiemTraDoanhThu7NgayGanNhat() {
     }
 
     system("cls");
-    cout << bright_yellow << "\nMENU/KIEM TRA DOANH THU/DOANH THU 7 NGAY GAN NHAT" << reset << "\n";
+    cout << bright_yellow << "\nMENU/KIỂM TRA DOANH THU/DOANH THU 7 NGÀY GẦN NHẤT" << reset << "\n";
     cout << on_bright_blue << "*------------------------*------------------------------*" << reset << "\n";
-    cout << on_bright_blue << setw(25) << left << "| Thoi gian"
+    cout << on_bright_blue << setw(27) << left << "| Thời gian"
          << "|";
-    cout << on_bright_blue << setw(30) << left << " Tong doanh thu"
+    cout << on_bright_blue << setw(32) << left << " Tổng doanh thu"
          << "|\n";
     cout << on_bright_blue << "*------------------------*------------------------------*" << reset << "\n";
-    cout << on_bright_blue << setw(25) << "| " + NGAY1 + "/" + THANG1 + "/" + NAM1 + " (Hom nay)"
+    cout << on_bright_blue << setw(26) << "| " + NGAY1 + "/" + THANG1 + "/" + NAM1 + " (Hôm nay)"
          << "|";
     cout << on_bright_blue << setw(30) << " " + doanhThu1 << "|" << reset << "\n";
     cout << on_bright_blue << setw(25) << "| " + NGAY2 + "/" + THANG1 + "/" + NAM1 << "|";
@@ -370,7 +391,7 @@ void kiemTraDoanhThuNgayTuyChinh() {
     string doanhThu;
     do {
         system("cls");
-        cout << bright_yellow << "\nMENU/KIEM TRA DOANH THU/DOANH THU NGAY TUY CHINH" << reset << "\n";
+        cout << bright_yellow << "\nMENU/KIỂM TRA DOANH THU/DOANH THU NGÀY TÙY CHỈNH" << reset << "\n";
         cout << "\n(?) Nhap ngay: ";
         cin >> ngay;
         cout << "\n(?) Nhap thang: ";
@@ -378,8 +399,13 @@ void kiemTraDoanhThuNgayTuyChinh() {
         cout << "\n(?) Nhap nam: ";
         cin >> nam;
         if (!kiemTraNgayHopLe(ngay, thang, nam)) {
-            cout << bright_red << "\n\t(!) Ngay/Thang/Nam khong hop le. Xin hay nhap lai" << reset << "\n";
-            system("pause");
+            cout << bright_red << "\n\t(!) Ngày/Tháng/Năm không hợp lệ. Xin hãy nhập lại" << reset << "\n";
+            cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         }
     } while (!kiemTraNgayHopLe(ngay, thang, nam));
 
@@ -402,11 +428,11 @@ void kiemTraDoanhThuNgayTuyChinh() {
     }
 
     system("cls");
-    cout << bright_yellow << "\nMENU/KIEM TRA DOANH THU/DOANH THU NGAY TUY CHINH" << reset << "\n";
+    cout << bright_yellow << "\nMENU/KIỂM TRA DOANH THU/DOANH THU NGÀY TÙY CHỈNH" << reset << "\n";
     cout << on_bright_blue << "*------------------------*------------------------------*" << reset << "\n";
-    cout << on_bright_blue << setw(25) << left << "| Thoi gian"
+    cout << on_bright_blue << setw(27) << left << "| Thời gian"
          << "|";
-    cout << on_bright_blue << setw(30) << left << " Tong doanh thu"
+    cout << on_bright_blue << setw(32) << left << " Tổng doanh thu"
          << "|\n";
     cout << on_bright_blue << "*------------------------*------------------------------*" << reset << "\n";
     cout << on_bright_blue << setw(25) << "| " + NGAY + "/" + THANG + "/" + NAM << "|";

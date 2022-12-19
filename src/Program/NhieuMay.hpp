@@ -19,8 +19,13 @@ void docDanhSachCacMay(MayTinh nhieuMay[], int &n) {
     string fileName = "../File/maytinh/danhsachmaytinh.txt";
     ifstream fileIn(fileName);
     if (fileIn.fail()) {
-        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Không tìm thấy tập tin" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     } else {
         n = 0;
         while (!fileIn.eof()) {
@@ -37,8 +42,13 @@ void ghiDanhSachCacMay(MayTinh nhieuMay[], int &n) {
     // int count = 1;
     ofstream fileOut(fileName);
     if (fileOut.fail()) {
-        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Không tìm thấy tập tin" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     } else {
         for (int i = 0; i < n; i++) {
             fflush(stdin);
@@ -60,40 +70,40 @@ MayTinh *layViTriCuaMay(MayTinh nhieuMay[], int n, int soMay) {
 void xuatDanhSachCacMay(MayTinh nhieuMay[], int n) {
     if (n != 0) {
         cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*" << reset << "\n";
-        cout << on_bright_blue << setw(10) << left << "| Ma may"
+        cout << on_bright_blue << setw(12) << left << "| Mã máy"
              << "|" << reset;
-        cout << on_bright_blue << setw(10) << left << " So may"
+        cout << on_bright_blue << setw(13) << left << " Số máy"
              << "|" << reset;
-        cout << on_bright_blue << setw(20) << left << " Kieu may"
+        cout << on_bright_blue << setw(23) << left << " Kiểu máy"
              << "|" << reset;
-        cout << on_bright_blue << setw(20) << left << " Tinh trang"
+        cout << on_bright_blue << setw(23) << left << " Tình trạng"
              << "|" << reset;
-        cout << on_bright_blue << setw(23) << left << " Thoi gian bat dau"
+        cout << on_bright_blue << setw(30) << left << " Thời gian bắt đầu"
              << "|" << reset << "\n";
         cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*\n";
         for (int i = 0; i < n; i++)
             nhieuMay[i].inMotMayTheoChieuNgangCoThoiGian();
         cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*" << reset << "\n";
     } else
-        cout << bright_red << "\n\t(!) Danh sach may tinh trong" << reset << "\n";
+        cout << bright_red << "\n\t(!) Danh sách máy tính trống" << reset << "\n";
 }
 
 void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n) {
     if (n != 0) {
         // nếu không có máy nào được bật
         if (!kiemTraTrangThai(nhieuMay, n))
-            cout << bright_red << "\n\t(!) Khong co may dang duoc su dung" << reset << "\n";
+            cout << bright_red << "\n\t(!) Không có máy đang được sử dụng" << reset << "\n";
         else {
             cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*" << reset << "\n";
-            cout << on_bright_blue << setw(10) << left << "| Ma may"
+            cout << on_bright_blue << setw(12) << left << "| Mã máy"
                  << "|" << reset;
-            cout << on_bright_blue << setw(10) << left << " So may"
+            cout << on_bright_blue << setw(13) << left << " Số máy"
                  << "|" << reset;
-            cout << on_bright_blue << setw(20) << left << " Kieu may"
+            cout << on_bright_blue << setw(23) << left << " Kiểu máy"
                  << "|" << reset;
-            cout << on_bright_blue << setw(20) << left << " Tinh trang"
+            cout << on_bright_blue << setw(23) << left << " Tình trạng"
                  << "|" << reset;
-            cout << on_bright_blue << setw(23) << left << " Thoi gian bat dau"
+            cout << on_bright_blue << setw(30) << left << " Thời gian bắt đầu"
                  << "|" << reset << "\n";
             cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*\n";
             for (int i = 0; i < n; i++)
@@ -102,23 +112,23 @@ void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n) {
             cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*" << reset << "\n";
         }
     } else
-        cout << bright_red << "\n\t(!) Danh sach may tinh trong" << reset << "\n";
+        cout << bright_red << "\n\t(!) Danh sách máy tính trống" << reset << "\n";
 }
 
 void xuatDanhSachCacMayTrong(MayTinh nhieuMay[], int n) {
     if (n != 0) {
         // nếu hết máy
         if (kiemTraHetMay(nhieuMay, n))
-            cout << bright_red << "\n\t(!) Het may" << reset << "\n";
+            cout << bright_red << "\n\t(!) Hết máy" << reset << "\n";
         else {
             cout << on_bright_blue << "*---------*----------*--------------------*--------------------*" << reset << "\n";
-            cout << on_bright_blue << setw(10) << left << "| Ma may"
+            cout << on_bright_blue << setw(12) << left << "| Mã máy"
                  << "|" << reset;
-            cout << on_bright_blue << setw(10) << left << " So may"
+            cout << on_bright_blue << setw(13) << left << " Số máy"
                  << "|" << reset;
-            cout << on_bright_blue << setw(20) << left << " Kieu may"
+            cout << on_bright_blue << setw(23) << left << " Kiểu máy"
                  << "|" << reset;
-            cout << on_bright_blue << setw(20) << left << " Tinh trang"
+            cout << on_bright_blue << setw(23) << left << " Tình trạng"
                  << "|" << reset << "\n";
             cout << on_bright_blue << "*---------*----------*--------------------*--------------------*" << reset << "\n";
             for (int i = 0; i < n; i++)
@@ -127,7 +137,7 @@ void xuatDanhSachCacMayTrong(MayTinh nhieuMay[], int n) {
             cout << on_bright_blue << "*---------*----------*--------------------*--------------------*" << reset << "" << reset << "\n";
         }
     } else
-        cout << bright_red << "\n\t(!) Danh sach may tinh trong" << reset << "\n";
+        cout << bright_red << "\n\t(!) Danh sách máy tính trống" << reset << "\n";
 }
 
 void sapXepDanhSachMayTinh(MayTinh nhieuMay[], int &n) {

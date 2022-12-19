@@ -67,41 +67,41 @@ int taoMaNhanVien(DanhSachNhanVien dsnv) {
 void nhapMotNhanVien(DanhSachNhanVien &dsnv) {
     NhanVien nv;
     do {
-        cout << "\n(?) Nhap tai khoan:   \t\t";
+        cout << "\n(?) Nhập tài khoản:   \t\t";
         getline(cin, nv.taiKhoan);
         if (nv.taiKhoan == "admin") {
-            cout << bright_red << "\n\t(!) Tai khoan khong duoc trung voi Admin" << reset << "\n";
+            cout << bright_red << "\n\t(!) Tài khoản không được trùng với tài khoản Admin" << reset << "\n";
         } else if (nv.taiKhoan.length() > 30) {
-            cout << bright_red << "\n\t(!) Tai khoan khong duoc lon hon 30 ki tu. Xin hay nhap lai" << reset << "\n";
+            cout << bright_red << "\n\t(!) Tài khoản không được lớn hơn 30 kí tự. Xin hãy nhập lại" << reset << "\n";
         } else if (kiemTraTaiKhoanNhanVienTrung(nv.taiKhoan) == true)
-            cout << bright_red << "\n\t(!) Tai khoan da ton tai. Xin hay nhap lai" << reset << "\n";
+            cout << bright_red << "\n\t(!) Tài khoản đã tồn tại. Xin hãy nhập lại" << reset << "\n";
     } while (nv.taiKhoan == "admin" || nv.taiKhoan.length() > 30 || kiemTraTaiKhoanNhanVienTrung(nv.taiKhoan) == true);
     xoaKhoangTrangThua(nv.taiKhoan);
 
     do {
-        cout << "\n(?) Nhap mat khau:   \t\t";
+        cout << "\n(?) Nhập mật khẩu:   \t\t";
         getline(cin, nv.matKhau);
         if (nv.matKhau.length() > 30) {
-            cout << bright_red << "\n\t(!) Mat khau khong duoc lon hon 30 ki tu. Xin hay nhap lai" << reset << "\n";
+            cout << bright_red << "\n\t(!) Mật khẩu không được lớn hơn 30 kí tự. Xin hãy nhập lại" << reset << "\n";
         }
     } while (nv.matKhau.length() > 30);
     xoaKhoangTrangThua(nv.matKhau);
 
     do {
-        cout << "\n(?) Nhap so dien thoai (10 so):\t";
+        cout << "\n(?) Nhập số điện thoại (10 số):\t";
         getline(cin, nv.soDienThoai);
         if (nv.soDienThoai.length() <= 0 || nv.soDienThoai.length() > 10 || nv.soDienThoai.length() != 10) {
-            cout << bright_red << "\n\t(!) So dien thoai khong hop le. Xin hay nhap lai" << reset << "\n";
+            cout << bright_red << "\n\t(!) Số điện thoại không hợp lệ. Xin hãy nhập lại" << reset << "\n";
         }
     } while (nv.soDienThoai.length() <= 0 || nv.soDienThoai.length() > 10 || nv.soDienThoai.length() != 10);
 
     nv.ma = taoMaNhanVien(dsnv);
 
     do {
-        cout << "\n(?) Nhap ten:  \t\t\t";
+        cout << "\n(?) Nhập tên:  \t\t\t";
         cin >> nv.ten;
         if (nv.ten.length() > 8) {
-            cout << bright_red << "\n\t(!) Ten khong duoc lon hon 8 ki tu. Xin hay nhap lai" << reset << "\n";
+            cout << bright_red << "\n\t(!) Tên không được lớn hơn 8 kí tự. Xin hãy nhập lại" << reset << "\n";
         }
     } while (nv.ten.length() > 8);
     xoaKhoangTrangThua(nv.ten);
@@ -109,10 +109,10 @@ void nhapMotNhanVien(DanhSachNhanVien &dsnv) {
     cin.ignore();
 
     do {
-        cout << "\n(?) Nhap ho:   \t\t\t";
+        cout << "\n(?) Nhập họ:   \t\t\t";
         cin >> nv.ho;
         if (nv.ho.length() > 8) {
-            cout << bright_red << "\n\t(!) Ho khong duoc lon hon 8 ki tu. Xin hay nhap lai" << reset << "\n";
+            cout << bright_red << "\n\t(!) Họ không được lớn hơn 8 kí tự xin hãy nhập lại" << reset << "\n";
         }
     } while (nv.ho.length() > 8);
     xoaKhoangTrangThua(nv.ho);
@@ -121,7 +121,7 @@ void nhapMotNhanVien(DanhSachNhanVien &dsnv) {
 
     themNhanVien(dsnv, taoNodeNhanVien(nv));
     system("cls");
-    cout << bright_green << "\n\t(!) Tao tai khoan thanh cong. Ma tai khoan la " << nv.ma << reset << "\n";
+    cout << bright_green << "\n\t(!) Tạo tài khoản thành công. Mã tài khoản là " << nv.ma << reset << "\n";
 }
 
 void themNhanVien(DanhSachNhanVien &dsnv, DanhSachNhanVien nv) {
@@ -138,7 +138,7 @@ void themNhanVien(DanhSachNhanVien &dsnv, DanhSachNhanVien nv) {
 
 void xoaMotNhanVien(DanhSachNhanVien &dsnv) {
     int ma;
-    cout << "\n(?) Nhap ma nhan vien can xoa: ";
+    cout << "\n(?) Nhập mã nhân viên cần xóa: ";
     cin >> ma;
     xoaNhanVien(dsnv, ma);
 }
@@ -158,11 +158,10 @@ void xoaNhanVien(DanhSachNhanVien &dsnv, int ma) {
             else
                 timNutNhoNhatBenPhai(p, dsnv->right);
             delete p;
-            cout << bright_green << "\n\t(!) Xoa thanh cong" << reset << "\n";
+            cout << bright_green << "\n\t(!) Xóa thành công" << reset << "\n";
         }
-    } else {
-        cout << bright_red << "\n\t(!) Khong tim thay nhan vien can xoa" << reset << "\n";
-    }
+    } else
+        cout << bright_red << "\n\t(!) Không tìm thấy nhân viên cần xóa" << reset << "\n";
 }
 
 void giaiPhongDanhSachNhanVien(DanhSachNhanVien &dsnv) {
@@ -199,39 +198,44 @@ bool kiemTraTaiKhoanNhanVienTrung(string taiKhoan) {
 
 void inMotNhanVien(DanhSachNhanVien dsnv) {
     if (dsnv) {
-        cout << setw(6) << left << "| " + to_string(dsnv->nv.ma) << "|";
-        cout << setw(20) << left << " " + dsnv->nv.ho + " " + dsnv->nv.ten << "|";
-        cout << setw(30) << left << " " + dsnv->nv.taiKhoan << "|";
-        cout << setw(30) << left << " " + dsnv->nv.matKhau << "|";
-        cout << setw(14) << left << " " + dsnv->nv.soDienThoai << "|\n";
+        cout << on_bright_blue << setw(6) << left << "| " + to_string(dsnv->nv.ma) << "|" << reset;
+        cout << on_bright_blue << setw(20) << left << " " + dsnv->nv.ho + " " + dsnv->nv.ten << "|" << reset;
+        cout << on_bright_blue << setw(30) << left << " " + dsnv->nv.taiKhoan << "|" << reset;
+        cout << on_bright_blue << setw(30) << left << " " + dsnv->nv.matKhau << "|" << reset;
+        cout << on_bright_blue << setw(14) << left << " " + dsnv->nv.soDienThoai << "|" << reset << "\n";
         inMotNhanVien(dsnv->left);
         inMotNhanVien(dsnv->right);
     }
 }
 
 void inDanhSachNhanVien(DanhSachNhanVien dsnv) {
-    cout << on_bright_blue << "*-----*--------------------*------------------------------*------------------------------*--------------*\n";
-    cout << setw(6) << left << "| Ma"
-         << "|";
-    cout << setw(20) << left << " Ho ten"
-         << "|";
-    cout << setw(30) << left << " Tai khoan"
-         << "|";
-    cout << setw(30) << left << " Mat khau"
-         << "|";
-    cout << setw(14) << left << " So dien thoai"
-         << "|\n";
-    cout << "*-----*--------------------*------------------------------*------------------------------*--------------*\n";
+    cout << on_bright_blue << "*-----*--------------------*------------------------------*------------------------------*--------------*" << reset << "\n";
+    cout << on_bright_blue << setw(7) << left << "| Mã"
+         << "|" << reset;
+    cout << on_bright_blue << setw(23) << left << " Họ tên"
+         << "|" << reset;
+    cout << on_bright_blue << setw(33) << left << " Tài khoản"
+         << "|" << reset;
+    cout << on_bright_blue << setw(34) << left << " Mật khẩu"
+         << "|" << reset;
+    cout << on_bright_blue << setw(18) << left << " Số điện thoại"
+         << "|" << reset << "\n";
+    cout << on_bright_blue << "*-----*--------------------*------------------------------*------------------------------*--------------*" << reset << "\n";
     inMotNhanVien(dsnv);
-    cout << "*-----*--------------------*------------------------------*------------------------------*--------------*" << reset << "\n";
+    cout << on_bright_blue << "*-----*--------------------*------------------------------*------------------------------*--------------*" << reset << "\n";
 }
 
 void docDanhSachNhanVien(DanhSachNhanVien &dsnv) {
     string fileName = "../File/nhanvien/danhsachnhanvien.txt";
     ifstream fileIn(fileName);
     if (fileIn.fail()) {
-        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Không tìm thấy tập tin" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     } else {
         if (kiemTraFileTrong(fileName) != -1) {
             while (!fileIn.eof()) {
@@ -261,8 +265,13 @@ void ghiDanhSachNhanVien(DanhSachNhanVien &dsnv) {
     string fileName = "../File/nhanvien/danhsachnhanvien.txt";
     ofstream fileOut(fileName);
     if (fileOut.fail()) {
-        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Không tìm thấy tập tin" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     } else
         ghiMotNhanVien(dsnv, fileOut);
     fileOut.close();

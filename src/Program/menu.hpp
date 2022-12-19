@@ -35,24 +35,25 @@ DANGNHAP:
         bool kiemTra = true;
         int c, y = 0;
         system("cls");
-        cout << "\nXin chao, " << ten << "\n\n";
-        cout << "*---------------------------------------------------*\n";
-        cout << "|" << on_blue << "                                                   " << reset << "|\n";
-        cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-        cout << "|" << on_blue << "                                                   " << reset << "|\n";
-        cout << "*---------------------------------------------------*\n";
-        cout << "|" << on_magenta << "     ->1.   Quan ly may tinh                       " << reset << "|\n";
-        cout << "|      2.   Quan ly nhan vien                       |\n";
-        cout << "|      3.   Xem tinh trang may                      |\n";
-        cout << "|      4.   Lich su thanh toan                      |\n";
-        cout << "|      5.   Lich su dang nhap                       |\n";
-        cout << "|      6.   Kiem tra doanh thu                      |\n";
-        cout << "|      7.   Mo may truc tiep                        |\n";
-        cout << "|      8.   Thanh toan                              |\n";
-        cout << "|      9.   Thiet lap gia tien                      |\n";
-        cout << "|      10.  Thong tin gioi thieu                    |\n";
-        cout << "|      0.   Dang xuat                               |\n";
-        cout << "*---------------------------------------------------*\n";
+        cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+        cout << "\t\t\t*---------------------------------------------------*\n";
+        cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+        cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+        cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+        cout << "\t\t\t*---------------------------------------------------*\n";
+        cout << "\t\t\t|" << on_magenta << "     ->1.   Quản lý máy tính                       " << reset << "|\n";
+        cout << "\t\t\t|      2.   Quản lý nhân viên                       |\n";
+        cout << "\t\t\t|      3.   Xem tình trạng máy                      |\n";
+        cout << "\t\t\t|      4.   Lịch sử thanh toán                      |\n";
+        cout << "\t\t\t|      5.   Lịch sử đăng nhập                       |\n";
+        cout << "\t\t\t|      6.   Kiểm tra doanh thu                      |\n";
+        cout << "\t\t\t|      7.   Mở máy trực tiếp                        |\n";
+        cout << "\t\t\t|      8.   Thanh toán                              |\n";
+        cout << "\t\t\t|      9.   Thiết lập giá tiền                      |\n";
+        cout << "\t\t\t|      10.  Thông tin giới thiệu                    |\n";
+        cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+        cout << "\t\t\t*---------------------------------------------------*\n";
+        cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
         while (kiemTra) {
             int c = _getch();
             if (c == '\r') {
@@ -78,214 +79,225 @@ DANGNHAP:
             system("cls");
 
             if (y == 0) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_magenta << "     ->1.   Quan ly may tinh                       " << reset << "|\n";
-                cout << "|      2.   Quan ly nhan vien                       |\n";
-                cout << "|      3.   Xem tinh trang may                      |\n";
-                cout << "|      4.   Lich su thanh toan                      |\n";
-                cout << "|      5.   Lich su dang nhap                       |\n";
-                cout << "|      6.   Kiem tra doanh thu                      |\n";
-                cout << "|      7.   Mo may truc tiep                        |\n";
-                cout << "|      8.   Thanh toan                              |\n";
-                cout << "|      9.   Thiet lap gia tien                      |\n";
-                cout << "|      10.  Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_magenta << "     ->1.   Quản lý máy tính                       " << reset << "|\n";
+                cout << "\t\t\t|      2.   Quản lý nhân viên                       |\n";
+                cout << "\t\t\t|      3.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      4.   Lịch sử thanh toán                      |\n";
+                cout << "\t\t\t|      5.   Lịch sử đăng nhập                       |\n";
+                cout << "\t\t\t|      6.   Kiểm tra doanh thu                      |\n";
+                cout << "\t\t\t|      7.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      8.   Thanh toán                              |\n";
+                cout << "\t\t\t|      9.   Thiết lập giá tiền                      |\n";
+                cout << "\t\t\t|      10.  Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 1) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Quan ly may tinh                        |\n";
-                cout << "|" << on_magenta << "     ->2.   Quan ly nhan vien                      " << reset << "|\n";
-                cout << "|      3.   Xem tinh trang may                      |\n";
-                cout << "|      4.   Lich su thanh toan                      |\n";
-                cout << "|      5.   Lich su dang nhap                       |\n";
-                cout << "|      6.   Kiem tra doanh thu                      |\n";
-                cout << "|      7.   Mo may truc tiep                        |\n";
-                cout << "|      8.   Thanh toan                              |\n";
-                cout << "|      9.   Thiet lap gia tien                      |\n";
-                cout << "|      10.  Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Quản lý máy tính                        |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->2.   Quản lý nhân viên                      " << reset << "|\n";
+                cout << "\t\t\t|      3.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      4.   Lịch sử thanh toán                      |\n";
+                cout << "\t\t\t|      5.   Lịch sử đăng nhập                       |\n";
+                cout << "\t\t\t|      6.   Kiểm tra doanh thu                      |\n";
+                cout << "\t\t\t|      7.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      8.   Thanh toán                              |\n";
+                cout << "\t\t\t|      9.   Thiết lập giá tiền                      |\n";
+                cout << "\t\t\t|      10.  Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 2) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Quan ly may tinh                        |\n";
-                cout << "|      2.   Quan ly nhan vien                       |\n";
-                cout << "|" << on_magenta << "     ->3.   Xem tinh trang may                     " << reset << "|\n";
-                cout << "|      4.   Lich su thanh toan                      |\n";
-                cout << "|      5.   Lich su dang nhap                       |\n";
-                cout << "|      6.   Kiem tra doanh thu                      |\n";
-                cout << "|      7.   Mo may truc tiep                        |\n";
-                cout << "|      8.   Thanh toan                              |\n";
-                cout << "|      9.   Thiet lap gia tien                      |\n";
-                cout << "|      10.  Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Quản lý máy tính                        |\n";
+                cout << "\t\t\t|      2.   Quản lý nhân viên                       |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->3.   Xem tình trạng máy                     " << reset << "|\n";
+                cout << "\t\t\t|      4.   Lịch sử thanh toán                      |\n";
+                cout << "\t\t\t|      5.   Lịch sử đăng nhập                       |\n";
+                cout << "\t\t\t|      6.   Kiểm tra doanh thu                      |\n";
+                cout << "\t\t\t|      7.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      8.   Thanh toán                              |\n";
+                cout << "\t\t\t|      9.   Thiết lập giá tiền                      |\n";
+                cout << "\t\t\t|      10.  Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 3) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Quan ly may tinh                        |\n";
-                cout << "|      2.   Quan ly nhan vien                       |\n";
-                cout << "|      3.   Xem tinh trang may                      |\n";
-                cout << "|" << on_magenta << "     ->4.   Lich su thanh toan                     " << reset << "|\n";
-                cout << "|      5.   Lich su dang nhap                       |\n";
-                cout << "|      6.   Kiem tra doanh thu                      |\n";
-                cout << "|      7.   Mo may truc tiep                        |\n";
-                cout << "|      8.   Thanh toan                              |\n";
-                cout << "|      9.   Thiet lap gia tien                      |\n";
-                cout << "|      10.  Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Quản lý máy tính                        |\n";
+                cout << "\t\t\t|      2.   Quản lý nhân viên                       |\n";
+                cout << "\t\t\t|      3.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->4.   Lịch sử thanh toán                     " << reset << "|\n";
+                cout << "\t\t\t|      5.   Lịch sử đăng nhập                       |\n";
+                cout << "\t\t\t|      6.   Kiểm tra doanh thu                      |\n";
+                cout << "\t\t\t|      7.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      8.   Thanh toán                              |\n";
+                cout << "\t\t\t|      9.   Thiết lập giá tiền                      |\n";
+                cout << "\t\t\t|      10.  Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 4) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Quan ly may tinh                        |\n";
-                cout << "|      2.   Quan ly nhan vien                       |\n";
-                cout << "|      3.   Xem tinh trang may                      |\n";
-                cout << "|      4.   Lich su thanh toan                      |\n";
-                cout << "|" << on_magenta << "     ->5.   Lich su dang nhap                      " << reset << "|\n";
-                cout << "|      6.   Kiem tra doanh thu                      |\n";
-                cout << "|      7.   Mo may truc tiep                        |\n";
-                cout << "|      8.   Thanh toan                              |\n";
-                cout << "|      9.   Thiet lap gia tien                      |\n";
-                cout << "|      10.  Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Quản lý máy tính                        |\n";
+                cout << "\t\t\t|      2.   Quản lý nhân viên                       |\n";
+                cout << "\t\t\t|      3.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      4.   Lịch sử thanh toán                      |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->5.   Lịch sử đăng nhập                      " << reset << "|\n";
+                cout << "\t\t\t|      6.   Kiểm tra doanh thu                      |\n";
+                cout << "\t\t\t|      7.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      8.   Thanh toán                              |\n";
+                cout << "\t\t\t|      9.   Thiết lập giá tiền                      |\n";
+                cout << "\t\t\t|      10.  Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 5) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Quan ly may tinh                        |\n";
-                cout << "|      2.   Quan ly nhan vien                       |\n";
-                cout << "|      3.   Xem tinh trang may                      |\n";
-                cout << "|      4.   Lich su thanh toan                      |\n";
-                cout << "|      5.   Lich su dang nhap                       |\n";
-                cout << "|" << on_magenta << "     ->6.   Kiem tra doanh thu                     " << reset << "|\n";
-                cout << "|      7.   Mo may truc tiep                        |\n";
-                cout << "|      8.   Thanh toan                              |\n";
-                cout << "|      9.   Thiet lap gia tien                      |\n";
-                cout << "|      10.  Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Quản lý máy tính                        |\n";
+                cout << "\t\t\t|      2.   Quản lý nhân viên                       |\n";
+                cout << "\t\t\t|      3.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      4.   Lịch sử thanh toán                      |\n";
+                cout << "\t\t\t|      5.   Lịch sử đăng nhập                       |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->6.   Kiểm tra doanh thu                     " << reset << "|\n";
+                cout << "\t\t\t|      7.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      8.   Thanh toán                              |\n";
+                cout << "\t\t\t|      9.   Thiết lập giá tiền                      |\n";
+                cout << "\t\t\t|      10.  Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 6) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Quan ly may tinh                        |\n";
-                cout << "|      2.   Quan ly nhan vien                       |\n";
-                cout << "|      3.   Xem tinh trang may                      |\n";
-                cout << "|      4.   Lich su thanh toan                      |\n";
-                cout << "|      5.   Lich su dang nhap                       |\n";
-                cout << "|      6.   Kiem tra doanh thu                      |\n";
-                cout << "|" << on_magenta << "     ->7.   Mo may truc tiep                       " << reset << "|\n";
-                cout << "|      8.   Thanh toan                              |\n";
-                cout << "|      9.   Thiet lap gia tien                      |\n";
-                cout << "|      10.  Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Quản lý máy tính                        |\n";
+                cout << "\t\t\t|      2.   Quản lý nhân viên                       |\n";
+                cout << "\t\t\t|      3.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      4.   Lịch sử thanh toán                      |\n";
+                cout << "\t\t\t|      5.   Lịch sử đăng nhập                       |\n";
+                cout << "\t\t\t|      6.   Kiểm tra doanh thu                      |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->7.   Mở máy trực tiếp                       " << reset << "|\n";
+                cout << "\t\t\t|      8.   Thanh toán                              |\n";
+                cout << "\t\t\t|      9.   Thiết lập giá tiền                      |\n";
+                cout << "\t\t\t|      10.  Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 7) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Quan ly may tinh                        |\n";
-                cout << "|      2.   Quan ly nhan vien                       |\n";
-                cout << "|      3.   Xem tinh trang may                      |\n";
-                cout << "|      4.   Lich su thanh toan                      |\n";
-                cout << "|      5.   Lich su dang nhap                       |\n";
-                cout << "|      6.   Kiem tra doanh thu                      |\n";
-                cout << "|      7.   Mo may truc tiep                        |\n";
-                cout << "|" << on_magenta << "     ->8.   Thanh toan                             " << reset << "|\n";
-                cout << "|      9.   Thiet lap gia tien                      |\n";
-                cout << "|      10.  Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Quản lý máy tính                        |\n";
+                cout << "\t\t\t|      2.   Quản lý nhân viên                       |\n";
+                cout << "\t\t\t|      3.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      4.   Lịch sử thanh toán                      |\n";
+                cout << "\t\t\t|      5.   Lịch sử đăng nhập                       |\n";
+                cout << "\t\t\t|      6.   Kiểm tra doanh thu                      |\n";
+                cout << "\t\t\t|      7.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->8.   Thanh toán                             " << reset << "|\n";
+                cout << "\t\t\t|      9.   Thiết lập giá tiền                      |\n";
+                cout << "\t\t\t|      10.  Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 8) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Quan ly may tinh                        |\n";
-                cout << "|      2.   Quan ly nhan vien                       |\n";
-                cout << "|      3.   Xem tinh trang may                      |\n";
-                cout << "|      4.   Lich su thanh toan                      |\n";
-                cout << "|      5.   Lich su dang nhap                       |\n";
-                cout << "|      6.   Kiem tra doanh thu                      |\n";
-                cout << "|      7.   Mo may truc tiep                        |\n";
-                cout << "|      8.   Thanh toan                              |\n";
-                cout << "|" << on_magenta << "     ->9.   Thiet lap gia tien                     " << reset << "|\n";
-                cout << "|      10.  Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Quản lý máy tính                        |\n";
+                cout << "\t\t\t|      2.   Quản lý nhân viên                       |\n";
+                cout << "\t\t\t|      3.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      4.   Lịch sử thanh toán                      |\n";
+                cout << "\t\t\t|      5.   Lịch sử đăng nhập                       |\n";
+                cout << "\t\t\t|      6.   Kiểm tra doanh thu                      |\n";
+                cout << "\t\t\t|      7.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      8.   Thanh toán                              |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->9.   Thiết lập giá tiền                     " << reset << "|\n";
+                cout << "\t\t\t|      10.  Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 9) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Quan ly may tinh                        |\n";
-                cout << "|      2.   Quan ly nhan vien                       |\n";
-                cout << "|      3.   Xem tinh trang may                      |\n";
-                cout << "|      4.   Lich su thanh toan                      |\n";
-                cout << "|      5.   Lich su dang nhap                       |\n";
-                cout << "|      6.   Kiem tra doanh thu                      |\n";
-                cout << "|      7.   Mo may truc tiep                        |\n";
-                cout << "|      8.   Thanh toan                              |\n";
-                cout << "|      9.   Thiet lap gia tien                      |\n";
-                cout << "|" << on_magenta << "     ->10.   Thong tin gioi thieu                  " << reset << "|\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Quản lý máy tính                        |\n";
+                cout << "\t\t\t|      2.   Quản lý nhân viên                       |\n";
+                cout << "\t\t\t|      3.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      4.   Lịch sử thanh toán                      |\n";
+                cout << "\t\t\t|      5.   Lịch sử đăng nhập                       |\n";
+                cout << "\t\t\t|      6.   Kiểm tra doanh thu                      |\n";
+                cout << "\t\t\t|      7.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      8.   Thanh toán                              |\n";
+                cout << "\t\t\t|      9.   Thiết lập giá tiền                      |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->10.   Thông tin giới thiệu                  " << reset << "|\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 10) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Quan ly may tinh                        |\n";
-                cout << "|      2.   Quan ly nhan vien                       |\n";
-                cout << "|      3.   Xem tinh trang may                      |\n";
-                cout << "|      4.   Lich su thanh toan                      |\n";
-                cout << "|      5.   Lich su dang nhap                       |\n";
-                cout << "|      6.   Kiem tra doanh thu                      |\n";
-                cout << "|      7.   Mo may truc tiep                        |\n";
-                cout << "|      8.   Thanh toan                              |\n";
-                cout << "|      9.   Thiet lap gia tien                      |\n";
-                cout << "|      10.  Thong tin gioi thieu                    |\n";
-                cout << "|" << on_magenta << "     ->0.   Dang xuat                              " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Quản lý máy tính                        |\n";
+                cout << "\t\t\t|      2.   Quản lý nhân viên                       |\n";
+                cout << "\t\t\t|      3.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      4.   Lịch sử thanh toán                      |\n";
+                cout << "\t\t\t|      5.   Lịch sử đăng nhập                       |\n";
+                cout << "\t\t\t|      6.   Kiểm tra doanh thu                      |\n";
+                cout << "\t\t\t|      7.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      8.   Thanh toán                              |\n";
+                cout << "\t\t\t|      9.   Thiết lập giá tiền                      |\n";
+                cout << "\t\t\t|      10.  Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->0.   Đăng xuất                              " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else
                 goto MENU_ADMIN;
         }
@@ -295,12 +307,13 @@ DANGNHAP:
             bool kiemTra = true;
             int c, y = 0;
             system("cls");
-            cout << bright_yellow << "\nMENU/QUAN LY MAY TINH" << reset << "\n";
-            cout << "*----------------------------------------*\n";
-            cout << "|" << on_magenta << "     ->1. Them may tinh                 " << reset << "|\n";
-            cout << "|      2. Xoa may tinh                   |\n";
-            cout << "|      0. Tro ve                         |\n";
-            cout << "*----------------------------------------*\n";
+            cout << bright_yellow << "\n\t\t\tMENU/QUẢN LÝ MÁY TÍNH" << reset << "\n";
+            cout << "\t\t\t*----------------------------------------*\n";
+            cout << "\t\t\t|" << on_magenta << "     ->1. Thêm máy tính                 " << reset << "|\n";
+            cout << "\t\t\t|      2. Xóa máy tính                   |\n";
+            cout << "\t\t\t|      0. Trở về                         |\n";
+            cout << "\t\t\t*----------------------------------------*\n";
+            cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             while (kiemTra) {
                 int c = _getch();
                 if (c == '\r') {
@@ -325,33 +338,36 @@ DANGNHAP:
                 }
                 system("cls");
                 if (y == 0) {
-                    cout << bright_yellow << "\nMENU/QUAN LY MAY TINH" << reset << "\n";
-                    cout << "*----------------------------------------*\n";
-                    cout << "|" << on_magenta << "     ->1. Them may tinh                 " << reset << "|\n";
-                    cout << "|      2. Xoa may tinh                   |\n";
-                    cout << "|      0. Tro ve                         |\n";
-                    cout << "*----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/QUẢN LÝ MÁY TÍNH" << reset << "\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->1. Thêm máy tính                 " << reset << "|\n";
+                    cout << "\t\t\t|      2. Xóa máy tính                   |\n";
+                    cout << "\t\t\t|      0. Trở về                         |\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 1) {
-                    cout << bright_yellow << "\nMENU/QUAN LY MAY TINH" << reset << "\n";
-                    cout << "*----------------------------------------*\n";
-                    cout << "|      1. Them may tinh                  |\n";
-                    cout << "|" << on_magenta << "     ->2. Xoa may tinh                  " << reset << "|\n";
-                    cout << "|      0. Tro ve                         |\n";
-                    cout << "*----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/QUẢN LÝ MÁY TÍNH" << reset << "\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Thêm máy tính                  |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->2. Xóa máy tính                  " << reset << "|\n";
+                    cout << "\t\t\t|      0. Trở về                         |\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 2) {
-                    cout << bright_yellow << "\nMENU/QUAN LY MAY TINH" << reset << "\n";
-                    cout << "*----------------------------------------*\n";
-                    cout << "|      1. Them may tinh                  |\n";
-                    cout << "|      2. Xoa may tinh                   |\n";
-                    cout << "|" << on_magenta << "     ->0. Tro ve                        " << reset << "|\n";
-                    cout << "*----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/QUẢN LÝ MÁY TÍNH" << reset << "\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Thêm máy tính                  |\n";
+                    cout << "\t\t\t|      2. Xóa máy tính                   |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->0. Trở về                        " << reset << "|\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else
                     goto MENU_ADMIN_QUANLYMAYTINH;
             }
             if (y == 0) {
                 system("cls");
                 int soMay;
-                cout << bright_yellow << "\nMENU/QUAN LY MAY TINH/THEM MAY TINH" << reset << "\n";
+                cout << bright_yellow << "\nMENU/QUẢN LÝ MÁY TÍNH/THÊM MÁY TÍNH" << reset << "\n";
                 if (n != 0)
                     xuatDanhSachCacMay(nhieuMay, n);
                 mt.themMayTinh(nhieuMay, n, soMay);
@@ -372,7 +388,7 @@ DANGNHAP:
                 ghiDanhSachNguoiThueTrucTiep(thueNhieuMay, n);
             } else if (y == 1) {
                 system("cls");
-                cout << bright_yellow << "\nMENU/QUAN LY MAY TINH/XOA MAY TINH" << reset << "\n";
+                cout << bright_yellow << "\nMENU/QUẢN LÝ MÁY TÍNH/XÓA MÁY TÍNH" << reset << "\n";
                 if (n != 0) {
                     int kiemTra;
                     xuatDanhSachCacMay(nhieuMay, n);
@@ -385,8 +401,13 @@ DANGNHAP:
                     ghiDanhSachCacMay(nhieuMay, n);
                     ghiDanhSachNguoiThueTrucTiep(thueNhieuMay, n);
                 } else {
-                    cout << "\n\t(!) Danh sach may tinh trong\n";
-                    system("pause");
+                    cout << "\n\t(!) Danh sách máy tính trống\n";
+                    cout << "\n[Nhấn ENTER để tiếp tục...]";
+                    while (true) {
+                        int key = _getch();
+                        if (key == KEY_ENTER)
+                            break;
+                    }
                 }
             } else if (y == 2) {
                 system("cls");
@@ -399,13 +420,14 @@ DANGNHAP:
             bool kiemTra = true;
             int c, y = 0;
             system("cls");
-            cout << bright_yellow << "\nMENU/QUAN LY NHAN VIEN" << reset << "\n";
-            cout << "*----------------------------------------*\n";
-            cout << "|" << on_magenta << "     ->1. Them nhan vien                " << reset << "|\n";
-            cout << "|      2. Xoa nhan vien                  |\n";
-            cout << "|      3. Xem danh sach                  |\n";
-            cout << "|      0. Tro ve                         |\n";
-            cout << "*----------------------------------------*\n";
+            cout << bright_yellow << "\n\t\t\tMENU/QUẢN LÝ NHÂN VIÊN" << reset << "\n";
+            cout << "\t\t\t*----------------------------------------*\n";
+            cout << "\t\t\t|" << on_magenta << "     ->1. Thêm nhân viên                " << reset << "|\n";
+            cout << "\t\t\t|      2. Xóa nhân viên                  |\n";
+            cout << "\t\t\t|      3. Xem danh sách                  |\n";
+            cout << "\t\t\t|      0. Trở về                         |\n";
+            cout << "\t\t\t*----------------------------------------*\n";
+            cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             while (kiemTra) {
                 int c = _getch();
                 if (c == '\r') {
@@ -430,64 +452,85 @@ DANGNHAP:
                 }
                 system("cls");
                 if (y == 0) {
-                    cout << bright_yellow << "\nMENU/QUAN LY NHAN VIEN" << reset << "\n";
-                    cout << "*----------------------------------------*\n";
-                    cout << "|" << on_magenta << "     ->1. Them nhan vien                " << reset << "|\n";
-                    cout << "|      2. Xoa nhan vien                  |\n";
-                    cout << "|      3. Xem danh sach                  |\n";
-                    cout << "|      0. Tro ve                         |\n";
-                    cout << "*----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/QUẢN LÝ NHÂN VIÊN" << reset << "\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->1. Thêm nhân viên                " << reset << "|\n";
+                    cout << "\t\t\t|      2. Xóa nhân viên                  |\n";
+                    cout << "\t\t\t|      3. Xem danh sách                  |\n";
+                    cout << "\t\t\t|      0. Trở về                         |\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 1) {
-                    cout << bright_yellow << "\nMENU/QUAN LY NHAN VIEN" << reset << "\n";
-                    cout << "*----------------------------------------*\n";
-                    cout << "|      1. Them nhan vien                 |\n";
-                    cout << "|" << on_magenta << "     ->2. Xoa nhan vien                 " << reset << "|\n";
-                    cout << "|      3. Xem danh sach                  |\n";
-                    cout << "|      0. Tro ve                         |\n";
-                    cout << "*----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/QUẢN LÝ NHÂN VIÊN" << reset << "\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Thêm nhân viên                 |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->2. Xóa nhân viên                 " << reset << "|\n";
+                    cout << "\t\t\t|      3. Xem danh sách                  |\n";
+                    cout << "\t\t\t|      0. Trở về                         |\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 2) {
-                    cout << bright_yellow << "\nMENU/QUAN LY NHAN VIEN" << reset << "\n";
-                    cout << "*----------------------------------------*\n";
-                    cout << "|      1. Them nhan vien                 |\n";
-                    cout << "|      2. Xoa nhan vien                  |\n";
-                    cout << "|" << on_magenta << "     ->3. Xem danh sach                 " << reset << "|\n";
-                    cout << "|      0. Tro ve                         |\n";
-                    cout << "*----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/QUẢN LÝ NHÂN VIÊN" << reset << "\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Thêm nhân viên                 |\n";
+                    cout << "\t\t\t|      2. Xóa nhân viên                  |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->3. Xem danh sách                 " << reset << "|\n";
+                    cout << "\t\t\t|      0. Trở về                         |\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 3) {
-                    cout << bright_yellow << "\nMENU/QUAN LY NHAN VIEN" << reset << "\n";
-                    cout << "*----------------------------------------*\n";
-                    cout << "|      1. Them nhan vien                 |\n";
-                    cout << "|      2. Xoa nhan vien                  |\n";
-                    cout << "|      3. Xem danh sach                  |\n";
-                    cout << "|" << on_magenta << "     ->0. Tro ve                        " << reset << "|\n";
-                    cout << "*----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/QUẢN LÝ NHÂN VIÊN" << reset << "\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Thêm nhân viên                 |\n";
+                    cout << "\t\t\t|      2. Xóa nhân viên                  |\n";
+                    cout << "\t\t\t|      3. Xem danh sách                  |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->0. Trở về                        " << reset << "|\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else
                     goto MENU_ADMIN_QUANLYNHANVIEN;
             }
             if (y == 0) {
                 system("cls");
-                cout << bright_yellow << "\nMENU/QUAN LY NHAN VIEN/XOA NHAN VIEN" << reset << "\n";
+                cout << bright_yellow << "\nMENU/QUẢN LÝ NHÂN VIÊN/THÊM NHÂN VIÊN" << reset << "\n";
+                if (dsnv)
+                    inDanhSachNhanVien(dsnv);
                 nhapMotNhanVien(dsnv);
                 ghiDanhSachNhanVien(dsnv);
-                system("pause");
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else if (y == 1) {
                 system("cls");
-                cout << bright_yellow << "\nMENU/QUAN LY NHAN VIEN/XOA NHAN VIEN" << reset << "\n";
+                cout << bright_yellow << "\nMENU/QUẢN LÝ NHÂN VIÊN/XÓA NHÂN VIÊN" << reset << "\n";
                 if (dsnv) {
                     inDanhSachNhanVien(dsnv);
                     xoaMotNhanVien(dsnv);
                     ghiDanhSachNhanVien(dsnv);
                 } else
-                    cout << bright_red << "\n\t(!) Danh sach nhan vien trong" << reset << "\n";
-                system("pause");
+                    cout << bright_red << "\n\t(!) Danh sách nhân viên trống" << reset << "\n";
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else if (y == 2) {
                 system("cls");
-                cout << bright_yellow << "\nMENU/QUAN LY NHAN VIEN/XEM DANH SACH" << reset << "\n";
+                cout << bright_yellow << "\nMENU/QUẢN LÝ NHÂN VIÊN/XEM DANH SÁCH" << reset << "\n";
                 if (dsnv)
                     inDanhSachNhanVien(dsnv);
                 else
-                    cout << bright_red << "\n\t(!) Danh sach nhan vien trong" << reset << "\n";
-                system("pause");
+                    cout << bright_red << "\n\t(!) Danh sách nhân viên trống" << reset << "\n";
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else if (y == 3) {
                 system("cls");
                 goto MENU_ADMIN;
@@ -499,13 +542,14 @@ DANGNHAP:
             bool kiemTra = true;
             int c, y = 0;
             system("cls");
-            cout << bright_yellow << "\nMENU/TINH TRANG MAY" << reset << "\n";
-            cout << "*-----------------------------------------*\n";
-            cout << "|" << on_magenta << "     ->1. May trong                      " << reset << "|\n";
-            cout << "|      2. May day                         |\n";
-            cout << "|      3. Tat ca                          |\n";
-            cout << "|      0. Tro ve                          |\n";
-            cout << "*-----------------------------------------*\n";
+            cout << bright_yellow << "\n\t\t\tMENU/TÌNH TRẠNG MÁY" << reset << "\n";
+            cout << "\t\t\t*-----------------------------------------*\n";
+            cout << "\t\t\t|" << on_magenta << "     ->1. Máy trống                      " << reset << "|\n";
+            cout << "\t\t\t|      2. Máy đầy                         |\n";
+            cout << "\t\t\t|      3. Tất cả                          |\n";
+            cout << "\t\t\t|      0. Trở về                          |\n";
+            cout << "\t\t\t*-----------------------------------------*\n";
+            cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             while (kiemTra) {
                 int c = _getch();
                 if (c == '\r') {
@@ -530,55 +574,74 @@ DANGNHAP:
                 }
                 system("cls");
                 if (y == 0) {
-                    cout << bright_yellow << "\nMENU/TINH TRANG MAY" << reset << "\n";
-                    cout << "*-----------------------------------------*\n";
-                    cout << "|" << on_magenta << "     ->1. May trong                      " << reset << "|\n";
-                    cout << "|      2. May day                         |\n";
-                    cout << "|      3. Tat ca                          |\n";
-                    cout << "|      0. Tro ve                          |\n";
-                    cout << "*-----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/TÌNH TRẠNG MÁY" << reset << "\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->1. Máy trống                      " << reset << "|\n";
+                    cout << "\t\t\t|      2. Máy đầy                         |\n";
+                    cout << "\t\t\t|      3. Tất cả                          |\n";
+                    cout << "\t\t\t|      0. Trở về                          |\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 1) {
-                    cout << bright_yellow << "\nMENU/TINH TRANG MAY" << reset << "\n";
-                    cout << "*-----------------------------------------*\n";
-                    cout << "|      1. May trong                       |\n";
-                    cout << "|" << on_magenta << "     ->2. May day                        " << reset << "|\n";
-                    cout << "|      3. Tat ca                          |\n";
-                    cout << "|      0. Tro ve                          |\n";
-                    cout << "*-----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/TÌNH TRẠNG MÁY" << reset << "\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Máy trống                       |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->2. Máy đầy                        " << reset << "|\n";
+                    cout << "\t\t\t|      3. Tất cả                          |\n";
+                    cout << "\t\t\t|      0. Trở về                          |\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 2) {
-                    cout << bright_yellow << "\nMENU/TINH TRANG MAY" << reset << "\n";
-                    cout << "*-----------------------------------------*\n";
-                    cout << "|      1. May trong                       |\n";
-                    cout << "|      2. May day                         |\n";
-                    cout << "|" << on_magenta << "     ->3. Tat ca                         " << reset << "|\n";
-                    cout << "|      0. Tro ve                          |\n";
-                    cout << "*-----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/TÌNH TRẠNG MÁY" << reset << "\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Máy trống                       |\n";
+                    cout << "\t\t\t|      2. Máy đầy                         |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->3. Tất cả                         " << reset << "|\n";
+                    cout << "\t\t\t|      0. Trở về                          |\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 3) {
-                    cout << bright_yellow << "\nMENU/TINH TRANG MAY" << reset << "\n";
-                    cout << "*-----------------------------------------*\n";
-                    cout << "|      1. May trong                       |\n";
-                    cout << "|      2. May day                         |\n";
-                    cout << "|      3. Tat ca                          |\n";
-                    cout << "|" << on_magenta << "     ->0. Tro ve                         " << reset << "|\n";
-                    cout << "*-----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/TÌNH TRẠNG MÁY" << reset << "\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Máy trống                       |\n";
+                    cout << "\t\t\t|      2. Máy đầy                         |\n";
+                    cout << "\t\t\t|      3. Tất cả                          |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->0. Trở về                         " << reset << "|\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else
                     goto MENU_ADMIN_TINHTRANGMAY;
             }
             if (y == 0) {
                 system("cls");
-                cout << bright_yellow << "\nMENU/TINH TRANG MAY/MAY TRONG" << reset << "\n";
+                cout << bright_yellow << "\nMENU/TÌNH TRẠNG MÁY/MÁY TRỐNG" << reset << "\n";
                 xuatDanhSachCacMayTrong(nhieuMay, n);
-                system("pause");
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else if (y == 1) {
                 system("cls");
-                cout << bright_yellow << "\nMENU/TINH TRANG MAY/MAY DAY" << reset << "\n";
+                cout << bright_yellow << "\nMENU/TÌNH TRẠNG MÁY/MÁY ĐẦY" << reset << "\n";
                 xuatDanhSachCacMayDay(nhieuMay, n);
-                system("pause");
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else if (y == 2) {
                 system("cls");
-                cout << bright_yellow << "\nMENU/TINH TRANG MAY/TAT CA" << reset << "\n";
+                cout << bright_yellow << "\nMENU/TÌNH TRẠNG MÁY/TẤT CẢ" << reset << "\n";
                 xuatDanhSachCacMay(nhieuMay, n);
-                system("pause");
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else if (y == 3) {
                 system("cls");
                 goto MENU_ADMIN;
@@ -587,55 +650,66 @@ DANGNHAP:
             goto MENU_ADMIN_TINHTRANGMAY;
         } else if (y == 3) {
             system("cls");
-            cout << bright_yellow << "\nMENU/LICH SU THANH TOAN" << reset << "\n";
+            cout << bright_yellow << "\nMENU/LỊCH SỬ THANH TOÁN" << reset << "\n";
             string fileName = "../File/lichsu/lichsuthanhtoan.txt";
             if (kiemTraFileTrong(fileName) != -1) {
                 cout << on_bright_blue << "*------------------------*-------------------------*----------*----------*--------------------*" << reset << "\n";
-                cout << on_bright_blue << setw(25) << left << "| Thoi gian bat dau"
+                cout << on_bright_blue << setw(32) << left << "| Thời gian bắt đầu"
                      << "|" << reset;
-                cout << on_bright_blue << setw(25) << left << " Thoi gian ket thuc"
+                cout << on_bright_blue << setw(30) << left << " Thời gian kết thúc"
                      << "|" << reset;
-                cout << on_bright_blue << setw(10) << left << " So may"
+                cout << on_bright_blue << setw(13) << left << " Số máy"
                      << "|" << reset;
-                cout << on_bright_blue << setw(10) << left << " Kieu may"
+                cout << on_bright_blue << setw(13) << left << " Kiểu máy"
                      << "|" << reset;
-                cout << on_bright_blue << setw(20) << right << "So tien "
+                cout << on_bright_blue << setw(24) << right << "Số tiền "
                      << "|" << reset << "\n";
                 cout << on_bright_blue << "*------------------------*-------------------------*----------*----------*--------------------*" << reset << "\n";
                 docLichSu(fileName);
                 cout << on_bright_blue << "*------------------------*-------------------------*----------*----------*--------------------*" << reset << "\n";
             } else
-                cout << "\n\t(!) Lich su thanh toan trong\n";
-            system("pause");
+                cout << "\n\t(!) Lịch sử thanh toán trống\n";
+            cout << "\n[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         } else if (y == 4) {
             system("cls");
-            cout << bright_yellow << "\nMENU/LICH SU DANG NHAP" << reset << "\n";
+            cout << bright_yellow << "\nMENU/LỊCH SỬ ĐĂNG NHẬP" << reset << "\n";
             string fileName = "../File/lichsu/lichsudangnhap.txt";
             if (kiemTraFileTrong(fileName) != -1) {
                 cout << on_bright_blue << "*------------------------*------------------------------*------------*" << reset << "\n";
-                cout << on_bright_blue << setw(25) << left << "| Thoi gian"
+                cout << on_bright_blue << setw(27) << left << "| Thời gian"
                      << "|" << reset;
-                cout << on_bright_blue << setw(30) << left << " Tai khoan"
+                cout << on_bright_blue << setw(33) << left << " Tài khoản"
                      << "|" << reset;
-                cout << on_bright_blue << setw(12) << left << " Trang thai"
+                cout << on_bright_blue << setw(15) << left << " Trạng thái"
                      << "|" << reset << "\n";
                 cout << on_bright_blue << "*------------------------*------------------------------*------------*" << reset << "\n";
                 docLichSu(fileName);
                 cout << on_bright_blue << "*------------------------*------------------------------*------------*" << reset << "\n";
             } else
-                cout << "\n\t(!) Lich su dang nhap trong\n";
-            system("pause");
+                cout << "\n\t(!) Lịch sử đăng nhập trống\n";
+            cout << "\n[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         } else if (y == 5) {
         MENU_ADMIN_KIEMTRADOANHTHU:
             bool kiemTra = true;
             int c, y = 0;
             system("cls");
-            cout << bright_yellow << "\nMENU/KIEM TRA DOANH THU" << reset << "\n";
-            cout << "*----------------------------------------*\n";
-            cout << "|" << on_magenta << "     ->1. Doanh thu 7 ngay gan nhat     " << reset << "|\n";
-            cout << "|      2. Doanh thu ngay tuy chinh       |\n";
-            cout << "|      0. Tro ve                         |\n";
-            cout << "*----------------------------------------*\n";
+            cout << bright_yellow << "\n\t\t\tMENU/KIỂM TRA DOANH THU" << reset << "\n";
+            cout << "\t\t\t*----------------------------------------*\n";
+            cout << "\t\t\t|" << on_magenta << "     ->1. Doanh thu 7 ngày gần nhất     " << reset << "|\n";
+            cout << "\t\t\t|      2. Doanh thu ngày tùy chỉnh       |\n";
+            cout << "\t\t\t|      0. Trở về                         |\n";
+            cout << "\t\t\t*----------------------------------------*\n";
+            cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             while (kiemTra) {
                 int c = _getch();
                 if (c == '\r') {
@@ -660,37 +734,50 @@ DANGNHAP:
                 }
                 system("cls");
                 if (y == 0) {
-                    cout << bright_yellow << "\nMENU/KIEM TRA DOANH THU" << reset << "\n";
-                    cout << "*----------------------------------------*\n";
-                    cout << "|" << on_magenta << "     ->1. Doanh thu 7 ngay gan nhat     " << reset << "|\n";
-                    cout << "|      2. Doanh thu ngay tuy chinh       |\n";
-                    cout << "|      0. Tro ve                         |\n";
-                    cout << "*----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/KIỂM TRA DOANH THU" << reset << "\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->1. Doanh thu 7 ngày gần nhất     " << reset << "|\n";
+                    cout << "\t\t\t|      2. Doanh thu ngày tùy chỉnh       |\n";
+                    cout << "\t\t\t|      0. Trở về                         |\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 1) {
-                    cout << bright_yellow << "\nMENU/KIEM TRA DOANH THU" << reset << "\n";
-                    cout << "*----------------------------------------*\n";
-                    cout << "|      1. Doanh thu 7 ngay gan nhat      |\n";
-                    cout << "|" << on_magenta << "     ->2. Doanh thu ngay tuy chinh      " << reset << "|\n";
-                    cout << "|      0. Tro ve                         |\n";
-                    cout << "*----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/KIỂM TRA DOANH THU" << reset << "\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Doanh thu 7 ngày gần nhất      |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->2. Doanh thu ngày tùy chỉnh      " << reset << "|\n";
+                    cout << "\t\t\t|      0. Trở về                         |\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 2) {
-                    cout << bright_yellow << "\nMENU/KIEM TRA DOANH THU" << reset << "\n";
-                    cout << "*----------------------------------------*\n";
-                    cout << "|      1. Doanh thu 7 ngay gan nhat      |\n";
-                    cout << "|      2. Doanh thu ngay tuy chinh       |\n";
-                    cout << "|" << on_magenta << "     ->0. Tro ve                        " << reset << "|\n";
-                    cout << "*----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/KIỂM TRA DOANH THU" << reset << "\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Doanh thu 7 ngày gần nhất      |\n";
+                    cout << "\t\t\t|      2. Doanh thu ngày tùy chỉnh       |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->0. Trở về                        " << reset << "|\n";
+                    cout << "\t\t\t*----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else
                     goto MENU_ADMIN_KIEMTRADOANHTHU;
             }
             if (y == 0) {
                 system("cls");
                 kiemTraDoanhThu7NgayGanNhat();
-                system("pause");
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else if (y == 1) {
                 system("cls");
                 kiemTraDoanhThuNgayTuyChinh();
-                system("pause");
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else if (y == 2) {
                 system("cls");
                 goto MENU_ADMIN;
@@ -699,29 +786,44 @@ DANGNHAP:
             goto MENU_ADMIN_KIEMTRADOANHTHU;
         } else if (y == 6) {
             system("cls");
-            cout << bright_yellow << "\nMENU/MO MAY TRUC TIEP" << reset << "\n";
+            cout << bright_yellow << "\nMENU/MỞ MÁY TRỰC TIẾP" << reset << "\n";
             thueNhieuMay.moMayTrucTiep(nhieuMay, n);
             ghiDanhSachCacMay(nhieuMay, n);
             ghiDanhSachNguoiThueTrucTiep(thueNhieuMay, n);
         } else if (y == 7) {
             system("cls");
-            cout << bright_yellow << "\nMENU/THANH TOAN" << reset << "\n";
+            cout << bright_yellow << "\nMENU/THANH TOÁN" << reset << "\n";
             thueNhieuMay.thanhToan(nhieuMay, n);
             ghiDanhSachCacMay(nhieuMay, n);
             ghiDanhSachNguoiThueTrucTiep(thueNhieuMay, n);
         } else if (y == 8) {
             system("cls");
-            cout << bright_yellow << "\nMENU/THIET LAP GIA TIEN" << reset << "\n";
+            cout << bright_yellow << "\nMENU/THIẾT LẬP GIÁ TIỀN" << reset << "\n";
             mt.thietLapGiaTien();
-            system("pause");
+            cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         } else if (y == 9) {
             system("cls");
             thongTinGioiThieu();
-            system("pause");
+            cout << "\n[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         } else if (y == 10) {
             system("cls");
-            cout << bright_green << "\n\t(!) Dang xuat thanh cong" << reset << "\n";
-            system("pause");
+            cout << bright_green << "\n\t(!) Đăng xuất thành công" << reset << "\n";
+            cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
 
             // Ghi lịch sử đăng xuất
             int gio, phut, giay, ngay, thang, nam;
@@ -745,12 +847,17 @@ DANGNHAP:
             string fileName = "../File/lichsu/lichsudangnhap.txt";
             ofstream fileOut(fileName, ios::app);
             if (fileOut.fail()) {
-                cout << "\n\t(!) Tap tin khong ton tai\n";
-                system("pause");
+                cout << "\n\t(!) Không tìm thấy tập tin\n";
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else {
                 fileOut << setw(25) << left << "| " + thoiGianDangXuat << "|";
                 fileOut << setw(30) << left << " " + ten << "|";
-                fileOut << setw(12) << left << " Dang xuat"
+                fileOut << setw(16) << left << " Đăng xuất"
                         << "|\n";
             }
             fileOut.close();
@@ -767,18 +874,19 @@ DANGNHAP:
         bool kiemTra = true;
         int c, y = 0;
         system("cls");
-        cout << "\nXin chao, " << ten << "\n\n";
-        cout << "*---------------------------------------------------*\n";
-        cout << "|" << on_blue << "                                                   " << reset << "|\n";
-        cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-        cout << "|" << on_blue << "                                                   " << reset << "|\n";
-        cout << "*---------------------------------------------------*\n";
-        cout << "|" << on_magenta << "     ->1.   Xem tinh trang may                     " << reset << "|\n";
-        cout << "|      2.   Mo may truc tiep                        |\n";
-        cout << "|      3.   Thanh toan                              |\n";
-        cout << "|      4.   Thong tin gioi thieu                    |\n";
-        cout << "|      0.   Dang xuat                               |\n";
-        cout << "*---------------------------------------------------*\n";
+        cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+        cout << "\t\t\t*---------------------------------------------------*\n";
+        cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+        cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+        cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+        cout << "\t\t\t*---------------------------------------------------*\n";
+        cout << "\t\t\t|" << on_magenta << "     ->1.   Xem tình trạng máy                     " << reset << "|\n";
+        cout << "\t\t\t|      2.   Mở máy trực tiếp                        |\n";
+        cout << "\t\t\t|      3.   Thanh toán                              |\n";
+        cout << "\t\t\t|      4.   Thông tin giới thiệu                    |\n";
+        cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+        cout << "\t\t\t*---------------------------------------------------*\n";
+        cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
         while (kiemTra) {
             int c = _getch();
             if (c == '\r') {
@@ -804,70 +912,75 @@ DANGNHAP:
             system("cls");
 
             if (y == 0) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_magenta << "     ->1.   Xem tinh trang may                     " << reset << "|\n";
-                cout << "|      2.   Mo may truc tiep                        |\n";
-                cout << "|      3.   Thanh toan                              |\n";
-                cout << "|      4.   Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_magenta << "     ->1.   Xem tình trạng máy                     " << reset << "|\n";
+                cout << "\t\t\t|      2.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      3.   Thanh toán                              |\n";
+                cout << "\t\t\t|      4.   Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 1) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Xem tinh trang may                      |\n";
-                cout << "|" << on_magenta << "     ->2.   Mo may truc tiep                       " << reset << "|\n";
-                cout << "|      3.   Thanh toan                              |\n";
-                cout << "|      4.   Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->2.   Mở máy trực tiếp                       " << reset << "|\n";
+                cout << "\t\t\t|      3.   Thanh toán                              |\n";
+                cout << "\t\t\t|      4.   Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 2) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Xem tinh trang may                      |\n";
-                cout << "|      2.   Mo may truc tiep                        |\n";
-                cout << "|" << on_magenta << "     ->3.   Thanh toan                             " << reset << "|\n";
-                cout << "|      4.   Thong tin gioi thieu                    |\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      2.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->3.   Thanh toán                             " << reset << "|\n";
+                cout << "\t\t\t|      4.   Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 3) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Xem tinh trang may                      |\n";
-                cout << "|      2.   Mo may truc tiep                        |\n";
-                cout << "|      3.   Thanh toan                              |\n";
-                cout << "|" << on_magenta << "     ->4.   Thong tin gioi thieu                   " << reset << "|\n";
-                cout << "|      0.   Dang xuat                               |\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      2.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      3.   Thanh toán                              |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->4.   Thông tin giới thiệu                   " << reset << "|\n";
+                cout << "\t\t\t|      0.   Đăng xuất                               |\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else if (y == 4) {
-                cout << "\nXin chao, " << ten << "\n\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "|" << on_blue << "              ~  QUAN LY STU CYBER  ~              " << reset << "|\n";
-                cout << "|" << on_blue << "                                                   " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
-                cout << "|      1.   Xem tinh trang may                      |\n";
-                cout << "|      2.   Mo may truc tiep                        |\n";
-                cout << "|      3.   Thanh toan                              |\n";
-                cout << "|      4.   Thong tin gioi thieu                    |\n";
-                cout << "|" << on_magenta << "     ->0.   Dang xuat                              " << reset << "|\n";
-                cout << "*---------------------------------------------------*\n";
+                cout << "\n\t\t\tXin chào, " << ten << "\n\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "              ~  QUẢN LÝ STU CYBER  ~              " << reset << "|\n";
+                cout << "\t\t\t|" << on_blue << "                                                   " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\t\t\t|      1.   Xem tình trạng máy                      |\n";
+                cout << "\t\t\t|      2.   Mở máy trực tiếp                        |\n";
+                cout << "\t\t\t|      3.   Thanh toán                              |\n";
+                cout << "\t\t\t|      4.   Thông tin giới thiệu                    |\n";
+                cout << "\t\t\t|" << on_magenta << "     ->0.   Đăng xuất                              " << reset << "|\n";
+                cout << "\t\t\t*---------------------------------------------------*\n";
+                cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             } else
                 goto MENU_NHANVIEN;
         }
@@ -876,13 +989,14 @@ DANGNHAP:
             bool kiemTra = true;
             int c, y = 0;
             system("cls");
-            cout << bright_yellow << "\nMENU/TINH TRANG MAY" << reset << "\n";
-            cout << "*-----------------------------------------*\n";
-            cout << "|" << on_magenta << "     ->1. May trong                      " << reset << "|\n";
-            cout << "|      2. May day                         |\n";
-            cout << "|      3. Tat ca                          |\n";
-            cout << "|      0. Tro ve                          |\n";
-            cout << "*-----------------------------------------*\n";
+            cout << bright_yellow << "\n\t\t\tMENU/TÌNH TRẠNG MÁY" << reset << "\n";
+            cout << "\t\t\t*-----------------------------------------*\n";
+            cout << "\t\t\t|" << on_magenta << "     ->1. Máy trống                      " << reset << "|\n";
+            cout << "\t\t\t|      2. Máy đầy                         |\n";
+            cout << "\t\t\t|      3. Tất cả                          |\n";
+            cout << "\t\t\t|      0. Trở về                          |\n";
+            cout << "\t\t\t*-----------------------------------------*\n";
+            cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
             while (kiemTra) {
                 int c = _getch();
                 if (c == '\r') {
@@ -907,55 +1021,74 @@ DANGNHAP:
                 }
                 system("cls");
                 if (y == 0) {
-                    cout << bright_yellow << "\nMENU/TINH TRANG MAY" << reset << "\n";
-                    cout << "*-----------------------------------------*\n";
-                    cout << "|" << on_magenta << "     ->1. May trong                      " << reset << "|\n";
-                    cout << "|      2. May day                         |\n";
-                    cout << "|      3. Tat ca                          |\n";
-                    cout << "|      0. Tro ve                          |\n";
-                    cout << "*-----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/TÌNH TRẠNG MÁY" << reset << "\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->1. Máy trống                      " << reset << "|\n";
+                    cout << "\t\t\t|      2. Máy đầy                         |\n";
+                    cout << "\t\t\t|      3. Tất cả                          |\n";
+                    cout << "\t\t\t|      0. Trở về                          |\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 1) {
-                    cout << bright_yellow << "\nMENU/TINH TRANG MAY" << reset << "\n";
-                    cout << "*-----------------------------------------*\n";
-                    cout << "|      1. May trong                       |\n";
-                    cout << "|" << on_magenta << "     ->2. May day                        " << reset << "|\n";
-                    cout << "|      3. Tat ca                          |\n";
-                    cout << "|      0. Tro ve                          |\n";
-                    cout << "*-----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/TÌNH TRẠNG MÁY" << reset << "\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Máy trống                       |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->2. Máy đầy                        " << reset << "|\n";
+                    cout << "\t\t\t|      3. Tất cả                          |\n";
+                    cout << "\t\t\t|      0. Trở về                          |\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 2) {
-                    cout << bright_yellow << "\nMENU/TINH TRANG MAY" << reset << "\n";
-                    cout << "*-----------------------------------------*\n";
-                    cout << "|      1. May trong                       |\n";
-                    cout << "|      2. May day                         |\n";
-                    cout << "|" << on_magenta << "     ->3. Tat ca                         " << reset << "|\n";
-                    cout << "|      0. Tro ve                          |\n";
-                    cout << "*-----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/TÌNH TRẠNG MÁY" << reset << "\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Máy trống                       |\n";
+                    cout << "\t\t\t|      2. Máy đầy                         |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->3. Tất cả                         " << reset << "|\n";
+                    cout << "\t\t\t|      0. Trở về                          |\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else if (y == 3) {
-                    cout << bright_yellow << "\nMENU/TINH TRANG MAY" << reset << "\n";
-                    cout << "*-----------------------------------------*\n";
-                    cout << "|      1. May trong                       |\n";
-                    cout << "|      2. May day                         |\n";
-                    cout << "|      3. Tat ca                          |\n";
-                    cout << "|" << on_magenta << "     ->0. Tro ve                         " << reset << "|\n";
-                    cout << "*-----------------------------------------*\n";
+                    cout << bright_yellow << "\n\t\t\tMENU/TÌNH TRẠNG MÁY" << reset << "\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\t\t\t|      1. Máy trống                       |\n";
+                    cout << "\t\t\t|      2. Máy đầy                         |\n";
+                    cout << "\t\t\t|      3. Tất cả                          |\n";
+                    cout << "\t\t\t|" << on_magenta << "     ->0. Trở về                         " << reset << "|\n";
+                    cout << "\t\t\t*-----------------------------------------*\n";
+                    cout << "\n\t\t\t(Sử dụng các phím ↑ ↓ để di chuyển và ENTER để chọn)";
                 } else
                     goto MENU_NHANVIEN_TINHTRANGMAY;
             }
             if (y == 0) {
                 system("cls");
-                cout << bright_yellow << "\nMENU/TINH TRANG MAY/MAY TRONG" << reset << "\n";
+                cout << bright_yellow << "\nMENU/TÌNH TRẠNG MÁY/MÁY TRỐNG" << reset << "\n";
                 xuatDanhSachCacMayTrong(nhieuMay, n);
-                system("pause");
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else if (y == 1) {
                 system("cls");
-                cout << bright_yellow << "\nMENU/TINH TRANG MAY/MAY DAY" << reset << "\n";
+                cout << bright_yellow << "\nMENU/TÌNH TRẠNG MÁY/MÁY ĐẦY" << reset << "\n";
                 xuatDanhSachCacMayDay(nhieuMay, n);
-                system("pause");
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else if (y == 2) {
                 system("cls");
-                cout << bright_yellow << "\nMENU/TINH TRANG MAY/TAT CA" << reset << "\n";
+                cout << bright_yellow << "\nMENU/TÌNH TRẠNG MÁY/TẤT CẢ" << reset << "\n";
                 xuatDanhSachCacMay(nhieuMay, n);
-                system("pause");
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else if (y == 3) {
                 system("cls");
                 goto MENU_NHANVIEN;
@@ -964,24 +1097,34 @@ DANGNHAP:
             goto MENU_NHANVIEN_TINHTRANGMAY;
         } else if (y == 1) {
             system("cls");
-            cout << bright_yellow << "\nMENU/MO MAY TRUC TIEP" << reset << "\n";
+            cout << bright_yellow << "\nMENU/MỞ MÁY TRỰC TIẾP" << reset << "\n";
             thueNhieuMay.moMayTrucTiep(nhieuMay, n);
             ghiDanhSachCacMay(nhieuMay, n);
             ghiDanhSachNguoiThueTrucTiep(thueNhieuMay, n);
         } else if (y == 2) {
             system("cls");
-            cout << bright_yellow << "\nMENU/THANH TOAN" << reset << "\n";
+            cout << bright_yellow << "\nMENU/THANH TOÁN" << reset << "\n";
             thueNhieuMay.thanhToan(nhieuMay, n);
             ghiDanhSachCacMay(nhieuMay, n);
             ghiDanhSachNguoiThueTrucTiep(thueNhieuMay, n);
         } else if (y == 3) {
             system("cls");
             thongTinGioiThieu();
-            system("pause");
+            cout << "\n[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         } else if (y == 4) {
             system("cls");
-            cout << bright_green << "\n\t(!) Dang xuat thanh cong" << reset << "\n";
-            system("pause");
+            cout << bright_green << "\n\t(!) Đăng xuất thành công" << reset << "\n";
+            cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
 
             // Ghi lịch sử đăng xuất
             int gio, phut, giay, ngay, thang, nam;
@@ -1005,12 +1148,17 @@ DANGNHAP:
             string fileName = "../File/lichsu/lichsudangnhap.txt";
             ofstream fileOut(fileName, ios::app);
             if (fileOut.fail()) {
-                cout << "\n\t(!) Tap tin khong ton tai\n";
-                system("pause");
+                cout << "\n\t(!) Không tìm thấy tập tin\n";
+                cout << "\n[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else {
                 fileOut << setw(25) << left << "| " + thoiGianDangXuat << "|";
                 fileOut << setw(30) << left << " " + ten << "|";
-                fileOut << setw(12) << left << " Dang xuat"
+                fileOut << setw(16) << left << " Đăng xuất"
                         << "|\n";
             }
             fileOut.close();
@@ -1050,7 +1198,7 @@ void loading(MayTinh &mt, MayTinh nhieuMay[], int &n, DanhSachNhanVien &dsnv, Th
         else if (tienTrinh == float(0.8))
             nhapDuLieuDanhSachNguoiThueTrucTiep(thueNhieuMay, nhieuMay, n);
         else if (tienTrinh == float(1))
-            cout << bright_red << "\n\t(*) Tai du lieu thanh cong (*)" << reset << "\n";
+            cout << bright_red << "\n\t(*) Nhập dữ liệu thành công (*)" << reset << "\n";
         tienTrinh += 0.2;
         Sleep(350);
         system("cls");
@@ -1061,11 +1209,16 @@ void loading(MayTinh &mt, MayTinh nhieuMay[], int &n, DanhSachNhanVien &dsnv, Th
 void nhapDuLieuGiaTien(MayTinh &mt) {
     mt.docGiaTien();
     if (mt.giaTienThuong == 0 || mt.giaTienCaoCap == 0) {
-        cout << bright_red << "\n\t(!) Chua thiet lap gia tien. Hay thiet lap gia tien bay gio" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Hệ thống đang chưa được thiết lập giá tiền. Hãy thiết lập ngay bây giờ" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
         mt.thietLapGiaTien();
     } else
-        cout << bright_red << "\n\t(*) Dang nhap du lieu gia tien (*)" << reset << "\n";
+        cout << bright_red << "\n\t(*) Đang nhập dữ liệu giá tiền (*)" << reset << "\n";
 }
 
 void nhapDuLieuDanhSachMayTinh(MayTinh nhieuMay[], int &n) {
@@ -1074,33 +1227,33 @@ void nhapDuLieuDanhSachMayTinh(MayTinh nhieuMay[], int &n) {
     if (x == -1)
         n = 0;
     else {
-        cout << bright_red << "\n\t(*) Dang nhap du lieu danh sach may tinh (*)" << reset << "\n";
+        cout << bright_red << "\n\t(*) Đang nhập dữ liệu danh sách máy tính (*)" << reset << "\n";
         docDanhSachCacMay(nhieuMay, n);
     }
 }
 
 void nhapDuLieuDanhSachNhanVien(DanhSachNhanVien &dsnv) {
-    cout << bright_red << "\n\t(*) Dang nhap du lieu danh sach nhan vien (*)" << reset << "\n";
+    cout << bright_red << "\n\t(*) Đang nhập dữ liệu danh sách nhân viên (*)" << reset << "\n";
     docDanhSachNhanVien(dsnv);
 }
 
 void nhapDuLieuDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[], int &n) {
     thueNhieuMay.taoListThueMotMay();
-    cout << bright_red << "\n\t(*) Dang nhap du lieu danh sach nguoi thue truc tiep (*)" << reset << "\n";
+    cout << bright_red << "\n\t(*) Đang nhập dữ liệu danh sách người thuê trực tiếp (*)" << reset << "\n";
     docDanhSachNguoiThueTrucTiep(thueNhieuMay, nhieuMay, n);
 }
 
 void thongTinGioiThieu() {
-    cout << bright_yellow << "\nMENU/THONG TIN GIOI THIEU" << reset << "\n";
-    cout << on_bright_blue << "\n*-------------------- DAI HOC CONG NGHE SAI GON --------------------*" << reset;
-    cout << on_bright_blue << "\n| * Do an:      Quan Ly Phong Game                                  |" << reset;
+    cout << bright_yellow << "\nMENU/THÔNG TIN GIỚI THIỆU" << reset << "\n";
+    cout << on_bright_blue << "\n*-------------------- ĐẠI HỌC CÔNG NGHỆ SÀI GÒN --------------------*" << reset;
+    cout << on_bright_blue << "\n| * Đồ án:      Quản Lý Phòng Game                                  |" << reset;
     cout << on_bright_blue << "\n|                                                                   |" << reset;
-    cout << on_bright_blue << "\n| * Giang vien: Hoang Khue                                          |" << reset;
+    cout << on_bright_blue << "\n| * Giảng viên: Hoàng Khuê                                          |" << reset;
     cout << on_bright_blue << "\n|                                                                   |" << reset;
-    cout << on_bright_blue << "\n| * Sinh vien:  1. Tran Van Quoc Thang - DH52007101 - D20_TH11      |" << reset;
-    cout << on_bright_blue << "\n|               2. Vo Xuan Lam - DH52006929 - D20_TH11              |" << reset;
-    cout << on_bright_blue << "\n|               3. Dang Xuan Sang - DH52006904 - D20_TH11           |" << reset;
-    cout << on_bright_blue << "\n|               4. Tran Nguyen Thanh Sang - DH52007102 - D20_TH11   |" << reset;
-    cout << on_bright_blue << "\n|               5. Do Tran Hai Son - DH52007024 - D20_TH11          |" << reset;
+    cout << on_bright_blue << "\n| * Sinh viên:  1. Trần Văn Quốc Thắng - DH52007101 - D20_TH11      |" << reset;
+    cout << on_bright_blue << "\n|               2. Võ Xuân Lam - DH52006929 - D20_TH11              |" << reset;
+    cout << on_bright_blue << "\n|               3. Đặng Xuân Sang - DH52006904 - D20_TH11           |" << reset;
+    cout << on_bright_blue << "\n|               4. Trần Nguyễn Thanh Sang - DH52007102 - D20_TH11   |" << reset;
+    cout << on_bright_blue << "\n|               5. Đỗ Trần Hải Sơn - DH52007024 - D20_TH11          |" << reset;
     cout << on_bright_blue << "\n*------------------------------- 2022 ------------------------------*" << reset << "\n";
 }

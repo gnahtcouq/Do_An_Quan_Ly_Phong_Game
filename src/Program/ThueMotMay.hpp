@@ -15,13 +15,18 @@ void ThueMotMay::chonMay(MayTinh nhieuMay[], int n) {
     int soMay;
     do {
         system("cls");
-        cout << bright_yellow << "\nMENU/MO MAY TRUC TIEP" << reset << "\n";
+        cout << bright_yellow << "\nMENU/MỞ MÁY TRỰC TIẾP" << reset << "\n";
         xuatDanhSachCacMayTrong(nhieuMay, n);
-        cout << "\n(?) Nhap so may: ";
+        cout << "\n(?) Nhập số máy: ";
         cin >> soMay;
         if (!kiemTraSoMay(nhieuMay, n, soMay)) {
-            cout << bright_red << "\n\t(!) So may khong hop le. Xin hay nhap lai" << reset << "\n";
-            system("pause");
+            cout << bright_red << "\n\t(!) Số máy không hợp lệ. Xin hãy nhập lại" << reset << "\n";
+            cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         } else
             maytinh = layViTriCuaMay(nhieuMay, n, soMay);  // hàm này trong file NhieuMay.hpp
     } while (!kiemTraSoMay(nhieuMay, n, soMay));
@@ -31,13 +36,18 @@ void ThueMotMay::chonMayCanThanhToan(MayTinh nhieuMay[], int n) {
     int soMay;
     do {
         system("cls");
-        cout << bright_yellow << "\nMENU/THANH TOAN" << reset << "\n";
+        cout << bright_yellow << "\nMENU/THANH TOÁN" << reset << "\n";
         xuatDanhSachCacMayDay(nhieuMay, n);
-        cout << "\n(?) Nhap so may: ";
+        cout << "\n(?) Nhập số máy: ";
         cin >> soMay;
         if (!kiemTraSoMayCanThanhToan(nhieuMay, n, soMay)) {
-            cout << bright_red << "\n\t(!) So may khong hop le. Xin hay nhap lai" << reset << "\n";
-            system("pause");
+            cout << bright_red << "\n\t(!) Số máy không hợp lệ. Xin hãy nhập lại" << reset << "\n";
+            cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         } else
             maytinh = layViTriCuaMay(nhieuMay, n, soMay);  // hàm này trong file NhieuMay.hpp
     } while (!kiemTraSoMayCanThanhToan(nhieuMay, n, soMay));

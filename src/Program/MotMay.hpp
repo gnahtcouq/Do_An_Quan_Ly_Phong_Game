@@ -64,50 +64,60 @@ void MayTinh::themMayTinh(MayTinh nhieuMay[], int &n, int &soMay) {
     int x = kiemTraFileTrong(fileName);
     if (x != -1) {
         do {
-            cout << "\n(?) Nhap so may: ";
+            cout << "\n(?) Nhập số máy: ";
             cin >> mt.soMay;
             soMayTam = n + 1;
             if (kiemTraTrungSoMay(nhieuMay, n, mt.soMay) != -1) {
-                cout << bright_red << "\n\t(!) So may da ton tai. Xin hay nhap lai" << reset << "\n";
+                cout << bright_red << "\n\t(!) Số máy đã tồn tại. Xin hãy nhập lại" << reset << "\n";
             } else if (mt.soMay > soMayTam) {
-                cout << bright_red << "\n\t(!) So may chi duoc lon hon so may lon nhat hien tai 1 don vi. Xin hay nhap lai" << reset << "\n";
+                cout << bright_red << "\n\t(!) Số máy chỉ được lớn hơn số máy lớn nhất hiện tại 1 đơn vị. Xin hãy nhập lại" << reset << "\n";
             }
         } while (kiemTraTrungSoMay(nhieuMay, n, mt.soMay) != -1 || mt.soMay > soMayTam);
     } else {
         do {
-            cout << "\n(?) Nhap so may: ";
+            cout << "\n(?) Nhập số máy: ";
             cin >> mt.soMay;
             if (mt.soMay != 1) {
-                cout << bright_red << "\n\t(!) So may khoi dau mac dinh se la 1. Xin hay nhap lai" << reset << "\n";
+                cout << bright_red << "\n\t(!) Số máy khởi đầu mặc định sẽ là 1. Xin hãy nhập lại" << reset << "\n";
             }
         } while (mt.soMay != 1);
     }
     soMay = mt.soMay;
     do {
-        cout << "\n(?) Nhap kieu may (0: Thuong - 1: Cao cap): ";
+        cout << "\n(?) Nhập kiểu máy (0: Thường - 1: Cao cấp): ";
         cin >> mt.kieuMay;
         if (mt.kieuMay < 0 || mt.kieuMay > 1) {
-            cout << bright_red << "\n\t(!) Kieu may khong hop le. Xin hay nhap lai" << reset << "\n";
+            cout << bright_red << "\n\t(!) Kiểu máy không hợp lệ. Xin hãy nhập lại" << reset << "\n";
         }
     } while (mt.kieuMay < 0 || mt.kieuMay > 1);
     for (int i = n - 1; i >= 0; i--)
         nhieuMay[i + 1] = nhieuMay[i];
     nhieuMay[0] = mt;
     n++;
-    cout << bright_green << "\n\t(!) Them may tinh thanh cong" << reset << "\n";
-    system("pause");
+    cout << bright_green << "\n\t(!) Thêm máy tính thành công" << reset << "\n";
+    cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+    while (true) {
+        int key = _getch();
+        if (key == KEY_ENTER)
+            break;
+    }
 }
 
 void MayTinh::xoaMayTinh(MayTinh nhieuMay[], int &n, int &kiemTra) {
     string str;
-    cout << "\n(?) Nhap ma may tinh can xoa: ";
+    cout << "\n(?) Nhập mã máy tính cần xóa: ";
     cin >> str;
     int vitri = kiemTraTrungMaMayTinh(nhieuMay, n, str);
     // Dời
     if (vitri < 0) {
-        cout << bright_red << "\n\t(!) Ma may tinh khong ton tai. Xin hay nhap lai" << reset << "\n";
+        cout << bright_red << "\n\t(!) Mã máy tính không tồn tại. Xin hãy nhập lại" << reset << "\n";
         kiemTra = 0;
-        system("pause");
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     } else {
         for (int i = vitri; i < n - 1; i++) {
             nhieuMay[i].maMay = nhieuMay[i + 1].maMay;
@@ -118,26 +128,37 @@ void MayTinh::xoaMayTinh(MayTinh nhieuMay[], int &n, int &kiemTra) {
         // Giảm số lượng
         MayTinh tam = nhieuMay[n - 1];
         n--;
-        cout << bright_green << "\n\t(!) Xoa may tinh thanh cong" << reset << "\n";
+        cout << bright_green << "\n\t(!) Xóa máy tính thành công" << reset << "\n";
         kiemTra = 1;
-        system("pause");
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     }
 }
 
 void MayTinh::inMotMayTheoChieuNgang() {
     string loaiKieuMay, tinhTrangMay;
     if (tinhTrang == 1)  // tinhTrang == 1 -> Máy đã có người sử dụng
-        tinhTrangMay = "Day";
+        tinhTrangMay = "Đầy";
     else  // tinhTrang == 0 -> Máy trống
-        tinhTrangMay = "Trong";
+        tinhTrangMay = "Trống";
     if (kieuMay == 1)  // kieuMay == 1 -> Máy cao cấp
-        loaiKieuMay = "Cao cap";
+        loaiKieuMay = "Cao cấp";
     else  // kieuMay == 0 -> Máy thường
-        loaiKieuMay = "Thuong";
+        loaiKieuMay = "Thường";
     cout << on_bright_blue << setw(10) << left << "| " + maMay << "|" << reset;
     cout << on_bright_blue << setw(10) << left << " " + to_string(soMay) << "|" << reset;
-    cout << on_bright_blue << setw(20) << left << " " + loaiKieuMay << "|" << reset;
-    cout << on_bright_blue << setw(20) << left << " " + tinhTrangMay << "|" << reset << "\n";
+    if (loaiKieuMay == "Thường")
+        cout << on_bright_blue << setw(23) << left << " " + loaiKieuMay << "|" << reset;
+    else
+        cout << on_bright_blue << setw(22) << left << " " + loaiKieuMay << "|" << reset;
+    if (tinhTrangMay == "Đầy")
+        cout << on_bright_blue << setw(23) << left << " " + tinhTrangMay << "|" << reset;
+    else
+        cout << on_bright_blue << setw(22) << left << " " + tinhTrangMay << "|" << reset << "\n";
 }
 
 void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
@@ -166,18 +187,24 @@ void MayTinh::inMotMayTheoChieuNgangCoThoiGian() {
     string thoiGian = GIOBD + ":" + PHUTBD + ":" + GIAYBD + " - " + NGAYBD + "/" + THANGBD + "/" + NAMBD;
 
     if (tinhTrang == 1)  // tinhTrang == 1 -> Máy đã có người sử dụng
-        tinhTrangMay = "Day";
+        tinhTrangMay = "Đầy";
     else  // tinhTrang == 0 -> Máy trống
-        tinhTrangMay = "Trong";
+        tinhTrangMay = "Trống";
     if (kieuMay == 1)  // kieuMay == 1 -> Máy cao cấp
-        loaiKieuMay = "Cao cap";
+        loaiKieuMay = "Cao cấp";
     else  // kieuMay == 0 -> Máy thường
-        loaiKieuMay = "Thuong";
+        loaiKieuMay = "Thường";
 
     cout << on_bright_blue << setw(10) << left << "| " + maMay << "|" << reset;
     cout << on_bright_blue << setw(10) << left << " " + to_string(soMay) << "|" << reset;
-    cout << on_bright_blue << setw(20) << left << " " + loaiKieuMay << "|" << reset;
-    cout << on_bright_blue << setw(20) << left << " " + tinhTrangMay << "|" << reset;
+    if (loaiKieuMay == "Thường")
+        cout << on_bright_blue << setw(23) << left << " " + loaiKieuMay << "|" << reset;
+    else
+        cout << on_bright_blue << setw(22) << left << " " + loaiKieuMay << "|" << reset;
+    if (tinhTrangMay == "Đầy")
+        cout << on_bright_blue << setw(23) << left << " " + tinhTrangMay << "|" << reset;
+    else
+        cout << on_bright_blue << setw(22) << left << " " + tinhTrangMay << "|" << reset;
 
     if (tinhTrang != 0) {
         if (ngayBD != 0 && thangBD != 0 && namBD != 0)
@@ -209,8 +236,13 @@ void MayTinh::docGiaTien() {
     string fileName = "../File/maytinh/giatien.txt";
     ifstream fileIn(fileName);
     if (fileIn.fail()) {
-        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Không tìm thấy tập tin" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     } else {
         while (!fileIn.eof()) {
             fileIn >> giaTienThuong;
@@ -224,8 +256,13 @@ void MayTinh::ghiGiaTien() {
     string fileName = "../File/maytinh/giatien.txt";
     ofstream fileOut(fileName);
     if (fileOut.fail()) {
-        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Không tìm thấy tập tin" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     } else {
         fflush(stdin);
         fileOut << giaTienThuong << ' ';
@@ -235,18 +272,18 @@ void MayTinh::ghiGiaTien() {
 }
 
 void MayTinh::thietLapGiaTien() {
-    cout << on_bright_blue << "\n*--------- GIA TIEN HIEN TAI ---------*" << reset << "\n";
-    cout << on_bright_blue << setw(17) << left << "| May thuong:" << reset;
-    cout << on_bright_blue << setw(20) << right << to_string(giaTienThuong) + " VND"
+    cout << on_bright_blue << "\n*--------- GIÁ TIỀN HIỆN TẠI ---------*" << reset << "\n";
+    cout << on_bright_blue << setw(17) << left << "| Máy thường:" << reset;
+    cout << on_bright_blue << setw(24) << right << to_string(giaTienThuong) + " VND"
          << " |" << reset << "\n";
-    cout << on_bright_blue << setw(17) << left << "| May cao cap:" << reset;
-    cout << on_bright_blue << setw(20) << right << to_string(giaTienCaoCap) + " VND"
+    cout << on_bright_blue << setw(17) << left << "| Máy cao cấp:" << reset;
+    cout << on_bright_blue << setw(23) << right << to_string(giaTienCaoCap) + " VND"
          << " |" << reset;
     cout << on_bright_blue << "\n*-------------------------------------*" << reset << "\n";
-    cout << "\n(?) Nhap gia tien may thuong / 1 gio: ";
+    cout << "\n(?) Nhập giá tiền máy thường / 1 giờ: ";
     cin >> giaTienThuong;
-    cout << "\n(?) Nhap gia tien may cao cap / 1 gio: ";
+    cout << "\n(?) Nhập giá tiền máy cao cấp / 1 giờ: ";
     cin >> giaTienCaoCap;
-    cout << bright_green << "\n\t(!) Thiet lap gia tien thanh cong" << reset << "\n";
+    cout << bright_green << "\n\t(!) Thiết lập giá tiền thành công" << reset << "\n";
     ghiGiaTien();
 }

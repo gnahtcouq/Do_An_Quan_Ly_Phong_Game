@@ -34,7 +34,7 @@ void ThueNhieuMay::taoListThueMotMay() {
 Node *taoNodeThueMotMay(ThueMotMay thueMotMay) {
     Node *p = new Node;
     if (p == NULL) {
-        cout << bright_red << "\n\t(!) Khong du bo nho" << reset << "\n";
+        cout << bright_red << "\n\t(!) Không đủ bộ nhớ" << reset << "\n";
         return NULL;
     } else {
         p->data = thueMotMay;
@@ -105,7 +105,7 @@ void ThueNhieuMay::moMayTrucTiep(MayTinh nhieuMay[], int n) {
     if (n != 0) {
         if (kiemTraHetMay(nhieuMay, n)) {  // nếu hết máy
             system("cls");
-            cout << bright_red << "\n\t(!) Het may" << reset << "\n";
+            cout << bright_red << "\n\t(!) Hết máy" << reset << "\n";
         } else {
             int gioBD = 0, phutBD = 0, giayBD = 0, ngayBD = 0, thangBD = 0, namBD = 0;
             ThueMotMay r;
@@ -118,12 +118,22 @@ void ThueNhieuMay::moMayTrucTiep(MayTinh nhieuMay[], int n) {
             r.maytinh->ngayBD = ngayBD;
             r.maytinh->thangBD = thangBD;
             r.maytinh->namBD = namBD;
-            cout << bright_green << "\n\t(!) Mo may thanh cong" << reset << "\n";
-            system("pause");
+            cout << bright_green << "\n\t(!) Mở máy thành công" << reset << "\n";
+            cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         }
     } else {
-        cout << bright_red << "\n\t(!) Danh sach may tinh trong" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Danh sách máy tính trống" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     }
 }
 
@@ -132,8 +142,13 @@ void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[]
     ifstream fileIn(fileName);
     n = kiemTraFileTrong(fileName);
     if (fileIn.fail()) {
-        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Không tìm thấy tập tin" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     } else {
         ThueMotMay r;
         int x;
@@ -154,8 +169,13 @@ void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay, int n) {
     string fileName = "../File/maytinh/momaytructiep.txt";
     ofstream fileOut(fileName);
     if (fileOut.fail()) {
-        cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Không tìm thấy tập tin" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     } else {
         fileOut << n << endl;
         for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext) {
@@ -291,29 +311,39 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
             //
             string loaiKieuMay;
             if (r.maytinh->kieuMay == 1)  // kieuMay == 1 -> Máy cao cấp
-                loaiKieuMay = "Cao cap";
+                loaiKieuMay = "Cao cấp";
             else  // kieuMay == 0 -> Máy thường
-                loaiKieuMay = "Thuong";
+                loaiKieuMay = "Thường";
             //
             //
             // Xuất thông tin thanh toán
             system("cls");
-            cout << bright_yellow << "\nMENU/THANH TOAN" << reset << "\n";
-            cout << on_bright_blue << "\n*----------------- THONG TIN THANH TOAN ----------------*\n";
-            cout << setw(30) << left << "| So may: ";
-            cout << setw(25) << right << r.maytinh->soMay << " |\n";
-            cout << setw(30) << left << "| Kieu may: ";
-            cout << setw(25) << right << loaiKieuMay << " |\n";
-            cout << setw(30) << left << "| Thoi gian bat dau: ";
-            cout << setw(25) << right << thoiGianLucDau << " |\n";
-            cout << setw(30) << left << "| Xuat hoa don luc: ";
-            cout << setw(25) << right << thoiGianThanhToan << " |\n";
-            cout << setw(30) << left << "| Thoi gian da su dung: ";
-            cout << setw(25) << right << thoiGianSuDung << " |\n";
-            cout << setw(30) << left << "| So tien can thanh toan: ";
-            cout << setw(25) << right << giaTien << " |";
+            cout << bright_yellow << "\nMENU/THANH TOÁN" << reset << "\n";
+            cout << on_bright_blue << "\n*----------------- THÔNG TIN THANH TOÁN ----------------*\n";
+            cout << setw(30) << left << "| Số máy: ";
+            cout << setw(28) << right << r.maytinh->soMay << " |\n";
+            cout << setw(30) << left << "| Kiểu máy: ";
+            if (loaiKieuMay == "Thường")
+                cout << setw(31) << right << loaiKieuMay << " |\n";
+            else
+                cout << setw(30) << right << loaiKieuMay << " |\n";
+            cout << setw(30) << left << "| Thời gian bắt đầu: ";
+            cout << setw(32) << right << thoiGianLucDau << " |\n";
+            cout << setw(30) << left << "| Xuất hóa đơn lúc: ";
+            cout << setw(31) << right << thoiGianThanhToan << " |\n";
+            cout << setw(30) << left << "| Thời gian kết thúc: ";
+            cout << setw(30) << right << thoiGianSuDung << " |\n";
+            cout << setw(30) << left << "| Số tiền cần thanh toán: ";
+            cout << setw(29) << right << giaTien << " |";
             cout << "\n*-------------------------------------------------------*" << reset << "\n";
-            system("pause");
+
+            int key = 0;
+            cout << bright_red << "\n\t(!) Nhấn ENTER để xác nhận hoàn thành thanh toán" << reset << "\n";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
             //
             //
             r.maytinh->gioBD = 0;
@@ -329,13 +359,21 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
             string fileNameLichSu = "../File/lichsu/lichsuthanhtoan.txt";
             ofstream fileOut(fileNameLichSu, ios::app);
             if (fileOut.fail()) {
-                cout << bright_red << "\n\t(!) Khong tim thay tap tin" << reset << "\n";
-                system("pause");
+                cout << bright_red << "\n\t(!) Không tìm thấy tập tin" << reset << "\n";
+                cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+                while (true) {
+                    int key = _getch();
+                    if (key == KEY_ENTER)
+                        break;
+                }
             } else {
                 fileOut << setw(25) << left << "| " + thoiGianLucDau << "|";
                 fileOut << setw(25) << left << " " + thoiGianThanhToan << "|";
                 fileOut << setw(10) << left << " " + to_string(r.maytinh->soMay) << "|";
-                fileOut << setw(10) << left << " " + loaiKieuMay << "|";
+                if (loaiKieuMay == "Thường")
+                    fileOut << setw(13) << left << " " + loaiKieuMay << "|";
+                else
+                    fileOut << setw(12) << left << " " + loaiKieuMay << "|";
                 fileOut << setw(20) << right << giaTien + " "
                         << "|\n";
             }
@@ -356,15 +394,30 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
             docGhiDoanhThu << to_string((long long)doanhThu);
             docGhiDoanhThu.close();
 
-            cout << bright_green << "\n\t(!) Thanh toan thanh cong" << reset << "\n";
-            system("pause");
+            cout << bright_green << "\n\t(!) Thanh toán thành công" << reset << "\n";
+            cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         } else {
-            cout << bright_red << "\n\t(!) Khong co may dang duoc su dung" << reset << "\n";
-            system("pause");
+            cout << bright_red << "\n\t(!) Không có máy đang được sử dụng" << reset << "\n";
+            cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+            while (true) {
+                int key = _getch();
+                if (key == KEY_ENTER)
+                    break;
+            }
         }
     } else {
-        cout << bright_red << "\n\t(!) Danh sach may tinh trong" << reset << "\n";
-        system("pause");
+        cout << bright_red << "\n\t(!) Danh sách máy tính trống" << reset << "\n";
+        cout << "\n\t[Nhấn ENTER để tiếp tục...]";
+        while (true) {
+            int key = _getch();
+            if (key == KEY_ENTER)
+                break;
+        }
     }
 }
 
