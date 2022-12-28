@@ -165,7 +165,6 @@ void docDanhSachNguoiThueTrucTiep(ThueNhieuMay &thueNhieuMay, MayTinh nhieuMay[]
 }
 
 void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay, int n) {
-    // int count = 1;
     string fileName = "../File/maytinh/momaytructiep.txt";
     ofstream fileOut(fileName);
     if (fileOut.fail()) {
@@ -180,8 +179,6 @@ void ghiDanhSachNguoiThueTrucTiep(ThueNhieuMay thueNhieuMay, int n) {
         fileOut << n << endl;
         for (Node *t = thueNhieuMay.pHead; t != NULL; t = t->pNext) {
             t->data.ghiMotNguoiThueTrucTiep(fileOut);
-            // Sleep(50);  // delay 0.05s
-            // cout << "\n(*) Ban ghi thu " << count++ << " (*)";
             if (t->pNext != NULL)
                 fileOut << endl;
         }
