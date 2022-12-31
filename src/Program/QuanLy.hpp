@@ -392,11 +392,11 @@ void kiemTraDoanhThuNgayTuyChinh() {
     do {
         system("cls");
         cout << bright_yellow << "\nMENU/KIỂM TRA DOANH THU/DOANH THU NGÀY TÙY CHỈNH" << reset << "\n";
-        cout << "\n(?) Nhap ngay: ";
+        cout << "\n(?) Nhập ngày: ";
         cin >> ngay;
-        cout << "\n(?) Nhap thang: ";
+        cout << "\n(?) Nhập tháng: ";
         cin >> thang;
-        cout << "\n(?) Nhap nam: ";
+        cout << "\n(?) Nhập năm: ";
         cin >> nam;
         if (!kiemTraNgayHopLe(ngay, thang, nam)) {
             cout << bright_red << "\n\t(!) Ngày/Tháng/Năm không hợp lệ. Xin hãy nhập lại" << reset << "\n";

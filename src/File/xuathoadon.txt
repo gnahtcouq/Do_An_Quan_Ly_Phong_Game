@@ -2,12 +2,12 @@
 *---------------------- STU CYBER ----------------------*
 
 *----------------- THÔNG TIN THANH TOÁN ----------------*
-| Số máy:                                            10 |
+| Số máy:                                            12 |
 | Kiểu máy:                                     Cao cấp |
-| Thời gian bắt đầu:              14:59:57 - 23/11/2022 |
-| Xuất hóa đơn lúc:               21:40:18 - 04/01/2023 |
-| Thời gian kết thúc:                        1014:40:21 |
-| Số tiền cần thanh toán:                  36528210 VND |
+| Thời gian bắt đầu:              13:02:52 - 31/12/2022 |
+| Xuất hóa đơn lúc:               13:03:35 - 31/12/2022 |
+| Thời gian kết thúc:                          00:00:43 |
+| Số tiền cần thanh toán:                       430 VND |
 *-------------------------------------------------------*
 
 STU CYBER ghi nhận các đóng góp của quý khách nhằm
