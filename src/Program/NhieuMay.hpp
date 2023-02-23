@@ -104,7 +104,7 @@ void xuatDanhSachCacMayDay(MayTinh nhieuMay[], int n) {
                  << "|" << reset;
             cout << on_bright_blue << setw(30) << left << " Thời gian bắt đầu"
                  << "|" << reset << "\n";
-            cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*\n";
+            cout << on_bright_blue << "*---------*----------*--------------------*--------------------*-----------------------*" << reset << "\n";
             for (int i = 0; i < n; i++)
                 if (nhieuMay[i].tinhTrang == 1)
                     nhieuMay[i].inMotMayTheoChieuNgangCoThoiGian();
