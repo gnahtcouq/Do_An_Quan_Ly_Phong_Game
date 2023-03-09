@@ -16,3 +16,4 @@
 - Được viết trên Visual Studio Code (VSCode). [Xem hướng dẫn cài đặt tại đây](https://codelearn.io/sharing/huong-dan-cai-dat-visual-studio-code-lap-trinh-cpp)
 - Ngôn ngữ: C++
 - Build file [main.cpp](src/Program/main.cpp) -> **main.exe** rồi chạy file **main.exe**
+- Code có bug
