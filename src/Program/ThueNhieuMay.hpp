@@ -362,7 +362,7 @@ void ThueNhieuMay::thanhToan(MayTinh nhieuMay[], int n) {
             cout << setw(32) << right << thoiGianLucDau << " |\n";
             cout << setw(30) << left << "| Xuất hóa đơn lúc: ";
             cout << setw(31) << right << thoiGianThanhToan << " |\n";
-            cout << setw(30) << left << "| Thời gian đã sử dụng: ";
+            cout << setw(30) << left << "| Thời gian đã sử dụng:  ";
             cout << setw(30) << right << thoiGianSuDung << " |\n";
             cout << setw(30) << left << "| Số tiền cần thanh toán: ";
             cout << setw(29) << right << giaTien << " |";
